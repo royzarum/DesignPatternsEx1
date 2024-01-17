@@ -8,11 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Drawing.Text;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        //AppSettings m_AppSettings = AppSettings.LoadFromFile();
         public FormMain()
         {
             InitializeComponent();
@@ -43,20 +45,69 @@ namespace BasicFacebookFeatures
                 "user_birthday",
                 "user_likes",
                 "user_friends",
-                "user_posts"
+                "user_posts",
+                "user_gender"
                 /// add any relevant permissions  
                 );
 
+
             if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
             {
-                buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
-                buttonLogin.BackColor = Color.LightGreen;
-                pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
-                buttonLogin.Enabled = false;
-                buttonLogout.Enabled = true;
+                populateUIFromFacebookData();
             }
         }
+        private void populateUIFromFacebookData()
+        {
+            buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
+            buttonLogin.BackColor = Color.LightGreen;
+            pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
+            buttonLogin.Enabled = false;
+            buttonLogout.Enabled = true;
+            changeVisibility();
+            UserBirthdayLabel.Text = m_LoginResult.LoggedInUser.Birthday.ToString();
+            UserGenderLabel.Text = m_LoginResult.LoggedInUser?.Gender.ToString();
+        }
 
+        private void changeVisibility()
+        {
+            BirthdayLabel.Visible = true;
+            GenderLabel.Visible = true;
+            UserBirthdayLabel.Visible = true;
+            UserGenderLabel.Visible = true;
+            pictureBoxProfile.Visible = true;
+            pictureBoxLogo.Visible = true;
+            buttonAlbums.Visible = true;
+            buttonFriends.Visible = true;
+            buttonGroups.Visible = true;
+            buttonPages.Visible = true;
+            buttonPosts.Visible = true;
+            checkBoxRememberMe.Visible = false;
+        }
+
+        //protected override void OnFormClosing(FormClosingEventArgs e)
+        //{
+        //    base.OnFormClosing(e);
+
+        //    m_AppSettings.RememberMe = checkBoxRememberMe.Checked;
+        //    if(checkBoxRememberMe.Checked)
+        //    {
+        //       m_AppSettings.LastAccessToken = m_LoginResult.AccessToken;
+        //    }
+        //    else
+        //    {
+        //        m_AppSettings.LastAccessToken = null;
+        //    }
+        //    m_AppSettings.SaveToFile();
+        //}
+        //protected override void OnShown(EventArgs e)
+        //{
+        //    base.OnShown(e);
+        //    if (m_AppSettings.RememberMe && !String.IsNullOrEmpty(m_AppSettings.LastAccessToken))
+        //    {
+        //        m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
+        //        populateUIFromFacebookData();
+        //    }
+        //}
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
