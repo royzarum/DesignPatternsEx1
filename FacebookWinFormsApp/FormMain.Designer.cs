@@ -36,9 +36,14 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.textBoxAppID = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.GenderLabel = new System.Windows.Forms.Label();
+            this.UserGenderLabel = new System.Windows.Forms.Label();
+            this.UserBirthdayLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -88,6 +93,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.UserBirthdayLabel);
+            this.tabPage1.Controls.Add(this.UserGenderLabel);
+            this.tabPage1.Controls.Add(this.GenderLabel);
+            this.tabPage1.Controls.Add(this.BirthdayLabel);
             this.tabPage1.Controls.Add(this.pictureBoxProfile);
             this.tabPage1.Controls.Add(this.textBoxAppID);
             this.tabPage1.Controls.Add(this.label1);
@@ -101,9 +110,18 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // BirthdayLabel
+            // 
+            this.BirthdayLabel.AutoSize = true;
+            this.BirthdayLabel.Location = new System.Drawing.Point(632, 23);
+            this.BirthdayLabel.Name = "BirthdayLabel";
+            this.BirthdayLabel.Size = new System.Drawing.Size(98, 26);
+            this.BirthdayLabel.TabIndex = 57;
+            this.BirthdayLabel.Text = "Birthday:";
+            // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(18, 96);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(335, 17);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(79, 78);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -128,6 +146,35 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // GenderLabel
+            // 
+            this.GenderLabel.AutoSize = true;
+            this.GenderLabel.Location = new System.Drawing.Point(971, 28);
+            this.GenderLabel.Name = "GenderLabel";
+            this.GenderLabel.Size = new System.Drawing.Size(90, 26);
+            this.GenderLabel.TabIndex = 58;
+            this.GenderLabel.Text = "Gender:";
+            // 
+            // UserGenderLabel
+            // 
+            this.UserGenderLabel.AutoSize = true;
+            this.UserGenderLabel.Location = new System.Drawing.Point(1067, 28);
+            this.UserGenderLabel.Name = "UserGenderLabel";
+            this.UserGenderLabel.Size = new System.Drawing.Size(140, 26);
+            this.UserGenderLabel.TabIndex = 59;
+            this.UserGenderLabel.Text = "GenderValue";
+            this.UserGenderLabel.Visible = false;
+            // 
+            // UserBirthdayLabel
+            // 
+            this.UserBirthdayLabel.AutoSize = true;
+            this.UserBirthdayLabel.Location = new System.Drawing.Point(735, 28);
+            this.UserBirthdayLabel.Name = "UserBirthdayLabel";
+            this.UserBirthdayLabel.Size = new System.Drawing.Size(96, 26);
+            this.UserBirthdayLabel.TabIndex = 60;
+            this.UserBirthdayLabel.Text = "1/1/2000";
+            this.UserBirthdayLabel.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -143,6 +190,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,6 +205,11 @@
 		private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox textBoxAppID;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
+        private System.Windows.Forms.Label BirthdayLabel;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label UserBirthdayLabel;
+        private System.Windows.Forms.Label UserGenderLabel;
+        private System.Windows.Forms.Label GenderLabel;
     }
 }
 

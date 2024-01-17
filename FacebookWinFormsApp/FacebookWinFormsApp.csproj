@@ -89,6 +89,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacebookTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacebookTemplateForm.Designer.cs">
+      <DependentUpon>FacebookTemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FacebookTemplateForm.resx">
+      <DependentUpon>FacebookTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
