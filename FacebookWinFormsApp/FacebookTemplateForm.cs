@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FacebookTemplateForm : Form
+    public abstract partial class FacebookTemplateForm : Form
     {
         private LoginResult m_LoginResult = new LoginResult();
 
