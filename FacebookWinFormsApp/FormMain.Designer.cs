@@ -195,14 +195,14 @@
 
         }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.Button buttonLogin;
-		private System.Windows.Forms.Button buttonLogout;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox textBoxAppID;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Label BirthdayLabel;
