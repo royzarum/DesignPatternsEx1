@@ -127,5 +127,11 @@ namespace BasicFacebookFeatures
         {
 
         }
+
+        private void buttonAlbums_Click(object sender, EventArgs e)
+        {
+            AlbumsForm albumsForm = new AlbumsForm(m_LoginResult);
+            albumsForm.ShowDialog();
+        }
     }
 }

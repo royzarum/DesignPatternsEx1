@@ -33,6 +33,8 @@
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonGroups = new System.Windows.Forms.Button();
             this.buttonPosts = new System.Windows.Forms.Button();
             this.buttonAlbums = new System.Windows.Forms.Button();
@@ -45,13 +47,11 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -104,13 +104,34 @@
             this.tabPage1.Controls.Add(this.pictureBoxProfile);
             this.tabPage1.Controls.Add(this.buttonLogout);
             this.tabPage1.Controls.Add(this.buttonLogin);
-            this.tabPage1.Location = new System.Drawing.Point(4, 35);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1235, 658);
+            this.tabPage1.Size = new System.Drawing.Size(1235, 666);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxRememberMe
+            // 
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(67, 96);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(101, 22);
+            this.checkBoxRememberMe.TabIndex = 67;
+            this.checkBoxRememberMe.Text = "checkBox1";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(36, 248);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(79, 78);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 66;
+            this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.Visible = false;
             // 
             // buttonGroups
             // 
@@ -145,6 +166,7 @@
             this.buttonAlbums.Text = "Albums";
             this.buttonAlbums.UseVisualStyleBackColor = true;
             this.buttonAlbums.Visible = false;
+            this.buttonAlbums.Click += new System.EventHandler(this.buttonAlbums_Click);
             // 
             // buttonFriends
             // 
@@ -173,7 +195,7 @@
             this.UserBirthdayLabel.AutoSize = true;
             this.UserBirthdayLabel.Location = new System.Drawing.Point(726, 28);
             this.UserBirthdayLabel.Name = "UserBirthdayLabel";
-            this.UserBirthdayLabel.Size = new System.Drawing.Size(96, 26);
+            this.UserBirthdayLabel.Size = new System.Drawing.Size(64, 18);
             this.UserBirthdayLabel.TabIndex = 60;
             this.UserBirthdayLabel.Text = "1/1/2000";
             this.UserBirthdayLabel.Visible = false;
@@ -183,7 +205,7 @@
             this.UserGenderLabel.AutoSize = true;
             this.UserGenderLabel.Location = new System.Drawing.Point(1055, 28);
             this.UserGenderLabel.Name = "UserGenderLabel";
-            this.UserGenderLabel.Size = new System.Drawing.Size(140, 26);
+            this.UserGenderLabel.Size = new System.Drawing.Size(93, 18);
             this.UserGenderLabel.TabIndex = 59;
             this.UserGenderLabel.Text = "GenderValue";
             this.UserGenderLabel.Visible = false;
@@ -193,7 +215,7 @@
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Location = new System.Drawing.Point(971, 28);
             this.GenderLabel.Name = "GenderLabel";
-            this.GenderLabel.Size = new System.Drawing.Size(90, 26);
+            this.GenderLabel.Size = new System.Drawing.Size(61, 18);
             this.GenderLabel.TabIndex = 58;
             this.GenderLabel.Text = "Gender:";
             this.GenderLabel.Visible = false;
@@ -203,7 +225,7 @@
             this.BirthdayLabel.AutoSize = true;
             this.BirthdayLabel.Location = new System.Drawing.Point(631, 28);
             this.BirthdayLabel.Name = "BirthdayLabel";
-            this.BirthdayLabel.Size = new System.Drawing.Size(98, 26);
+            this.BirthdayLabel.Size = new System.Drawing.Size(65, 18);
             this.BirthdayLabel.TabIndex = 57;
             this.BirthdayLabel.Text = "Birthday:";
             this.BirthdayLabel.Visible = false;
@@ -220,38 +242,17 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 35);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1235, 658);
+            this.tabPage2.Size = new System.Drawing.Size(1235, 666);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(36, 248);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(79, 78);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 66;
-            this.pictureBoxLogo.TabStop = false;
-            this.pictureBoxLogo.Visible = false;
-            // 
-            // checkBoxRememberMe
-            // 
-            this.checkBoxRememberMe.AutoSize = true;
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(67, 96);
-            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(145, 30);
-            this.checkBoxRememberMe.TabIndex = 67;
-            this.checkBoxRememberMe.Text = "checkBox1";
-            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 697);
             this.Controls.Add(this.tabControl1);
@@ -263,9 +264,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

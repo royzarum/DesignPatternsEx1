@@ -11,15 +11,20 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public abstract partial class FacebookTemplateForm : Form
+    public partial class FacebookTemplateForm : Form
     {
-        private LoginResult m_LoginResult = new LoginResult();
+        private LoginResult m_LoginResult = null;
+
+        public FacebookTemplateForm()
+        {
+            InitializeComponent();
+        }
 
         public FacebookTemplateForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
             m_LoginResult = i_LoginResult;
-            initialzeData();
+            //initialzeData();
             
         }
         private void initialzeData()
