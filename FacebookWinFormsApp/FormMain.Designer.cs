@@ -40,11 +40,11 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ButtonPages = new System.Windows.Forms.Button();
+            this.ButtonFriends = new System.Windows.Forms.Button();
+            this.ButtonAlbums = new System.Windows.Forms.Button();
+            this.ButtonPosts = new System.Windows.Forms.Button();
+            this.ButtonGroups = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
@@ -87,11 +87,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.ButtonGroups);
+            this.tabPage1.Controls.Add(this.ButtonPosts);
+            this.tabPage1.Controls.Add(this.ButtonAlbums);
+            this.tabPage1.Controls.Add(this.ButtonFriends);
+            this.tabPage1.Controls.Add(this.ButtonPages);
             this.tabPage1.Controls.Add(this.UserBirthdayLabel);
             this.tabPage1.Controls.Add(this.UserGenderLabel);
             this.tabPage1.Controls.Add(this.GenderLabel);
@@ -164,50 +164,56 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // ButtonPages
             // 
-            this.button1.Location = new System.Drawing.Point(556, 159);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 49);
-            this.button1.TabIndex = 61;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ButtonPages.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonPages.Location = new System.Drawing.Point(610, 192);
+            this.ButtonPages.Name = "ButtonPages";
+            this.ButtonPages.Size = new System.Drawing.Size(133, 65);
+            this.ButtonPages.TabIndex = 61;
+            this.ButtonPages.Text = "Liked Pages";
+            this.ButtonPages.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ButtonFriends
             // 
-            this.button2.Location = new System.Drawing.Point(740, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 49);
-            this.button2.TabIndex = 62;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ButtonFriends.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonFriends.Location = new System.Drawing.Point(820, 192);
+            this.ButtonFriends.Name = "ButtonFriends";
+            this.ButtonFriends.Size = new System.Drawing.Size(133, 65);
+            this.ButtonFriends.TabIndex = 62;
+            this.ButtonFriends.Text = "Friends";
+            this.ButtonFriends.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // ButtonAlbums
             // 
-            this.button3.Location = new System.Drawing.Point(556, 234);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 49);
-            this.button3.TabIndex = 63;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ButtonAlbums.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonAlbums.Location = new System.Drawing.Point(1030, 192);
+            this.ButtonAlbums.Name = "ButtonAlbums";
+            this.ButtonAlbums.Size = new System.Drawing.Size(133, 65);
+            this.ButtonAlbums.TabIndex = 63;
+            this.ButtonAlbums.Text = "Albums";
+            this.ButtonAlbums.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // ButtonPosts
             // 
-            this.button4.Location = new System.Drawing.Point(740, 159);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 49);
-            this.button4.TabIndex = 64;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ButtonPosts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonPosts.Location = new System.Drawing.Point(425, 192);
+            this.ButtonPosts.Name = "ButtonPosts";
+            this.ButtonPosts.Size = new System.Drawing.Size(133, 65);
+            this.ButtonPosts.TabIndex = 64;
+            this.ButtonPosts.Text = "Posts";
+            this.ButtonPosts.UseVisualStyleBackColor = true;
+            this.ButtonPosts.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button5
+            // ButtonGroups
             // 
-            this.button5.Location = new System.Drawing.Point(914, 159);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(108, 49);
-            this.button5.TabIndex = 65;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ButtonGroups.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonGroups.Location = new System.Drawing.Point(240, 192);
+            this.ButtonGroups.Name = "ButtonGroups";
+            this.ButtonGroups.Size = new System.Drawing.Size(133, 65);
+            this.ButtonGroups.TabIndex = 65;
+            this.ButtonGroups.Text = "Groups";
+            this.ButtonGroups.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -242,10 +248,10 @@
         private System.Windows.Forms.Label UserBirthdayLabel;
         private System.Windows.Forms.Label UserGenderLabel;
         private System.Windows.Forms.Label GenderLabel;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonPages;
+        private System.Windows.Forms.Button ButtonGroups;
+        private System.Windows.Forms.Button ButtonPosts;
+        private System.Windows.Forms.Button ButtonAlbums;
+        private System.Windows.Forms.Button ButtonFriends;
     }
 }
