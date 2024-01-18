@@ -23,7 +23,7 @@ namespace BasicFacebookFeatures
         public string LastAccessToken { get; set; }
         public void SaveToFile()
         {
-            using (Stream stream = new FileStream(@"C:\App Settings.xml", FileMode.Truncate))
+            using (Stream stream = new FileStream(createPath(), FileMode.Truncate))
             {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize(stream, this);
@@ -31,17 +31,26 @@ namespace BasicFacebookFeatures
         }
         public static AppSettings LoadFromFile() 
         {
-            AppSettings obj = null;
-            if(!File.Exists(@"C:\App Settings.xml"))
+            AppSettings obj = new AppSettings();
+            if(!File.Exists(createPath()))
             {
-                File.Create(@"C:\App Settings.xml");
+                File.Create(createPath());
             }
-            using (Stream stream = new FileStream(@"C:\App Settings.xml", FileMode.Open))
+            else
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
-                obj = serializer.Deserialize(stream) as AppSettings;
+                using (Stream stream = new FileStream(createPath(), FileMode.Open))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+                    obj = serializer.Deserialize(stream) as AppSettings;
+                }
             }
             return obj;
+        }
+        private static string createPath()
+        {
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = "App Settings.xml";
+            return Path.Combine(projectDirectory, fileName);
         }
     }
 }
