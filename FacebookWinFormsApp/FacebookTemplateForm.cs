@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FacebookTemplateForm : Form
     {
-        protected LoginResult m_LoginResult = null;
+        protected LoginResult m_LoginResult = new LoginResult();
 
         public FacebookTemplateForm()
         {
@@ -22,6 +22,7 @@ namespace BasicFacebookFeatures
 
         public FacebookTemplateForm(LoginResult i_LoginResult)
         {
+            InitializeComponent();
             m_LoginResult = i_LoginResult;
             initialzeData();
         }
