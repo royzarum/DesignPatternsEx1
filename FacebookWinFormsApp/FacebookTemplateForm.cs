@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FacebookTemplateForm : Form
     {
-        private LoginResult m_LoginResult = null;
+        protected LoginResult m_LoginResult = null;
 
         public FacebookTemplateForm()
         {
@@ -22,18 +22,15 @@ namespace BasicFacebookFeatures
 
         public FacebookTemplateForm(LoginResult i_LoginResult)
         {
-            InitializeComponent();
             m_LoginResult = i_LoginResult;
-            //initialzeData();
-            
+            initialzeData();
         }
         private void initialzeData()
         {
             labelName.Text = m_LoginResult.LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
-            // Initialize logo picture
         }
 
-       
+
     }
 }

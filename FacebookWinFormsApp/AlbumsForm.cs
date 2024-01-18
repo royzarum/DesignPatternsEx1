@@ -13,10 +13,19 @@ namespace BasicFacebookFeatures
 {
     public partial class AlbumsForm : FacebookTemplateForm
     {
+        public AlbumsForm()
+        {
+            InitializeComponent();
+        }
         public AlbumsForm(FacebookWrapper.LoginResult i_LoginResult)
             :base (i_LoginResult)
         {
-            //InitializeComponent();
+            InitializeComponent();
+        }
+
+        private void loadAlbums()
+        {
+            
         }
     }
 }

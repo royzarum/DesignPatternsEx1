@@ -110,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlbumsForm.resx">
+      <DependentUpon>AlbumsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacebookTemplateForm.resx">
       <DependentUpon>FacebookTemplateForm.cs</DependentUpon>
     </EmbeddedResource>
