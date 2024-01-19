@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp.DevTools.SystemInfo;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -16,7 +17,8 @@ namespace BasicFacebookFeatures
     {
         private User m_LoggedInUser;
         private PictureBox[] m_CurrentAlbumDisplay;
-        private const string k_FormName = "Albums";
+        private readonly Point r_FormMinimumSize;
+        private const string k_FormName = "  Albums";
         private const int k_PictureBoxSize = 300;
         private const int k_SpaceSize = 10;
 
@@ -30,7 +32,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
-
+            this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
         }
 
         protected override void OnResize(EventArgs e)
@@ -49,7 +51,7 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            fetchAlbumsToListBox(); //need move it to 'onShown' event.
+            fetchAlbumsToListBox();
         }
 
         private void fetchAlbumsToListBox()
@@ -79,6 +81,7 @@ namespace BasicFacebookFeatures
 
             if (selectedAlbum != null && selectedAlbum.Photos.Count > 0)
             {
+                removeScreenCurrentPictureBoxes();
                 m_CurrentAlbumDisplay = new PictureBox[selectedAlbum.Photos.Count];
                 int index = 0;
                 foreach (Photo photo in selectedAlbum.Photos)
@@ -95,6 +98,17 @@ namespace BasicFacebookFeatures
                 adjustPictureBoxesPosition();
             }
 
+        }
+
+        private void removeScreenCurrentPictureBoxes()
+        {
+            if (m_CurrentAlbumDisplay != null)
+            {
+                foreach (PictureBox pictureBox in m_CurrentAlbumDisplay)
+                {
+                    Controls.Remove(pictureBox);
+                }
+            }
         }
 
         private void initializePictureBoxProperties(PictureBox pictureBox)
@@ -120,7 +134,7 @@ namespace BasicFacebookFeatures
             {
                 int row = i / picturesInRow;
                 int col = i % picturesInRow;
-                int positionFromLeftOnClientScreen = spacing + col * (pictureBoxWidth + spacing);
+                int positionFromLeftOnClientScreen = labelName.Left + 2 * spacing + col * (pictureBoxWidth + spacing);
                 int positionFromTopOnClientScreen = listBoxAlbums.Bottom + spacing + row * (pictureBoxHeight + spacing);
                 m_CurrentAlbumDisplay[i].Location = new Point(positionFromLeftOnClientScreen, positionFromTopOnClientScreen);
             }

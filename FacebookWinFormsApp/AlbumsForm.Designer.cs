@@ -41,9 +41,9 @@
             // 
             this.listBoxAlbums.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(357, 141);
+            this.listBoxAlbums.Location = new System.Drawing.Point(377, 141);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(333, 56);
+            this.listBoxAlbums.Size = new System.Drawing.Size(300, 56);
             this.listBoxAlbums.TabIndex = 4;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
@@ -99,6 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1091, 612);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.headLine);
@@ -106,6 +107,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxAlbums);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "AlbumsForm";
             this.Text = "AlbumsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
