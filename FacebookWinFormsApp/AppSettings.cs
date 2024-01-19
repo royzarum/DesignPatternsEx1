@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures
     {
         private bool m_RememberMe;
         private string m_LastAccessToken;
-
+        
         private AppSettings()
         {
             RememberMe = false;
@@ -32,16 +32,21 @@ namespace BasicFacebookFeatures
         public static AppSettings LoadFromFile() 
         {
             AppSettings obj = new AppSettings();
-            if(!File.Exists(createPath()))
+            string path = createPath();
+            if(!File.Exists(path))
             {
-                File.Create(createPath());
+                File.Create(path);
             }
             else
             {
-                using (Stream stream = new FileStream(createPath(), FileMode.Open))
+                FileInfo fileInfo = new FileInfo(path);
+                if(fileInfo.Length > 0)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
-                    obj = serializer.Deserialize(stream) as AppSettings;
+                    using (Stream stream = new FileStream(path, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+                        obj = serializer.Deserialize(stream) as AppSettings;
+                    }
                 }
             }
             return obj;
