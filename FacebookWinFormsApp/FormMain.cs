@@ -26,11 +26,12 @@ namespace BasicFacebookFeatures
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("royzarum");
-
+            m_AppSettings.RememberMe = checkBoxRememberMe.Checked;
             if (m_LoginResult == null)
             {
                 login();
             }
+            checkIfRememberMe();
         }
 
         private void login()
@@ -70,24 +71,21 @@ namespace BasicFacebookFeatures
 
         private void changeVisibility()
         {
-            BirthdayLabel.Visible = true;
-            GenderLabel.Visible = true;
-            UserBirthdayLabel.Visible = true;
-            UserGenderLabel.Visible = true;
-            pictureBoxProfile.Visible = true;
-            pictureBoxLogo.Visible = true;
-            buttonAlbums.Visible = true;
-            buttonFriends.Visible = true;
-            buttonGroups.Visible = true;
-            buttonPages.Visible = true;
-            buttonPosts.Visible = true;
+            BirthdayLabel.Visible = !BirthdayLabel.Visible;
+            GenderLabel.Visible = !GenderLabel.Visible;
+            UserBirthdayLabel.Visible = !UserBirthdayLabel.Visible;
+            UserGenderLabel.Visible = !UserGenderLabel.Visible;
+            pictureBoxProfile.Visible = !pictureBoxProfile.Visible;
+            pictureBoxLogo.Visible = !pictureBoxLogo.Visible;
+            buttonAlbums.Visible = !buttonAlbums.Visible;
+            buttonFriends.Visible = !buttonFriends.Visible;
+            buttonGroups.Visible = !buttonGroups.Visible;
+            buttonPages.Visible = !buttonPages.Visible;
+            buttonPosts.Visible = !buttonPosts.Visible;
+            checkBoxRememberMe.Visible = !checkBoxRememberMe.Visible;
         }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        private void checkIfRememberMe()
         {
-            base.OnFormClosing(e);
-
-            m_AppSettings.RememberMe = checkBoxRememberMe.Checked;
             if (checkBoxRememberMe.Checked)
             {
                 m_AppSettings.LastAccessToken = m_LoginResult.AccessToken;
@@ -115,6 +113,14 @@ namespace BasicFacebookFeatures
             m_LoginResult = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
+            m_AppSettings.LastAccessToken = null;
+            m_AppSettings.RememberMe = false;
+            changeVisibility();
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            m_AppSettings.SaveToFile();
         }
 
         private void label1_Click(object sender, EventArgs e)
