@@ -143,6 +143,7 @@
             this.buttonGroups.Text = "Groups";
             this.buttonGroups.UseVisualStyleBackColor = true;
             this.buttonGroups.Visible = false;
+            this.buttonGroups.Click += new System.EventHandler(this.buttonGroups_Click);
             // 
             // buttonPosts
             // 
