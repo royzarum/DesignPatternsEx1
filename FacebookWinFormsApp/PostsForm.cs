@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
     public partial class PostsForm : Form
     {
         private User m_LoggedInUser;
-        private Post[] m_Posts;
+        private List<Post> m_Posts;
         private const string k_FormName = "Posts";
         public PostsForm()
         {
@@ -25,6 +25,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
+            m_Posts = new List<Post>();
             initialzeData();
         }
         private void initialzeData()
@@ -37,10 +38,7 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            if(listBoxPosts.Items.Count == 0)
-            {
-                fetchPostsListBox();
-            }
+            fetchPostsListBox();
         }
 
         private void fetchPostsListBox()
@@ -48,12 +46,75 @@ namespace BasicFacebookFeatures
             listBoxPosts.Items.Clear();
             foreach (Post post in m_LoggedInUser.Posts)
             {
-                listBoxPosts.Items.Add(post.CreatedTime.ToString() + "\t" + post.ToString());
+                m_Posts.Add(post);
+                addPost(post);
             }
-            if(listBoxPosts.Items.Count == 0)
+            if (listBoxPosts.Items.Count == 0)
             {
                 MessageBox.Show("No posts");
             }
+        }
+
+        private void fetchPostsByDate()
+        {
+            listBoxPosts.Items.Clear();
+            if (numericUpDownMonth.Value == 0)
+            {
+                fetchPostsIfMonthIsZero();
+            }
+            else if (numericUpDownDay.Value == 0)
+            {
+                fetchPostsIfDayIsZero();
+            }
+            else
+            {
+                foreach (Post post in m_Posts)
+                {
+                    if (post.CreatedTime.Value.Day == numericUpDownDay.Value && post.CreatedTime.Value.Month == numericUpDownMonth.Value
+                        && post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                    {
+                        addPost(post);
+                    }
+                }
+                if (listBoxPosts.Items.Count == 0)
+                {
+                    MessageBox.Show("No posts in this date");
+                }
+            }
+        }
+        private void fetchPostsIfDayIsZero()
+        {
+
+            foreach (Post post in m_Posts)
+            {
+                if (post.CreatedTime.Value.Month == numericUpDownMonth.Value && post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                {
+                    addPost(post);
+                }
+            }
+            if (listBoxPosts.Items.Count == 0)
+            {
+                MessageBox.Show("No posts in this month and year");
+            }
+        }
+        private void fetchPostsIfMonthIsZero()
+        {
+            foreach (Post post in m_Posts)
+            {
+                if (post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                {
+                    addPost(post);
+                }
+            }
+            if (listBoxPosts.Items.Count == 0)
+            {
+                MessageBox.Show("No posts in this year");
+            }
+        }
+        private void addPost(Post i_Post)
+        { 
+        
+            listBoxPosts.Items.Add(i_Post.CreatedTime.ToString() + "\t" + i_Post.ToString());
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,6 +127,27 @@ namespace BasicFacebookFeatures
             if(textBoxPost.Text != "")
             {
                 listBoxPosts.Items.Add(DateTime.Now.ToString() + "\t" + textBoxPost.Text);
+            }
+        }
+
+        private void buttonFilterByDate_Click(object sender, EventArgs e)
+        {
+            fetchPostsByDate();
+        }
+
+        private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
+        {
+            ifMonthIsZeroDayIsZero();
+        }
+        private void numericUpDownDay_ValueChanged(object sender, EventArgs e)
+        {
+            ifMonthIsZeroDayIsZero();
+        }
+        private void ifMonthIsZeroDayIsZero()
+        {
+            if (numericUpDownMonth.Value == 0)
+            {
+                numericUpDownDay.Value = 0;
             }
         }
     }

@@ -101,7 +101,7 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            if (m_AppSettings != null && m_AppSettings.RememberMe && !String.IsNullOrEmpty(m_AppSettings.LastAccessToken))
+            if (m_AppSettings.RememberMe && !String.IsNullOrEmpty(m_AppSettings.LastAccessToken))
             {
                 m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
                 populateUIFromFacebookData();
