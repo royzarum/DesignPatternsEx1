@@ -36,15 +36,25 @@
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.numericUpDownMonth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDay = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownYear = new System.Windows.Forms.NumericUpDown();
+            this.labelMonth = new System.Windows.Forms.Label();
+            this.labelDay = new System.Windows.Forms.Label();
+            this.labelYear = new System.Windows.Forms.Label();
+            this.buttonFilterByDate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(1234, 53);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(1333, 53);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(102, 106);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -58,7 +68,7 @@
             this.headLine.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.headLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headLine.ForeColor = System.Drawing.SystemColors.Menu;
-            this.headLine.Location = new System.Drawing.Point(573, 133);
+            this.headLine.Location = new System.Drawing.Point(623, 133);
             this.headLine.Name = "headLine";
             this.headLine.ReadOnly = true;
             this.headLine.Size = new System.Drawing.Size(202, 69);
@@ -88,7 +98,7 @@
             // 
             this.labelNewPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNewPost.AutoSize = true;
-            this.labelNewPost.Location = new System.Drawing.Point(710, 46);
+            this.labelNewPost.Location = new System.Drawing.Point(760, 46);
             this.labelNewPost.Name = "labelNewPost";
             this.labelNewPost.Size = new System.Drawing.Size(80, 20);
             this.labelNewPost.TabIndex = 13;
@@ -98,7 +108,7 @@
             // 
             this.textBoxPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPost.Location = new System.Drawing.Point(796, 43);
+            this.textBoxPost.Location = new System.Drawing.Point(846, 43);
             this.textBoxPost.Name = "textBoxPost";
             this.textBoxPost.Size = new System.Drawing.Size(290, 30);
             this.textBoxPost.TabIndex = 14;
@@ -106,7 +116,7 @@
             // buttonPost
             // 
             this.buttonPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPost.Location = new System.Drawing.Point(1092, 39);
+            this.buttonPost.Location = new System.Drawing.Point(1142, 39);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(106, 43);
             this.buttonPost.TabIndex = 15;
@@ -119,16 +129,115 @@
             this.listBoxPosts.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxPosts.FormattingEnabled = true;
             this.listBoxPosts.ItemHeight = 20;
-            this.listBoxPosts.Location = new System.Drawing.Point(253, 237);
+            this.listBoxPosts.Location = new System.Drawing.Point(303, 237);
             this.listBoxPosts.Name = "listBoxPosts";
             this.listBoxPosts.Size = new System.Drawing.Size(911, 184);
             this.listBoxPosts.TabIndex = 16;
+            // 
+            // numericUpDownMonth
+            // 
+            this.numericUpDownMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericUpDownMonth.Location = new System.Drawing.Point(892, 193);
+            this.numericUpDownMonth.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDownMonth.Name = "numericUpDownMonth";
+            this.numericUpDownMonth.Size = new System.Drawing.Size(49, 26);
+            this.numericUpDownMonth.TabIndex = 17;
+            this.numericUpDownMonth.ValueChanged += new System.EventHandler(this.numericUpDownMonth_ValueChanged);
+            // 
+            // numericUpDownDay
+            // 
+            this.numericUpDownDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericUpDownDay.Location = new System.Drawing.Point(985, 193);
+            this.numericUpDownDay.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numericUpDownDay.Name = "numericUpDownDay";
+            this.numericUpDownDay.Size = new System.Drawing.Size(46, 26);
+            this.numericUpDownDay.TabIndex = 18;
+            this.numericUpDownDay.ValueChanged += new System.EventHandler(this.numericUpDownDay_ValueChanged);
+            // 
+            // numericUpDownYear
+            // 
+            this.numericUpDownYear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericUpDownYear.Location = new System.Drawing.Point(1068, 193);
+            this.numericUpDownYear.Maximum = new decimal(new int[] {
+            2024,
+            0,
+            0,
+            0});
+            this.numericUpDownYear.Minimum = new decimal(new int[] {
+            2004,
+            0,
+            0,
+            0});
+            this.numericUpDownYear.Name = "numericUpDownYear";
+            this.numericUpDownYear.Size = new System.Drawing.Size(68, 26);
+            this.numericUpDownYear.TabIndex = 19;
+            this.numericUpDownYear.Value = new decimal(new int[] {
+            2004,
+            0,
+            0,
+            0});
+            // 
+            // labelMonth
+            // 
+            this.labelMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelMonth.AutoSize = true;
+            this.labelMonth.Location = new System.Drawing.Point(896, 156);
+            this.labelMonth.Name = "labelMonth";
+            this.labelMonth.Size = new System.Drawing.Size(58, 20);
+            this.labelMonth.TabIndex = 20;
+            this.labelMonth.Text = "Month:";
+            // 
+            // labelDay
+            // 
+            this.labelDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelDay.AutoSize = true;
+            this.labelDay.Location = new System.Drawing.Point(990, 156);
+            this.labelDay.Name = "labelDay";
+            this.labelDay.Size = new System.Drawing.Size(41, 20);
+            this.labelDay.TabIndex = 21;
+            this.labelDay.Text = "Day:";
+            // 
+            // labelYear
+            // 
+            this.labelYear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelYear.AutoSize = true;
+            this.labelYear.Location = new System.Drawing.Point(1077, 155);
+            this.labelYear.Name = "labelYear";
+            this.labelYear.Size = new System.Drawing.Size(47, 20);
+            this.labelYear.TabIndex = 22;
+            this.labelYear.Text = "Year:";
+            // 
+            // buttonFilterByDate
+            // 
+            this.buttonFilterByDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonFilterByDate.Location = new System.Drawing.Point(1178, 177);
+            this.buttonFilterByDate.Name = "buttonFilterByDate";
+            this.buttonFilterByDate.Size = new System.Drawing.Size(197, 56);
+            this.buttonFilterByDate.TabIndex = 23;
+            this.buttonFilterByDate.Text = "Filter Posts By Date";
+            this.buttonFilterByDate.UseVisualStyleBackColor = true;
+            this.buttonFilterByDate.Click += new System.EventHandler(this.buttonFilterByDate_Click);
             // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1405, 515);
+            this.ClientSize = new System.Drawing.Size(1504, 515);
+            this.Controls.Add(this.buttonFilterByDate);
+            this.Controls.Add(this.labelYear);
+            this.Controls.Add(this.labelDay);
+            this.Controls.Add(this.labelMonth);
+            this.Controls.Add(this.numericUpDownYear);
+            this.Controls.Add(this.numericUpDownDay);
+            this.Controls.Add(this.numericUpDownMonth);
             this.Controls.Add(this.listBoxPosts);
             this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.textBoxPost);
@@ -141,6 +250,9 @@
             this.Text = "PostsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +268,12 @@
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.ListBox listBoxPosts;
+        private System.Windows.Forms.NumericUpDown numericUpDownMonth;
+        private System.Windows.Forms.NumericUpDown numericUpDownDay;
+        private System.Windows.Forms.NumericUpDown numericUpDownYear;
+        private System.Windows.Forms.Label labelMonth;
+        private System.Windows.Forms.Label labelDay;
+        private System.Windows.Forms.Label labelYear;
+        private System.Windows.Forms.Button buttonFilterByDate;
     }
 }
