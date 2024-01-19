@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText("design.patterns");
+            Clipboard.SetText("royzarum");
 
             if (m_LoginResult == null)
             {

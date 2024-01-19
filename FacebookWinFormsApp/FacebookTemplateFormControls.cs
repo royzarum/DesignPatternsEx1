@@ -11,16 +11,16 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FacebookTemplateForm : Form
+    public partial class FacebookTemplateFormControls : UserControl
     {
         protected LoginResult m_LoginResult = new LoginResult();
 
-        public FacebookTemplateForm()
+        public FacebookTemplateFormControls()
         {
             InitializeComponent();
         }
 
-        public FacebookTemplateForm(LoginResult i_LoginResult)
+        public FacebookTemplateFormControls(LoginResult i_LoginResult)
         {
             InitializeComponent();
             m_LoginResult = i_LoginResult;
