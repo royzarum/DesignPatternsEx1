@@ -17,7 +17,6 @@ namespace BasicFacebookFeatures
     {
         private User m_LoggedInUser;
         private PictureBox[] m_CurrentAlbumDisplay;
-        private readonly Point r_FormMinimumSize;
         private const string k_FormName = "  Albums";
         private const int k_PictureBoxSize = 300;
         private const int k_SpaceSize = 10;
@@ -33,6 +32,10 @@ namespace BasicFacebookFeatures
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
             this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
+            this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
+            headLine.Location = new System.Drawing.Point(ClientSize.Width / 2 - headLine.Size.Width / 2 + 1, 10 * k_SpaceSize);
+            listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, headLine.Bottom + k_SpaceSize);
+
         }
 
         protected override void OnResize(EventArgs e)
@@ -134,7 +137,7 @@ namespace BasicFacebookFeatures
             {
                 int row = i / picturesInRow;
                 int col = i % picturesInRow;
-                int positionFromLeftOnClientScreen = labelName.Left + 2 * spacing + col * (pictureBoxWidth + spacing);
+                int positionFromLeftOnClientScreen = labelName.Left + 3 * spacing + col * (pictureBoxWidth + spacing);
                 int positionFromTopOnClientScreen = listBoxAlbums.Bottom + spacing + row * (pictureBoxHeight + spacing);
                 m_CurrentAlbumDisplay[i].Location = new Point(positionFromLeftOnClientScreen, positionFromTopOnClientScreen);
             }

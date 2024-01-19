@@ -41,7 +41,8 @@
             // 
             this.listBoxAlbums.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(377, 141);
+            this.listBoxAlbums.Location = new System.Drawing.Point(330, 138);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(300, 56);
             this.listBoxAlbums.TabIndex = 4;
@@ -54,18 +55,20 @@
             this.headLine.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.headLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headLine.ForeColor = System.Drawing.SystemColors.Menu;
-            this.headLine.Location = new System.Drawing.Point(583, 138);
+            this.headLine.Location = new System.Drawing.Point(407, 88);
+            this.headLine.Margin = new System.Windows.Forms.Padding(2);
             this.headLine.Name = "headLine";
             this.headLine.ReadOnly = true;
-            this.headLine.Size = new System.Drawing.Size(208, 69);
+            this.headLine.Size = new System.Drawing.Size(140, 46);
             this.headLine.TabIndex = 7;
             this.headLine.Text = "HeadLine";
             // 
             // labelName
             // 
-            this.labelName.Location = new System.Drawing.Point(38, 58);
+            this.labelName.Location = new System.Drawing.Point(25, 38);
+            this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(118, 42);
+            this.labelName.Size = new System.Drawing.Size(79, 27);
             this.labelName.TabIndex = 5;
             this.labelName.Text = "Name";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,18 +77,20 @@
             // 
             this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(1304, 58);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(815, 38);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(102, 106);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(68, 69);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 8;
             this.pictureBoxLogo.TabStop = false;
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(42, 103);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 67);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(146, 103);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(97, 67);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 6;
             this.pictureBoxProfile.TabStop = false;
@@ -93,17 +98,17 @@
             // 
             // AlbumsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1091, 612);
+            this.ClientSize = new System.Drawing.Size(906, 475);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.headLine);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxAlbums);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(100, 100);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.MinimumSize = new System.Drawing.Size(72, 79);
             this.Name = "AlbumsForm";
             this.Text = "AlbumsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
