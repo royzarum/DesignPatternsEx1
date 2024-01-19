@@ -154,7 +154,7 @@
             this.buttonPosts.Text = "Posts";
             this.buttonPosts.UseVisualStyleBackColor = true;
             this.buttonPosts.Visible = false;
-            this.buttonPosts.Click += new System.EventHandler(this.button1_Click);
+            this.buttonPosts.Click += new System.EventHandler(this.buttonPosts_Click);
             // 
             // buttonAlbums
             // 
