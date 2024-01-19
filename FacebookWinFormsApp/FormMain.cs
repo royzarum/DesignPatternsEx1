@@ -122,9 +122,10 @@ namespace BasicFacebookFeatures
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonPosts_Click(object sender, EventArgs e)
         {
-
+            PostsForm postsForm = new PostsForm(m_LoginResult);
+            postsForm.ShowDialog();
         }
 
         private void buttonAlbums_Click(object sender, EventArgs e)

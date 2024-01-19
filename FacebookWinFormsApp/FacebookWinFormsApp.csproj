@@ -96,28 +96,28 @@
       <DependentUpon>AlbumsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="FacebookTemplateFormControls.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FacebookTemplateFormControls.Designer.cs">
-      <DependentUpon>FacebookTemplateFormControls.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostsForm.Designer.cs">
+      <DependentUpon>PostsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlbumsForm.resx">
       <DependentUpon>AlbumsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FacebookTemplateFormControls.resx">
-      <DependentUpon>FacebookTemplateFormControls.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostsForm.resx">
+      <DependentUpon>PostsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
