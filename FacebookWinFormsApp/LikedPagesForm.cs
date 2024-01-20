@@ -19,6 +19,7 @@ namespace BasicFacebookFeatures
         private User m_LoggedInUser;
         private const string k_HeadLineComplition = "'s Liked Pages";
         private const string k_UnknownValueString = "Unknown";
+        private bool m_Accesible = true;
 
 
         public LikedPagesForm(LoginResult i_LoginResult)
@@ -27,12 +28,28 @@ namespace BasicFacebookFeatures
             m_LogginResult = i_LoginResult;
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             labelHeadline.Text = m_LoggedInUser.FirstName + k_HeadLineComplition;
+            try
+            {
+                labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
+            }
+            catch(Exception ex)
+            {
+                m_Accesible = false;
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} liked pages");
+            }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            fetchLikedPages();
+            if(m_Accesible)
+            {
+                fetchLikedPages();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void fetchLikedPages()

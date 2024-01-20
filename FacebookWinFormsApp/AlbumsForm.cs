@@ -20,6 +20,7 @@ namespace BasicFacebookFeatures
         private const string k_FormName = "  Albums";
         private const int k_PictureBoxSize = 300;
         private const int k_SpaceSize = 10;
+        private bool m_Accessible = true;
 
 
         public AlbumsForm()
@@ -49,12 +50,28 @@ namespace BasicFacebookFeatures
             richTextBoxHeadLine.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
+            try
+            {
+                //label.Text = m_LoggedInUser.Albums.Count.ToString();
+            }
+            catch(Exception ex)
+            {
+                m_Accessible = false;
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} Albums");
+            }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            fetchAlbumsToListBox();
+            if(m_Accessible)
+            {
+                fetchAlbumsToListBox();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void fetchAlbumsToListBox()
