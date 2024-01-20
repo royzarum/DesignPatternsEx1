@@ -147,6 +147,7 @@ namespace BasicFacebookFeatures
                 Tuple<DateTime, String> post = Tuple.Create(DateTime.Now, textBoxPost.Text);
                 addPostToListBox(post);
                 m_PostsCreatedTimeAndText.Add(post);
+                labelActualNumber.Text = (int.Parse(labelActualNumber.Text) + 1).ToString();
             }
         }
 
