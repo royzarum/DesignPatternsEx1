@@ -111,13 +111,14 @@
             this.listBoxPosts.ItemHeight = 20;
             this.listBoxPosts.Location = new System.Drawing.Point(231, 237);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(785, 184);
+            this.listBoxPosts.Size = new System.Drawing.Size(865, 184);
             this.listBoxPosts.TabIndex = 16;
+            this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
             // 
             // numericUpDownMonth
             // 
             this.numericUpDownMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownMonth.Location = new System.Drawing.Point(430, 491);
+            this.numericUpDownMonth.Location = new System.Drawing.Point(539, 491);
             this.numericUpDownMonth.Maximum = new decimal(new int[] {
             12,
             0,
@@ -131,7 +132,7 @@
             // numericUpDownDay
             // 
             this.numericUpDownDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownDay.Location = new System.Drawing.Point(523, 491);
+            this.numericUpDownDay.Location = new System.Drawing.Point(469, 491);
             this.numericUpDownDay.Maximum = new decimal(new int[] {
             31,
             0,
@@ -169,7 +170,7 @@
             // 
             this.labelMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelMonth.AutoSize = true;
-            this.labelMonth.Location = new System.Drawing.Point(434, 454);
+            this.labelMonth.Location = new System.Drawing.Point(535, 453);
             this.labelMonth.Name = "labelMonth";
             this.labelMonth.Size = new System.Drawing.Size(58, 20);
             this.labelMonth.TabIndex = 20;
@@ -179,7 +180,7 @@
             // 
             this.labelDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDay.AutoSize = true;
-            this.labelDay.Location = new System.Drawing.Point(528, 454);
+            this.labelDay.Location = new System.Drawing.Point(465, 453);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(41, 20);
             this.labelDay.TabIndex = 21;
@@ -242,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1487, 577);
+            this.ClientSize = new System.Drawing.Size(1487, 609);
             this.Controls.Add(this.buttonCancelFilter);
             this.Controls.Add(this.buttonFilterByDate);
             this.Controls.Add(this.labelYear);

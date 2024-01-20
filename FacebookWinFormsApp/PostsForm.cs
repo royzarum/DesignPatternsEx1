@@ -163,5 +163,15 @@ namespace BasicFacebookFeatures
                 addPostToListBox(post);
             }
         }
+
+        private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxPosts.SelectedIndex != -1)
+            {
+                string selectedItem = listBoxPosts.SelectedItem.ToString();
+                MessageBox.Show(selectedItem);
+            }
+            
+        }
     }
 }
