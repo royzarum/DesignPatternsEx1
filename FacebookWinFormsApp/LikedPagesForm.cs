@@ -30,19 +30,26 @@ namespace BasicFacebookFeatures
             labelHeadline.Text = m_LoggedInUser.FirstName + k_HeadLineComplition;
             try
             {
-                
+                labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
             }
             catch(Exception ex)
             {
                 m_Accesible = false;
-                MessageBox.Show($"No access to {m_LoggedInUser.Name} liked pages");
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} liked pages");
             }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            fetchLikedPages();
+            if(m_Accesible)
+            {
+                fetchLikedPages();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void fetchLikedPages()
