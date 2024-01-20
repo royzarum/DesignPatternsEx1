@@ -131,7 +131,7 @@ namespace BasicFacebookFeatures
         private void buttonPosts_Click(object sender, EventArgs e)
         {
             PostsForm postsForm = new PostsForm(m_LoginResult);
-            postsForm.ShowDialog();
+            postsForm.Show();
         }
 
         private void buttonAlbums_Click(object sender, EventArgs e)
@@ -143,17 +143,17 @@ namespace BasicFacebookFeatures
         private void buttonGroups_Click(object sender, EventArgs e)
         {
             GroupsForm groupsForm = new GroupsForm(m_LoginResult);
-            groupsForm.ShowDialog();
+            groupsForm.Show();
         }
         private void buttonFriends_Click(object sender, EventArgs e)
         {
             FriendsForm friendsForm = new FriendsForm(m_LoginResult);
-            friendsForm.ShowDialog();
+            friendsForm.Show();
         }
         private void buttonPages_Click(object sender, EventArgs e)
         {
             LikedPagesForm pagesForm = new LikedPagesForm(m_LoginResult);
-            pagesForm.ShowDialog();
+            pagesForm.Show();
         }
     }
 }
