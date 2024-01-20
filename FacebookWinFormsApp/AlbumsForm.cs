@@ -26,15 +26,15 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
         }
-        public AlbumsForm(FacebookWrapper.LoginResult i_LoginResult)
+        public AlbumsForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
             this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
             this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
-            headLine.Location = new System.Drawing.Point(ClientSize.Width / 2 - headLine.Size.Width / 2 + 1, 10 * k_SpaceSize);
-            listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, headLine.Bottom + k_SpaceSize);
+            richTextBoxHeadLine.Location = new System.Drawing.Point(ClientSize.Width / 2 - richTextBoxHeadLine.Size.Width / 2 + 1, 10 * k_SpaceSize);
+            listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, richTextBoxHeadLine.Bottom + k_SpaceSize);
 
         }
 
@@ -46,7 +46,7 @@ namespace BasicFacebookFeatures
 
         private void initialzeData()
         {
-            headLine.Text = k_FormName;
+            richTextBoxHeadLine.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
         }

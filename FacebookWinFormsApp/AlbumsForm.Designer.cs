@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
-            this.headLine = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxHeadLine = new System.Windows.Forms.RichTextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
@@ -48,20 +48,20 @@
             this.listBoxAlbums.TabIndex = 4;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
-            // headLine
+            // richTextBoxHeadLine
             // 
-            this.headLine.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.headLine.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.headLine.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.headLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headLine.ForeColor = System.Drawing.SystemColors.Menu;
-            this.headLine.Location = new System.Drawing.Point(407, 88);
-            this.headLine.Margin = new System.Windows.Forms.Padding(2);
-            this.headLine.Name = "headLine";
-            this.headLine.ReadOnly = true;
-            this.headLine.Size = new System.Drawing.Size(140, 46);
-            this.headLine.TabIndex = 7;
-            this.headLine.Text = "HeadLine";
+            this.richTextBoxHeadLine.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.richTextBoxHeadLine.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.richTextBoxHeadLine.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.richTextBoxHeadLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxHeadLine.ForeColor = System.Drawing.SystemColors.Menu;
+            this.richTextBoxHeadLine.Location = new System.Drawing.Point(407, 88);
+            this.richTextBoxHeadLine.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxHeadLine.Name = "richTextBoxHeadLine";
+            this.richTextBoxHeadLine.ReadOnly = true;
+            this.richTextBoxHeadLine.Size = new System.Drawing.Size(140, 46);
+            this.richTextBoxHeadLine.TabIndex = 7;
+            this.richTextBoxHeadLine.Text = "HeadLine";
             // 
             // labelName
             // 
@@ -103,7 +103,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(906, 475);
             this.Controls.Add(this.pictureBoxLogo);
-            this.Controls.Add(this.headLine);
+            this.Controls.Add(this.richTextBoxHeadLine);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxAlbums);
@@ -121,7 +121,7 @@
 
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private System.Windows.Forms.RichTextBox headLine;
+        private System.Windows.Forms.RichTextBox richTextBoxHeadLine;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Label labelName;
     }
