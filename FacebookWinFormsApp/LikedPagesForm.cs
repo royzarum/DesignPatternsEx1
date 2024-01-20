@@ -35,7 +35,7 @@ namespace BasicFacebookFeatures
             catch(Exception ex)
             {
                 m_Accesible = false;
-                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} liked pages");
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s liked pages");
             }
         }
 

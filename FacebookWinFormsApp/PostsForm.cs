@@ -40,7 +40,7 @@ namespace BasicFacebookFeatures
             catch (Exception ex)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {m_LoggedInUser.Name} groups");
+                MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s groups");
             }
         }
 

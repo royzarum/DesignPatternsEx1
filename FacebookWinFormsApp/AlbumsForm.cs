@@ -57,7 +57,7 @@ namespace BasicFacebookFeatures
             catch(Exception ex)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} Albums");
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s Albums");
             }
         }
 
