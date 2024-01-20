@@ -137,19 +137,13 @@ namespace BasicFacebookFeatures
         private void buttonAlbums_Click(object sender, EventArgs e)
         {
             AlbumsForm albumsForm = new AlbumsForm(m_LoginResult);
-            albumsForm.ShowDialog();
+            albumsForm.Show();
         }
 
         private void buttonGroups_Click(object sender, EventArgs e)
         {
             GroupsForm groupsForm = new GroupsForm(m_LoginResult);
             groupsForm.ShowDialog();
-        }
-
-        private void buttonFriends_Click(object sender, EventArgs e)
-        {
-            FriendsForm friendsForm = new FriendsForm(m_LoginResult);
-            friendsForm.ShowDialog();
         }
     }
 }

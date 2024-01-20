@@ -104,10 +104,10 @@
             this.tabPage1.Controls.Add(this.pictureBoxProfile);
             this.tabPage1.Controls.Add(this.buttonLogout);
             this.tabPage1.Controls.Add(this.buttonLogin);
-            this.tabPage1.Location = new System.Drawing.Point(4, 35);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1235, 658);
+            this.tabPage1.Size = new System.Drawing.Size(1235, 666);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             this.checkBoxRememberMe.AutoSize = true;
             this.checkBoxRememberMe.Location = new System.Drawing.Point(67, 96);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(183, 30);
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(126, 22);
             this.checkBoxRememberMe.TabIndex = 67;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
@@ -180,13 +180,14 @@
             this.buttonPages.Text = "Liked Pages";
             this.buttonPages.UseVisualStyleBackColor = true;
             this.buttonPages.Visible = false;
+            this.buttonPages.Click += new System.EventHandler(this.buttonPages_Click);
             // 
             // UserBirthdayLabel
             // 
             this.UserBirthdayLabel.AutoSize = true;
             this.UserBirthdayLabel.Location = new System.Drawing.Point(726, 28);
             this.UserBirthdayLabel.Name = "UserBirthdayLabel";
-            this.UserBirthdayLabel.Size = new System.Drawing.Size(96, 26);
+            this.UserBirthdayLabel.Size = new System.Drawing.Size(64, 18);
             this.UserBirthdayLabel.TabIndex = 60;
             this.UserBirthdayLabel.Text = "1/1/2000";
             this.UserBirthdayLabel.Visible = false;
@@ -196,7 +197,7 @@
             this.UserGenderLabel.AutoSize = true;
             this.UserGenderLabel.Location = new System.Drawing.Point(1055, 28);
             this.UserGenderLabel.Name = "UserGenderLabel";
-            this.UserGenderLabel.Size = new System.Drawing.Size(140, 26);
+            this.UserGenderLabel.Size = new System.Drawing.Size(93, 18);
             this.UserGenderLabel.TabIndex = 59;
             this.UserGenderLabel.Text = "GenderValue";
             this.UserGenderLabel.Visible = false;
@@ -206,7 +207,7 @@
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Location = new System.Drawing.Point(971, 28);
             this.GenderLabel.Name = "GenderLabel";
-            this.GenderLabel.Size = new System.Drawing.Size(90, 26);
+            this.GenderLabel.Size = new System.Drawing.Size(61, 18);
             this.GenderLabel.TabIndex = 58;
             this.GenderLabel.Text = "Gender:";
             this.GenderLabel.Visible = false;
@@ -216,17 +217,17 @@
             this.BirthdayLabel.AutoSize = true;
             this.BirthdayLabel.Location = new System.Drawing.Point(631, 28);
             this.BirthdayLabel.Name = "BirthdayLabel";
-            this.BirthdayLabel.Size = new System.Drawing.Size(98, 26);
+            this.BirthdayLabel.Size = new System.Drawing.Size(65, 18);
             this.BirthdayLabel.TabIndex = 57;
             this.BirthdayLabel.Text = "Birthday:";
             this.BirthdayLabel.Visible = false;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 35);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1235, 658);
+            this.tabPage2.Size = new System.Drawing.Size(1235, 666);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -254,7 +255,7 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 697);
             this.Controls.Add(this.tabControl1);

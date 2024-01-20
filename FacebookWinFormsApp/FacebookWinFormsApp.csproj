@@ -115,6 +115,12 @@
     <Compile Include="GroupsForm.Designer.cs">
       <DependentUpon>GroupsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LikedPagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LikedPagesForm.Designer.cs">
+      <DependentUpon>LikedPagesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PostsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,9 +134,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FriendsForm.resx">
-      <DependentUpon>FriendsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GroupsForm.resx">
       <DependentUpon>GroupsForm.cs</DependentUpon>
