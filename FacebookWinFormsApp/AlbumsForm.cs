@@ -32,7 +32,7 @@ namespace BasicFacebookFeatures
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
             this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
-            this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, listBoxAlbums.Bottom + k_PictureBoxSize +  4 * k_SpaceSize);
+            this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, listBoxAlbums.Bottom + k_PictureBoxSize + 4 * k_SpaceSize);
             richTextBoxHeadLine.Location = new System.Drawing.Point(ClientSize.Width / 2 - richTextBoxHeadLine.Size.Width / 2 + 1, 10 * k_SpaceSize);
             listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, richTextBoxHeadLine.Bottom + k_SpaceSize);
 
