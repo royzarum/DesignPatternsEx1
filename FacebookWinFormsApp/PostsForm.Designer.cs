@@ -41,9 +41,13 @@
             this.labelDay = new System.Windows.Forms.Label();
             this.labelYear = new System.Windows.Forms.Label();
             this.buttonFilterByDate = new System.Windows.Forms.Button();
+            this.buttonCancelFilter = new System.Windows.Forms.Button();
+            this.labelMonthIsZero = new System.Windows.Forms.Label();
+            this.labelDayIsZero = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.buttonCancelFilter = new System.Windows.Forms.Button();
+            this.labelActualNumber = new System.Windows.Forms.Label();
+            this.labelNumberOfPosts = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
@@ -207,6 +211,37 @@
             this.buttonFilterByDate.UseVisualStyleBackColor = true;
             this.buttonFilterByDate.Click += new System.EventHandler(this.buttonFilterByDate_Click);
             // 
+            // buttonCancelFilter
+            // 
+            this.buttonCancelFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonCancelFilter.Location = new System.Drawing.Point(879, 475);
+            this.buttonCancelFilter.Name = "buttonCancelFilter";
+            this.buttonCancelFilter.Size = new System.Drawing.Size(161, 56);
+            this.buttonCancelFilter.TabIndex = 24;
+            this.buttonCancelFilter.Text = "Cancel Filter";
+            this.buttonCancelFilter.UseVisualStyleBackColor = true;
+            this.buttonCancelFilter.Click += new System.EventHandler(this.buttonCancelFilter_Click);
+            // 
+            // labelMonthIsZero
+            // 
+            this.labelMonthIsZero.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelMonthIsZero.AutoSize = true;
+            this.labelMonthIsZero.Location = new System.Drawing.Point(523, 534);
+            this.labelMonthIsZero.Name = "labelMonthIsZero";
+            this.labelMonthIsZero.Size = new System.Drawing.Size(290, 20);
+            this.labelMonthIsZero.TabIndex = 25;
+            this.labelMonthIsZero.Text = "Month: 0 represents all months in a year";
+            // 
+            // labelDayIsZero
+            // 
+            this.labelDayIsZero.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelDayIsZero.AutoSize = true;
+            this.labelDayIsZero.Location = new System.Drawing.Point(523, 554);
+            this.labelDayIsZero.Name = "labelDayIsZero";
+            this.labelDayIsZero.Size = new System.Drawing.Size(268, 20);
+            this.labelDayIsZero.TabIndex = 26;
+            this.labelDayIsZero.Text = "Day: 0 represents all days in a month";
+            // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -228,22 +263,35 @@
             this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Visible = false;
             // 
-            // buttonCancelFilter
+            // labelActualNumber
             // 
-            this.buttonCancelFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonCancelFilter.Location = new System.Drawing.Point(879, 475);
-            this.buttonCancelFilter.Name = "buttonCancelFilter";
-            this.buttonCancelFilter.Size = new System.Drawing.Size(161, 56);
-            this.buttonCancelFilter.TabIndex = 24;
-            this.buttonCancelFilter.Text = "Cancel Filter";
-            this.buttonCancelFilter.UseVisualStyleBackColor = true;
-            this.buttonCancelFilter.Click += new System.EventHandler(this.buttonCancelFilter_Click);
+            this.labelActualNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelActualNumber.AutoSize = true;
+            this.labelActualNumber.Location = new System.Drawing.Point(494, 198);
+            this.labelActualNumber.Name = "labelActualNumber";
+            this.labelActualNumber.Size = new System.Drawing.Size(18, 20);
+            this.labelActualNumber.TabIndex = 28;
+            this.labelActualNumber.Text = "0";
+            // 
+            // labelNumberOfPosts
+            // 
+            this.labelNumberOfPosts.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelNumberOfPosts.AutoSize = true;
+            this.labelNumberOfPosts.Location = new System.Drawing.Point(349, 198);
+            this.labelNumberOfPosts.Name = "labelNumberOfPosts";
+            this.labelNumberOfPosts.Size = new System.Drawing.Size(130, 20);
+            this.labelNumberOfPosts.TabIndex = 27;
+            this.labelNumberOfPosts.Text = "Number of posts:";
             // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1487, 609);
+            this.Controls.Add(this.labelActualNumber);
+            this.Controls.Add(this.labelNumberOfPosts);
+            this.Controls.Add(this.labelDayIsZero);
+            this.Controls.Add(this.labelMonthIsZero);
             this.Controls.Add(this.buttonCancelFilter);
             this.Controls.Add(this.buttonFilterByDate);
             this.Controls.Add(this.labelYear);
@@ -261,7 +309,7 @@
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.labelName);
             this.Name = "PostsForm";
-            this.Text = "PostsForm";
+            this.Text = "Posts";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).EndInit();
@@ -290,5 +338,9 @@
         private System.Windows.Forms.Label labelYear;
         private System.Windows.Forms.Button buttonFilterByDate;
         private System.Windows.Forms.Button buttonCancelFilter;
+        private System.Windows.Forms.Label labelMonthIsZero;
+        private System.Windows.Forms.Label labelDayIsZero;
+        private System.Windows.Forms.Label labelActualNumber;
+        private System.Windows.Forms.Label labelNumberOfPosts;
     }
 }

@@ -17,6 +17,7 @@ namespace BasicFacebookFeatures
         private User m_LoggedInUser;
         private List<Tuple<DateTime, String>> m_PostsCreatedTimeAndText;
         private const string k_FormName = "Posts";
+        private bool m_Accessible = true;
         public PostsForm()
         {
             InitializeComponent();
@@ -26,19 +27,35 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
-            initialzeData();
         }
         private void initialzeData()
         {
             headLine.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
+            try
+            {
+                labelActualNumber.Text = m_LoggedInUser.Posts.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                m_Accessible = false;
+                MessageBox.Show($"There is no access for {m_LoggedInUser.Name} groups");
+            }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            fetchPostsListBox();
+            initialzeData();
+            if (m_Accessible)
+            {
+                fetchPostsListBox();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void fetchPostsListBox()
@@ -52,7 +69,7 @@ namespace BasicFacebookFeatures
             }
             if (listBoxPosts.Items.Count == 0)
             {
-                MessageBox.Show("No posts");
+                MessageBox.Show($"No posts for {m_LoggedInUser.Name}");
             }
         }
 
@@ -115,7 +132,6 @@ namespace BasicFacebookFeatures
         private void addPostToListBox(Tuple<DateTime, String> i_Post)
         {
 
-            //listBoxPosts.Items.Add(i_Post.Item1.ToString() + "\t" + i_Post.Item2);
             listBoxPosts.Items.Add($"{i_Post.Item1.ToString()}\t{i_Post.Item2}");
         }
 

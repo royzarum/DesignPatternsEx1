@@ -34,7 +34,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonGroups = new System.Windows.Forms.Button();
             this.buttonPosts = new System.Windows.Forms.Button();
             this.buttonAlbums = new System.Windows.Forms.Button();
@@ -44,8 +43,9 @@
             this.UserGenderLabel = new System.Windows.Forms.Label();
             this.GenderLabel = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,17 +122,6 @@
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(36, 248);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(79, 78);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 66;
-            this.pictureBoxLogo.TabStop = false;
-            this.pictureBoxLogo.Visible = false;
-            // 
             // buttonGroups
             // 
             this.buttonGroups.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -179,6 +168,7 @@
             this.buttonFriends.Text = "Friends";
             this.buttonFriends.UseVisualStyleBackColor = true;
             this.buttonFriends.Visible = false;
+            this.buttonFriends.Click += new System.EventHandler(this.buttonFriends_Click);
             // 
             // buttonPages
             // 
@@ -231,16 +221,6 @@
             this.BirthdayLabel.Text = "Birthday:";
             this.BirthdayLabel.Visible = false;
             // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(366, 6);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(79, 78);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 55;
-            this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Visible = false;
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 35);
@@ -250,6 +230,27 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(36, 248);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(79, 78);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 66;
+            this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.Visible = false;
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(366, 6);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(79, 78);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.TabIndex = 55;
+            this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Visible = false;
             // 
             // FormMain
             // 

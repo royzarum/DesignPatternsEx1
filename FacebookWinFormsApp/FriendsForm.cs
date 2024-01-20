@@ -11,21 +11,22 @@ using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
+
 namespace BasicFacebookFeatures
 {
-    public partial class GroupsForm : Form
+    public partial class FriendsForm : Form
     {
         private User m_LoggedInUser;
-        private const string k_FormName = "Groups";
+        private const string k_FormName = "Friends";
         private bool m_Accessible = true;
-        public GroupsForm()
+        public FriendsForm()
         {
             InitializeComponent();
         }
-        public GroupsForm(LoginResult i_LoginResult)
+        public FriendsForm(LoginResult i_LoginResulr)
         {
             InitializeComponent();
-            m_LoggedInUser = i_LoginResult.LoggedInUser;
+            m_LoggedInUser = i_LoginResulr.LoggedInUser;
         }
         private void initialzeData()
         {
@@ -34,37 +35,37 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
             {
-                labelActualNumber.Text = m_LoggedInUser.Groups.Count.ToString();
+                labelActualNumber.Text = m_LoggedInUser.FriendLists.Count.ToString();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {m_LoggedInUser.Name} groups");
+                MessageBox.Show($"There is no access for {m_LoggedInUser.Name} friends");
             }
         }
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
             initialzeData();
-            if(m_Accessible)
+            if( m_Accessible )
             {
-                fetchGroupsListBox();
+                fetchFriendsListBox();
             }
             else
             {
                 this.Close();
             }
         }
-        private void fetchGroupsListBox()
+        private void fetchFriendsListBox()
         {
-            listBoxGroups.Items.Clear();
-            foreach(Group group in m_LoggedInUser.Groups)
+            listBoxFriends.Items.Clear();
+            foreach (FriendList friend in m_LoggedInUser.FriendLists)
             {
-                listBoxGroups.Items.Add(group);
+                listBoxFriends.Items.Add(friend);
             }
-            if(listBoxGroups.Items.Count == 0)
+            if (listBoxFriends.Items.Count == 0)
             {
-                MessageBox.Show($"No groups for {m_LoggedInUser.Name}");
+                MessageBox.Show($"No friends for {m_LoggedInUser.Name}");
             }
         }
     }

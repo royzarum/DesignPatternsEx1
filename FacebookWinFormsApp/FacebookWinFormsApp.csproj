@@ -77,6 +77,7 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -102,6 +103,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FriendsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FriendsForm.Designer.cs">
+      <DependentUpon>FriendsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FriendsForm.resx">
+      <DependentUpon>FriendsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GroupsForm.resx">
       <DependentUpon>GroupsForm.cs</DependentUpon>
