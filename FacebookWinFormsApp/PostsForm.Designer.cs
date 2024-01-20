@@ -43,6 +43,7 @@
             this.buttonFilterByDate = new System.Windows.Forms.Button();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.buttonCancelFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
@@ -226,11 +227,23 @@
             this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Visible = false;
             // 
+            // buttonCancelFilter
+            // 
+            this.buttonCancelFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonCancelFilter.Location = new System.Drawing.Point(879, 475);
+            this.buttonCancelFilter.Name = "buttonCancelFilter";
+            this.buttonCancelFilter.Size = new System.Drawing.Size(161, 56);
+            this.buttonCancelFilter.TabIndex = 24;
+            this.buttonCancelFilter.Text = "Cancel Filter";
+            this.buttonCancelFilter.UseVisualStyleBackColor = true;
+            this.buttonCancelFilter.Click += new System.EventHandler(this.buttonCancelFilter_Click);
+            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1487, 577);
+            this.Controls.Add(this.buttonCancelFilter);
             this.Controls.Add(this.buttonFilterByDate);
             this.Controls.Add(this.labelYear);
             this.Controls.Add(this.labelDay);
@@ -275,5 +288,6 @@
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelYear;
         private System.Windows.Forms.Button buttonFilterByDate;
+        private System.Windows.Forms.Button buttonCancelFilter;
     }
 }
