@@ -40,7 +40,7 @@ namespace BasicFacebookFeatures
             catch(Exception ex)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {m_LoggedInUser.Name} friends");
+                MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s friends");
             }
         }
         protected override void OnShown(EventArgs e)

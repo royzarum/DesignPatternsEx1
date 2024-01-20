@@ -52,12 +52,12 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
             {
-                //label.Text = m_LoggedInUser.Albums.Count.ToString();
+                labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
             }
             catch(Exception ex)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access to {m_LoggedInUser.Name} Albums");
+                MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s Albums");
             }
         }
 
