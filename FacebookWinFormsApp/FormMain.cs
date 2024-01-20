@@ -145,5 +145,15 @@ namespace BasicFacebookFeatures
             GroupsForm groupsForm = new GroupsForm(m_LoginResult);
             groupsForm.ShowDialog();
         }
+        private void buttonFriends_Click(object sender, EventArgs e)
+        {
+            FriendsForm friendsForm = new FriendsForm(m_LoginResult);
+            friendsForm.ShowDialog();
+        }
+        private void buttonPages_Click(object sender, EventArgs e)
+        {
+            LikedPagesForm pagesForm = new LikedPagesForm(m_LoginResult);
+            pagesForm.ShowDialog();
+        }
     }
 }

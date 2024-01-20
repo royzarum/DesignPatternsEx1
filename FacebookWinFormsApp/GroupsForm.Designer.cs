@@ -85,6 +85,7 @@
             // 
             // listBoxGroups
             // 
+            this.listBoxGroups.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxGroups.FormattingEnabled = true;
             this.listBoxGroups.ItemHeight = 20;
             this.listBoxGroups.Location = new System.Drawing.Point(359, 218);

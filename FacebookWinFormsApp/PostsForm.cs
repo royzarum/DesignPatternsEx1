@@ -72,8 +72,8 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {m_LoggedInUser.Name}");
             }
         }
-
-        private void fetchPostsByDate()
+        
+        private void fetchPostsByDate() //first feature we add
         {
             listBoxPosts.Items.Clear();
             if (numericUpDownMonth.Value == 0)
@@ -150,7 +150,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonFilterByDate_Click(object sender, EventArgs e)
+        private void buttonFilterByDate_Click(object sender, EventArgs e) //first feature we add
         {
             fetchPostsByDate();
         }
