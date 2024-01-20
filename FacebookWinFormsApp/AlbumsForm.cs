@@ -52,7 +52,7 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
             {
-                //label.Text = m_LoggedInUser.Albums.Count.ToString();
+                labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
             }
             catch(Exception ex)
             {
