@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
     public partial class PostsForm : Form
     {
         private User m_LoggedInUser;
-        private List<Post> m_Posts;
+        private List<Tuple<DateTime, String>> m_PostsCreatedTimeAndText;
         private const string k_FormName = "Posts";
         public PostsForm()
         {
@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
-            m_Posts = new List<Post>();
+            m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             initialzeData();
         }
         private void initialzeData()
@@ -46,8 +46,9 @@ namespace BasicFacebookFeatures
             listBoxPosts.Items.Clear();
             foreach (Post post in m_LoggedInUser.Posts)
             {
-                m_Posts.Add(post);
-                addPost(post);
+                Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
+                m_PostsCreatedTimeAndText.Add(tuplePost);
+                addPostToListBox(tuplePost);
             }
             if (listBoxPosts.Items.Count == 0)
             {
@@ -68,12 +69,12 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                foreach (Post post in m_Posts)
+                foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
                 {
-                    if (post.CreatedTime.Value.Day == numericUpDownDay.Value && post.CreatedTime.Value.Month == numericUpDownMonth.Value
-                        && post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                    if (post.Item1.Day == numericUpDownDay.Value && post.Item1.Month == numericUpDownMonth.Value
+                        && post.Item1.Year == numericUpDownYear.Value)
                     {
-                        addPost(post);
+                        addPostToListBox(post);
                     }
                 }
                 if (listBoxPosts.Items.Count == 0)
@@ -85,11 +86,11 @@ namespace BasicFacebookFeatures
         private void fetchPostsIfDayIsZero()
         {
 
-            foreach (Post post in m_Posts)
+            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
             {
-                if (post.CreatedTime.Value.Month == numericUpDownMonth.Value && post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                if (post.Item1.Month == numericUpDownMonth.Value && post.Item1.Year == numericUpDownYear.Value)
                 {
-                    addPost(post);
+                    addPostToListBox(post);
                 }
             }
             if (listBoxPosts.Items.Count == 0)
@@ -99,11 +100,11 @@ namespace BasicFacebookFeatures
         }
         private void fetchPostsIfMonthIsZero()
         {
-            foreach (Post post in m_Posts)
+            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
             {
-                if (post.CreatedTime.Value.Year == numericUpDownYear.Value)
+                if (post.Item1.Year == numericUpDownYear.Value)
                 {
-                    addPost(post);
+                    addPostToListBox(post);
                 }
             }
             if (listBoxPosts.Items.Count == 0)
@@ -111,10 +112,11 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No posts in this year");
             }
         }
-        private void addPost(Post i_Post)
-        { 
-        
-            listBoxPosts.Items.Add(i_Post.CreatedTime.ToString() + "\t" + i_Post.ToString());
+        private void addPostToListBox(Tuple<DateTime, String> i_Post)
+        {
+
+            //listBoxPosts.Items.Add(i_Post.Item1.ToString() + "\t" + i_Post.Item2);
+            listBoxPosts.Items.Add($"{i_Post.Item1.ToString()}\t{i_Post.Item2}");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -126,7 +128,9 @@ namespace BasicFacebookFeatures
         {
             if(textBoxPost.Text != "")
             {
-                listBoxPosts.Items.Add(DateTime.Now.ToString() + "\t" + textBoxPost.Text);
+                Tuple<DateTime, String> post = Tuple.Create(DateTime.Now, textBoxPost.Text);
+                addPostToListBox(post);
+                m_PostsCreatedTimeAndText.Add(post);
             }
         }
 
@@ -149,6 +153,25 @@ namespace BasicFacebookFeatures
             {
                 numericUpDownDay.Value = 0;
             }
+        }
+
+        private void buttonCancelFilter_Click(object sender, EventArgs e)
+        {
+            listBoxPosts.Items.Clear();
+            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
+            {
+                addPostToListBox(post);
+            }
+        }
+
+        private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxPosts.SelectedIndex != -1)
+            {
+                string selectedItem = listBoxPosts.SelectedItem.ToString();
+                MessageBox.Show(selectedItem);
+            }
+            
         }
     }
 }

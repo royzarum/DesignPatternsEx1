@@ -51,10 +51,10 @@
             // richTextBoxHeadLine
             // 
             this.richTextBoxHeadLine.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.richTextBoxHeadLine.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.richTextBoxHeadLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(102)))), ((int)(((byte)(255)))));
             this.richTextBoxHeadLine.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.richTextBoxHeadLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxHeadLine.ForeColor = System.Drawing.SystemColors.Menu;
+            this.richTextBoxHeadLine.ForeColor = System.Drawing.Color.White;
             this.richTextBoxHeadLine.Location = new System.Drawing.Point(407, 88);
             this.richTextBoxHeadLine.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxHeadLine.Name = "richTextBoxHeadLine";

@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.headLine = new System.Windows.Forms.RichTextBox();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelNewPost = new System.Windows.Forms.Label();
             this.textBoxPost = new System.Windows.Forms.TextBox();
@@ -43,23 +41,15 @@
             this.labelDay = new System.Windows.Forms.Label();
             this.labelYear = new System.Windows.Forms.Label();
             this.buttonFilterByDate = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.buttonCancelFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(1333, 53);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(102, 106);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 12;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // headLine
             // 
@@ -68,22 +58,12 @@
             this.headLine.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.headLine.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headLine.ForeColor = System.Drawing.SystemColors.Menu;
-            this.headLine.Location = new System.Drawing.Point(623, 133);
+            this.headLine.Location = new System.Drawing.Point(572, 125);
             this.headLine.Name = "headLine";
             this.headLine.ReadOnly = true;
             this.headLine.Size = new System.Drawing.Size(202, 69);
             this.headLine.TabIndex = 11;
             this.headLine.Text = "HeadLine";
-            // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(92, 98);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(146, 103);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 10;
-            this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Visible = false;
             // 
             // labelName
             // 
@@ -98,7 +78,7 @@
             // 
             this.labelNewPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNewPost.AutoSize = true;
-            this.labelNewPost.Location = new System.Drawing.Point(760, 46);
+            this.labelNewPost.Location = new System.Drawing.Point(761, 35);
             this.labelNewPost.Name = "labelNewPost";
             this.labelNewPost.Size = new System.Drawing.Size(80, 20);
             this.labelNewPost.TabIndex = 13;
@@ -108,7 +88,7 @@
             // 
             this.textBoxPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPost.Location = new System.Drawing.Point(846, 43);
+            this.textBoxPost.Location = new System.Drawing.Point(847, 32);
             this.textBoxPost.Name = "textBoxPost";
             this.textBoxPost.Size = new System.Drawing.Size(290, 30);
             this.textBoxPost.TabIndex = 14;
@@ -116,7 +96,7 @@
             // buttonPost
             // 
             this.buttonPost.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPost.Location = new System.Drawing.Point(1142, 39);
+            this.buttonPost.Location = new System.Drawing.Point(1143, 28);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(106, 43);
             this.buttonPost.TabIndex = 15;
@@ -129,15 +109,16 @@
             this.listBoxPosts.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxPosts.FormattingEnabled = true;
             this.listBoxPosts.ItemHeight = 20;
-            this.listBoxPosts.Location = new System.Drawing.Point(303, 237);
+            this.listBoxPosts.Location = new System.Drawing.Point(231, 237);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(911, 184);
+            this.listBoxPosts.Size = new System.Drawing.Size(865, 184);
             this.listBoxPosts.TabIndex = 16;
+            this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
             // 
             // numericUpDownMonth
             // 
             this.numericUpDownMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownMonth.Location = new System.Drawing.Point(892, 193);
+            this.numericUpDownMonth.Location = new System.Drawing.Point(539, 491);
             this.numericUpDownMonth.Maximum = new decimal(new int[] {
             12,
             0,
@@ -151,7 +132,7 @@
             // numericUpDownDay
             // 
             this.numericUpDownDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownDay.Location = new System.Drawing.Point(985, 193);
+            this.numericUpDownDay.Location = new System.Drawing.Point(469, 491);
             this.numericUpDownDay.Maximum = new decimal(new int[] {
             31,
             0,
@@ -165,7 +146,7 @@
             // numericUpDownYear
             // 
             this.numericUpDownYear.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownYear.Location = new System.Drawing.Point(1068, 193);
+            this.numericUpDownYear.Location = new System.Drawing.Point(606, 491);
             this.numericUpDownYear.Maximum = new decimal(new int[] {
             2024,
             0,
@@ -189,7 +170,7 @@
             // 
             this.labelMonth.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelMonth.AutoSize = true;
-            this.labelMonth.Location = new System.Drawing.Point(896, 156);
+            this.labelMonth.Location = new System.Drawing.Point(535, 453);
             this.labelMonth.Name = "labelMonth";
             this.labelMonth.Size = new System.Drawing.Size(58, 20);
             this.labelMonth.TabIndex = 20;
@@ -199,7 +180,7 @@
             // 
             this.labelDay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDay.AutoSize = true;
-            this.labelDay.Location = new System.Drawing.Point(990, 156);
+            this.labelDay.Location = new System.Drawing.Point(465, 453);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(41, 20);
             this.labelDay.TabIndex = 21;
@@ -209,7 +190,7 @@
             // 
             this.labelYear.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelYear.AutoSize = true;
-            this.labelYear.Location = new System.Drawing.Point(1077, 155);
+            this.labelYear.Location = new System.Drawing.Point(615, 453);
             this.labelYear.Name = "labelYear";
             this.labelYear.Size = new System.Drawing.Size(47, 20);
             this.labelYear.TabIndex = 22;
@@ -218,19 +199,52 @@
             // buttonFilterByDate
             // 
             this.buttonFilterByDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonFilterByDate.Location = new System.Drawing.Point(1178, 177);
+            this.buttonFilterByDate.Location = new System.Drawing.Point(680, 475);
             this.buttonFilterByDate.Name = "buttonFilterByDate";
-            this.buttonFilterByDate.Size = new System.Drawing.Size(197, 56);
+            this.buttonFilterByDate.Size = new System.Drawing.Size(161, 56);
             this.buttonFilterByDate.TabIndex = 23;
             this.buttonFilterByDate.Text = "Filter Posts By Date";
             this.buttonFilterByDate.UseVisualStyleBackColor = true;
             this.buttonFilterByDate.Click += new System.EventHandler(this.buttonFilterByDate_Click);
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(1223, 112);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(102, 106);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 12;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(92, 98);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(146, 103);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.TabIndex = 10;
+            this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Visible = false;
+            // 
+            // buttonCancelFilter
+            // 
+            this.buttonCancelFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonCancelFilter.Location = new System.Drawing.Point(879, 475);
+            this.buttonCancelFilter.Name = "buttonCancelFilter";
+            this.buttonCancelFilter.Size = new System.Drawing.Size(161, 56);
+            this.buttonCancelFilter.TabIndex = 24;
+            this.buttonCancelFilter.Text = "Cancel Filter";
+            this.buttonCancelFilter.UseVisualStyleBackColor = true;
+            this.buttonCancelFilter.Click += new System.EventHandler(this.buttonCancelFilter_Click);
+            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 515);
+            this.ClientSize = new System.Drawing.Size(1487, 609);
+            this.Controls.Add(this.buttonCancelFilter);
             this.Controls.Add(this.buttonFilterByDate);
             this.Controls.Add(this.labelYear);
             this.Controls.Add(this.labelDay);
@@ -248,11 +262,11 @@
             this.Controls.Add(this.labelName);
             this.Name = "PostsForm";
             this.Text = "PostsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +289,6 @@
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelYear;
         private System.Windows.Forms.Button buttonFilterByDate;
+        private System.Windows.Forms.Button buttonCancelFilter;
     }
 }
