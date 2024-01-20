@@ -15,8 +15,8 @@ namespace BasicFacebookFeatures
         
         private AppSettings()
         {
-            RememberMe = false;
-            LastAccessToken = null;
+            m_RememberMe = false;
+            m_LastAccessToken = null;
 
         }
 
