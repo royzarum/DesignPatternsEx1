@@ -59,16 +59,20 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbumsToListBox()
         {
-            listBoxAlbums.Items.Clear();
-            listBoxAlbums.DisplayMember = "Name";
-            foreach (Album album in m_LoggedInUser.Albums)
+            if (m_LoggedInUser.Albums != null)
             {
-                listBoxAlbums.Items.Add(album);
-            }
+                labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
+                listBoxAlbums.Items.Clear();
+                listBoxAlbums.DisplayMember = "Name";
+                foreach (Album album in m_LoggedInUser.Albums)
+                {
+                    listBoxAlbums.Items.Add(album);
+                }
 
-            if (listBoxAlbums.Items.Count == 0)
-            {
-                MessageBox.Show("No Albums to retrieve :(");
+                if (listBoxAlbums.Items.Count == 0)
+                {
+                    MessageBox.Show("No Albums to retrieve :(");
+                }
             }
         }
 

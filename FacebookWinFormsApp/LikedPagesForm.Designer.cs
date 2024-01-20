@@ -49,8 +49,9 @@
             // 
             // listBoxLikedPages
             // 
+            this.listBoxLikedPages.BackColor = System.Drawing.SystemColors.Menu;
             this.listBoxLikedPages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxLikedPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.listBoxLikedPages.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.HorizontalScrollbar = true;
             this.listBoxLikedPages.ItemHeight = 25;
@@ -159,21 +160,21 @@
             // 
             this.labelHeadline.AutoSize = true;
             this.labelHeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(102)))), ((int)(((byte)(255)))));
-            this.labelHeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelHeadline.Font = new System.Drawing.Font("Arial", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelHeadline.ForeColor = System.Drawing.Color.White;
             this.labelHeadline.Location = new System.Drawing.Point(12, 43);
             this.labelHeadline.Name = "labelHeadline";
-            this.labelHeadline.Size = new System.Drawing.Size(153, 39);
+            this.labelHeadline.Size = new System.Drawing.Size(159, 41);
             this.labelHeadline.TabIndex = 22;
             this.labelHeadline.Text = "Headline";
             // 
             // labelNumberOfPages
             // 
             this.labelNumberOfPages.AutoSize = true;
-            this.labelNumberOfPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfPages.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelNumberOfPages.Location = new System.Drawing.Point(263, 62);
             this.labelNumberOfPages.Name = "labelNumberOfPages";
-            this.labelNumberOfPages.Size = new System.Drawing.Size(122, 17);
+            this.labelNumberOfPages.Size = new System.Drawing.Size(111, 16);
             this.labelNumberOfPages.TabIndex = 23;
             this.labelNumberOfPages.Text = "Number of Pages:";
             // 
@@ -212,6 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1022, 459);
             this.Controls.Add(this.labelNumberOfPagesValue);
             this.Controls.Add(this.labelNumberOfPages);

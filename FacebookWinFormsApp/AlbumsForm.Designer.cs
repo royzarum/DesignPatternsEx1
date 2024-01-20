@@ -33,6 +33,8 @@
             this.labelName = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.labelNumberOfAlbumsValue = new System.Windows.Forms.Label();
+            this.labelNumberOfAlbums = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // labelName
             // 
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.labelName.Location = new System.Drawing.Point(25, 38);
             this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
@@ -88,6 +92,7 @@
             // 
             // pictureBoxProfile
             // 
+            this.pictureBoxProfile.BackColor = System.Drawing.Color.White;
             this.pictureBoxProfile.Location = new System.Drawing.Point(28, 67);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
@@ -97,6 +102,26 @@
             this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Visible = false;
             // 
+            // labelNumberOfAlbumsValue
+            // 
+            this.labelNumberOfAlbumsValue.AutoSize = true;
+            this.labelNumberOfAlbumsValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfAlbumsValue.Location = new System.Drawing.Point(291, 138);
+            this.labelNumberOfAlbumsValue.Name = "labelNumberOfAlbumsValue";
+            this.labelNumberOfAlbumsValue.Size = new System.Drawing.Size(16, 17);
+            this.labelNumberOfAlbumsValue.TabIndex = 9;
+            this.labelNumberOfAlbumsValue.Text = "0";
+            // 
+            // labelNumberOfAlbums
+            // 
+            this.labelNumberOfAlbums.AutoSize = true;
+            this.labelNumberOfAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfAlbums.Location = new System.Drawing.Point(162, 138);
+            this.labelNumberOfAlbums.Name = "labelNumberOfAlbums";
+            this.labelNumberOfAlbums.Size = new System.Drawing.Size(127, 17);
+            this.labelNumberOfAlbums.TabIndex = 10;
+            this.labelNumberOfAlbums.Text = "Number of albums:";
+            // 
             // AlbumsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +129,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 475);
+            this.Controls.Add(this.labelNumberOfAlbums);
+            this.Controls.Add(this.labelNumberOfAlbumsValue);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.richTextBoxHeadLine);
             this.Controls.Add(this.pictureBoxProfile);
@@ -116,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +154,7 @@
         private System.Windows.Forms.RichTextBox richTextBoxHeadLine;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelNumberOfAlbumsValue;
+        private System.Windows.Forms.Label labelNumberOfAlbums;
     }
 }
