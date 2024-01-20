@@ -27,23 +27,49 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             m_LogginResult = i_LoginResult;
             m_LoggedInUser = i_LoginResult.LoggedInUser;
-            labelHeadline.Text = m_LoggedInUser.FirstName + k_HeadLineComplition;
             try
             {
                 labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 m_Accesible = false;
                 MessageBox.Show($"There is no access to {m_LoggedInUser.Name} liked pages");
             }
+
+            initializeFormAppearance();
+        }
+
+        private void initializeFormAppearance()
+        {
+
+            labelHeadline.Text = m_LoggedInUser.FirstName + k_HeadLineComplition;
+            labelNumberOfPages.Location = new System.Drawing.Point(
+                labelHeadline.Right + 20,
+                labelHeadline.Bottom - labelNumberOfPages.Height
+                );
+            labelNumberOfPagesValue.Location = new System.Drawing.Point(
+                labelNumberOfPages.Right,
+                labelNumberOfPages.Bottom - labelNumberOfPages.Height
+                );
+            listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right;
+            labelInformationTitle.Left =
+                 labelName.Left =
+                 labelLikes.Left =
+                 labelCategory.Left =
+                 labelPhoneNumber.Left = listBoxLikedPages.Right + 15;
+            labelLikedPageName.Left = labelName.Right;
+            labelLikesCount.Left = labelLikes.Right;
+            labelPageCategoryValue.Left = labelCategory.Right;
+            labelPhoneValue.Left = labelPhoneNumber.Right;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            if(m_Accesible)
+            if (m_Accesible)
             {
+
                 fetchLikedPages();
             }
             else
@@ -73,7 +99,7 @@ namespace BasicFacebookFeatures
                 labelLikedPageName.Text = selectedLikedPage.Name;
                 labelLikesCount.Text = selectedLikedPage.LikesCount != null ? selectedLikedPage.LikesCount.ToString() : k_UnknownValueString;
                 labelPageCategoryValue.Text = selectedLikedPage.Category != null ? selectedLikedPage.Category : k_UnknownValueString;
-                lablePhoneValue.Text = selectedLikedPage.Phone != null ? selectedLikedPage.Phone : k_UnknownValueString;
+                labelPhoneValue.Text = selectedLikedPage.Phone != null ? selectedLikedPage.Phone : k_UnknownValueString;
                 pictureBoxLikedPageLogo.Image = selectedLikedPage.ImageNormal;
             }
 

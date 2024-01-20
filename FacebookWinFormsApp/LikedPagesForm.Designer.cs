@@ -36,7 +36,7 @@
             this.labelLikedPageName = new System.Windows.Forms.Label();
             this.labelLikesCount = new System.Windows.Forms.Label();
             this.labelPageCategoryValue = new System.Windows.Forms.Label();
-            this.lablePhoneValue = new System.Windows.Forms.Label();
+            this.labelPhoneValue = new System.Windows.Forms.Label();
             this.labelInformationTitle = new System.Windows.Forms.Label();
             this.labelHeadline = new System.Windows.Forms.Label();
             this.labelNumberOfPages = new System.Windows.Forms.Label();
@@ -110,7 +110,8 @@
             this.labelLikedPageName.AutoSize = true;
             this.labelLikedPageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelLikedPageName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelLikedPageName.Location = new System.Drawing.Point(572, 234);
+            this.labelLikedPageName.Location = new System.Drawing.Point(565, 234);
+            this.labelLikedPageName.MaximumSize = new System.Drawing.Size(210, 20);
             this.labelLikedPageName.Name = "labelLikedPageName";
             this.labelLikedPageName.Size = new System.Drawing.Size(0, 20);
             this.labelLikedPageName.TabIndex = 16;
@@ -135,15 +136,15 @@
             this.labelPageCategoryValue.Size = new System.Drawing.Size(0, 20);
             this.labelPageCategoryValue.TabIndex = 18;
             // 
-            // lablePhoneValue
+            // labelPhoneValue
             // 
-            this.lablePhoneValue.AutoSize = true;
-            this.lablePhoneValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.lablePhoneValue.Location = new System.Drawing.Point(644, 355);
-            this.lablePhoneValue.Name = "lablePhoneValue";
-            this.lablePhoneValue.Size = new System.Drawing.Size(0, 20);
-            this.lablePhoneValue.TabIndex = 19;
-            this.lablePhoneValue.UseMnemonic = false;
+            this.labelPhoneValue.AutoSize = true;
+            this.labelPhoneValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelPhoneValue.Location = new System.Drawing.Point(644, 355);
+            this.labelPhoneValue.Name = "labelPhoneValue";
+            this.labelPhoneValue.Size = new System.Drawing.Size(0, 20);
+            this.labelPhoneValue.TabIndex = 19;
+            this.labelPhoneValue.UseMnemonic = false;
             // 
             // labelInformationTitle
             // 
@@ -220,7 +221,7 @@
             this.Controls.Add(this.labelHeadline);
             this.Controls.Add(this.labelInformationTitle);
             this.Controls.Add(this.pictureBoxLikedPageLogo);
-            this.Controls.Add(this.lablePhoneValue);
+            this.Controls.Add(this.labelPhoneValue);
             this.Controls.Add(this.labelPageCategoryValue);
             this.Controls.Add(this.labelLikesCount);
             this.Controls.Add(this.labelLikedPageName);
@@ -253,7 +254,7 @@
         private System.Windows.Forms.Label labelLikedPageName;
         private System.Windows.Forms.Label labelLikesCount;
         private System.Windows.Forms.Label labelPageCategoryValue;
-        private System.Windows.Forms.Label lablePhoneValue;
+        private System.Windows.Forms.Label labelPhoneValue;
         private System.Windows.Forms.PictureBox pictureBoxLikedPageLogo;
         private System.Windows.Forms.Label labelInformationTitle;
         private System.Windows.Forms.Label labelHeadline;
