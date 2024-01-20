@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelLikes = new System.Windows.Forms.Label();
@@ -38,24 +37,15 @@
             this.labelLikesCount = new System.Windows.Forms.Label();
             this.labelPageCategoryValue = new System.Windows.Forms.Label();
             this.lablePhoneValue = new System.Windows.Forms.Label();
-            this.pictureBoxLikedPageLogo = new System.Windows.Forms.PictureBox();
             this.labelInformationTitle = new System.Windows.Forms.Label();
             this.labelHeadline = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.labelNumberOfPages = new System.Windows.Forms.Label();
+            this.pictureBoxLikedPageLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.labelNumberOfPagesValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPageLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(922, 1);
-            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(89, 81);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 9;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // listBoxLikedPages
             // 
@@ -154,15 +144,6 @@
             this.lablePhoneValue.TabIndex = 19;
             this.lablePhoneValue.UseMnemonic = false;
             // 
-            // pictureBoxLikedPageLogo
-            // 
-            this.pictureBoxLikedPageLogo.Location = new System.Drawing.Point(786, 191);
-            this.pictureBoxLikedPageLogo.Name = "pictureBoxLikedPageLogo";
-            this.pictureBoxLikedPageLogo.Size = new System.Drawing.Size(225, 221);
-            this.pictureBoxLikedPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLikedPageLogo.TabIndex = 20;
-            this.pictureBoxLikedPageLogo.TabStop = false;
-            // 
             // labelInformationTitle
             // 
             this.labelInformationTitle.AutoSize = true;
@@ -186,11 +167,54 @@
             this.labelHeadline.TabIndex = 22;
             this.labelHeadline.Text = "Headline";
             // 
+            // labelNumberOfPages
+            // 
+            this.labelNumberOfPages.AutoSize = true;
+            this.labelNumberOfPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfPages.Location = new System.Drawing.Point(263, 62);
+            this.labelNumberOfPages.Name = "labelNumberOfPages";
+            this.labelNumberOfPages.Size = new System.Drawing.Size(122, 17);
+            this.labelNumberOfPages.TabIndex = 23;
+            this.labelNumberOfPages.Text = "Number of Pages:";
+            // 
+            // pictureBoxLikedPageLogo
+            // 
+            this.pictureBoxLikedPageLogo.Location = new System.Drawing.Point(786, 191);
+            this.pictureBoxLikedPageLogo.Name = "pictureBoxLikedPageLogo";
+            this.pictureBoxLikedPageLogo.Size = new System.Drawing.Size(225, 221);
+            this.pictureBoxLikedPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLikedPageLogo.TabIndex = 20;
+            this.pictureBoxLikedPageLogo.TabStop = false;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(922, 1);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(89, 81);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 9;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // labelNumberOfPagesValue
+            // 
+            this.labelNumberOfPagesValue.AutoSize = true;
+            this.labelNumberOfPagesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfPagesValue.Location = new System.Drawing.Point(382, 62);
+            this.labelNumberOfPagesValue.Name = "labelNumberOfPagesValue";
+            this.labelNumberOfPagesValue.Size = new System.Drawing.Size(16, 17);
+            this.labelNumberOfPagesValue.TabIndex = 24;
+            this.labelNumberOfPagesValue.Text = "0";
+            // 
             // LikedPagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 459);
+            this.Controls.Add(this.labelNumberOfPagesValue);
+            this.Controls.Add(this.labelNumberOfPages);
             this.Controls.Add(this.labelHeadline);
             this.Controls.Add(this.labelInformationTitle);
             this.Controls.Add(this.pictureBoxLikedPageLogo);
@@ -210,8 +234,8 @@
             this.Name = "LikedPagesForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "LikedPagesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPageLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +255,7 @@
         private System.Windows.Forms.PictureBox pictureBoxLikedPageLogo;
         private System.Windows.Forms.Label labelInformationTitle;
         private System.Windows.Forms.Label labelHeadline;
+        private System.Windows.Forms.Label labelNumberOfPages;
+        private System.Windows.Forms.Label labelNumberOfPagesValue;
     }
 }

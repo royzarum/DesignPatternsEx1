@@ -47,10 +47,14 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            foreach (Page likedPage in m_LoggedInUser.LikedPages)
+            if (m_LoggedInUser != null)
             {
-                listBoxLikedPages.Items.Add(likedPage);
-                listBoxLikedPages.DisplayMember = "Name";
+                labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
+                foreach (Page likedPage in m_LoggedInUser.LikedPages)
+                {
+                    listBoxLikedPages.Items.Add(likedPage);
+                    listBoxLikedPages.DisplayMember = "Name";
+                }
             }
         }
 

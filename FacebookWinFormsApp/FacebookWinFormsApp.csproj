@@ -138,6 +138,9 @@
     <EmbeddedResource Include="GroupsForm.resx">
       <DependentUpon>GroupsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LikedPagesForm.resx">
+      <DependentUpon>LikedPagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PostsForm.resx">
       <DependentUpon>PostsForm.cs</DependentUpon>
     </EmbeddedResource>

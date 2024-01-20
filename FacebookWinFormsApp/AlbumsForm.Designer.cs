@@ -40,6 +40,7 @@
             // listBoxAlbums
             // 
             this.listBoxAlbums.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.listBoxAlbums.BackColor = System.Drawing.SystemColors.Control;
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.Location = new System.Drawing.Point(330, 138);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
@@ -101,6 +102,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 475);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.richTextBoxHeadLine);
