@@ -54,6 +54,7 @@ namespace BasicFacebookFeatures
                 "user_friends",
                 "user_posts",
                 "user_gender"
+                //"user_groups"
                 /// add any relevant permissions  
                 );
 

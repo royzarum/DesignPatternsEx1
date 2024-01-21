@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures
             {
                 labelActualNumber.Text = m_LoggedInUser.Groups.Count.ToString();
             }
-            catch (Exception ex)
+            catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
                 MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s groups");

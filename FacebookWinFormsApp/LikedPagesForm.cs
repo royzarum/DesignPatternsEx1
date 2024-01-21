@@ -34,7 +34,7 @@ namespace BasicFacebookFeatures
             {
                 labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
             }
-            catch (Exception ex)
+            catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accesible = false;
                 MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s liked pages");
@@ -82,22 +82,13 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            bool categoryAccessible = false;
+            listBoxLikedPages.Items.Clear();
             if (m_LoggedInUser != null)
             {
                 labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
                 foreach (Page likedPage in m_LoggedInUser.LikedPages)
                 {
                     fetchPage(likedPage);
-                    if(likedPage.Category != null)
-                    {
-                        categoryAccessible = true;
-                    }
-                }
-                if(!categoryAccessible)
-                {
-                    textBoxSearchByCategory.Text = k_TextBoxNotAccessible;
-                    textBoxSearchByCategory.Enabled = false;
                 }
             }
         }
@@ -123,24 +114,32 @@ namespace BasicFacebookFeatures
 
         private void textBoxSearchByCategory_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxNotAccessible)
+            if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxDefaultText)
             {
                 listBoxLikedPages.Items.Clear();
                 foreach (Page likedPage in m_LoggedInUser.LikedPages)
                 {
-                    if (likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
+                    if (!string.IsNullOrEmpty(likedPage.Category) && likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
                     {
                         fetchPage(likedPage);
                     }
                 }
             }
+            else
+            {
+                if (listBoxLikedPages.Items.Count != m_LoggedInUser.LikedPages.Count)
+                {
+                    fetchLikedPages();
+                }
+            }
+            labelNumberOfPagesValue.Text = listBoxLikedPages.Items.Count.ToString();
         }
         private void textBoxSearchByCategory_Enter(object sender, EventArgs e)
         {
             TextBox box = sender as TextBox;
             box.Text = box.Text.TrimStart();
             if (!m_TextBoxHasBeenChecked)
-            { 
+            {
                 box.Text = string.Empty;
                 m_TextBoxHasBeenChecked = true;
             }

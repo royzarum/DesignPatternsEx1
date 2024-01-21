@@ -64,7 +64,7 @@ namespace BasicFacebookFeatures
             {
                 labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
             }
-            catch(Exception ex)
+            catch(Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
                 MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s Albums");
