@@ -46,11 +46,10 @@
             this.listBoxAlbums.BackColor = System.Drawing.SystemColors.Menu;
             this.listBoxAlbums.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 15;
-            this.listBoxAlbums.Location = new System.Drawing.Point(330, 138);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxAlbums.ItemHeight = 21;
+            this.listBoxAlbums.Location = new System.Drawing.Point(495, 212);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(300, 49);
+            this.listBoxAlbums.Size = new System.Drawing.Size(448, 67);
             this.listBoxAlbums.TabIndex = 4;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
@@ -58,10 +57,9 @@
             // 
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.labelName.Location = new System.Drawing.Point(25, 38);
-            this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelName.Location = new System.Drawing.Point(38, 58);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(100, 27);
+            this.labelName.Size = new System.Drawing.Size(150, 42);
             this.labelName.TabIndex = 5;
             this.labelName.Text = "Name";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,9 +69,10 @@
             this.labelNumberOfAlbumsValue.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNumberOfAlbumsValue.AutoSize = true;
             this.labelNumberOfAlbumsValue.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelNumberOfAlbumsValue.Location = new System.Drawing.Point(460, 189);
+            this.labelNumberOfAlbumsValue.Location = new System.Drawing.Point(690, 291);
+            this.labelNumberOfAlbumsValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumberOfAlbumsValue.Name = "labelNumberOfAlbumsValue";
-            this.labelNumberOfAlbumsValue.Size = new System.Drawing.Size(14, 16);
+            this.labelNumberOfAlbumsValue.Size = new System.Drawing.Size(21, 24);
             this.labelNumberOfAlbumsValue.TabIndex = 9;
             this.labelNumberOfAlbumsValue.Text = "0";
             // 
@@ -82,9 +81,10 @@
             this.labelNumberOfAlbums.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNumberOfAlbums.AutoSize = true;
             this.labelNumberOfAlbums.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelNumberOfAlbums.Location = new System.Drawing.Point(327, 189);
+            this.labelNumberOfAlbums.Location = new System.Drawing.Point(490, 291);
+            this.labelNumberOfAlbums.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumberOfAlbums.Name = "labelNumberOfAlbums";
-            this.labelNumberOfAlbums.Size = new System.Drawing.Size(127, 16);
+            this.labelNumberOfAlbums.Size = new System.Drawing.Size(190, 24);
             this.labelNumberOfAlbums.TabIndex = 10;
             this.labelNumberOfAlbums.Text = "Number of albums:";
             // 
@@ -95,9 +95,10 @@
             this.labelHeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(102)))), ((int)(((byte)(255)))));
             this.labelHeadline.Font = new System.Drawing.Font("Arial", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelHeadline.ForeColor = System.Drawing.Color.White;
-            this.labelHeadline.Location = new System.Drawing.Point(390, 93);
+            this.labelHeadline.Location = new System.Drawing.Point(585, 143);
+            this.labelHeadline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHeadline.Name = "labelHeadline";
-            this.labelHeadline.Size = new System.Drawing.Size(159, 41);
+            this.labelHeadline.Size = new System.Drawing.Size(246, 62);
             this.labelHeadline.TabIndex = 24;
             this.labelHeadline.Text = "Headline";
             // 
@@ -105,10 +106,9 @@
             // 
             this.pictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLogo.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_Logo_20231;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(815, 38);
-            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(1222, 58);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(68, 69);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(102, 106);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 8;
             this.pictureBoxLogo.TabStop = false;
@@ -116,9 +116,10 @@
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.ErrorImage = global::BasicFacebookFeatures.Properties.Resources.NullProfileImage;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 68);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(42, 105);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(150, 154);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 56;
             this.pictureBoxProfile.TabStop = false;
@@ -126,11 +127,11 @@
             // 
             // AlbumsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(906, 475);
+            this.ClientSize = new System.Drawing.Size(1359, 731);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.labelHeadline);
             this.Controls.Add(this.labelNumberOfAlbums);
@@ -139,10 +140,10 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxAlbums);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.MinimumSize = new System.Drawing.Size(72, 79);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(97, 91);
             this.Name = "AlbumsForm";
-            this.Text = "AlbumsForm";
+            this.Text = "Albums";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
