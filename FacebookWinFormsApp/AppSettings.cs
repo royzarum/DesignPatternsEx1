@@ -17,7 +17,6 @@ namespace BasicFacebookFeatures
         {
             m_RememberMe = false;
             m_LastAccessToken = null;
-
         }
 
         public bool RememberMe { get; set; }

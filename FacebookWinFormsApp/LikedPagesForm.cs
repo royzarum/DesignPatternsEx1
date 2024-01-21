@@ -19,7 +19,10 @@ namespace BasicFacebookFeatures
         private User m_LoggedInUser;
         private const string k_HeadLineComplition = "'s Liked Pages";
         private const string k_UnknownValueString = "Unknown";
+        private const string k_TextBoxDefaultText = "Search Here";
+        private const string k_TextBoxNotAccessible = "No access to pages categories";
         private bool m_Accesible = true;
+        private bool m_TextBoxHasBeenChecked = false;
 
 
         public LikedPagesForm(LoginResult i_LoginResult)
@@ -80,15 +83,29 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
+            bool categoryAccessible = false;
             if (m_LoggedInUser != null)
             {
                 labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
                 foreach (Page likedPage in m_LoggedInUser.LikedPages)
                 {
-                    listBoxLikedPages.Items.Add(likedPage);
-                    listBoxLikedPages.DisplayMember = "Name";
+                    fetchPage(likedPage);
+                    if(likedPage.Category != null)
+                    {
+                        categoryAccessible = true;
+                    }
+                }
+                if(!categoryAccessible)
+                {
+                    //textBoxSearchByCategory.Text = k_TextBoxNotAccessible;
+                    //textBoxSearchByCategory.Enabled = false;
                 }
             }
+        }
+        private void fetchPage(Page i_Page)
+        {
+            listBoxLikedPages.Items.Add(i_Page);
+            listBoxLikedPages.DisplayMember = "Name";
         }
 
         private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,5 +122,53 @@ namespace BasicFacebookFeatures
 
         }
 
+        private void textBoxSearchByCategory_TextChanged(object sender, EventArgs e)
+        {
+            //if(checkIfStringHasText(textBoxSearchByCategory.Text))
+            //{
+            //   listBoxLikedPages.Items.Clear();
+            //   foreach (Page likedPage in m_LoggedInUser.LikedPages)
+            //   {
+            //     if (likedPage.Category.ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
+            //     {
+            //        fetchPage(likedPage);
+            //     }
+            //   }
+            //}
+        }
+        private void textBoxSearchByCategory_Enter(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (!m_TextBoxHasBeenChecked)
+            { 
+                box.Text = string.Empty;
+                m_TextBoxHasBeenChecked = true;
+            }
+        }
+        private void textBoxSearchByCategory_Leave(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (textBoxSearchByCategory.Text == string.Empty)
+            {
+                box.Text = k_TextBoxDefaultText;
+                m_TextBoxHasBeenChecked = false;
+            }
+        }
+        private bool checkIfStringHasText(string i_Text)
+        {
+            bool result = false;
+            if (!string.IsNullOrEmpty(i_Text))
+            {
+                foreach (string ch in i_Text.Split())
+                {
+                    if (ch != "\n" && ch != " " && ch != "\t")
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
     }
 }
