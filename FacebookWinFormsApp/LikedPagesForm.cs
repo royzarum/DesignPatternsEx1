@@ -72,7 +72,6 @@ namespace BasicFacebookFeatures
             base.OnShown(e);
             if (m_Accesible)
             {
-
                 fetchLikedPages();
             }
             else
@@ -97,8 +96,8 @@ namespace BasicFacebookFeatures
                 }
                 if(!categoryAccessible)
                 {
-                    //textBoxSearchByCategory.Text = k_TextBoxNotAccessible;
-                    //textBoxSearchByCategory.Enabled = false;
+                    textBoxSearchByCategory.Text = k_TextBoxNotAccessible;
+                    textBoxSearchByCategory.Enabled = false;
                 }
             }
         }
@@ -124,21 +123,22 @@ namespace BasicFacebookFeatures
 
         private void textBoxSearchByCategory_TextChanged(object sender, EventArgs e)
         {
-            //if(checkIfStringHasText(textBoxSearchByCategory.Text))
-            //{
-            //   listBoxLikedPages.Items.Clear();
-            //   foreach (Page likedPage in m_LoggedInUser.LikedPages)
-            //   {
-            //     if (likedPage.Category.ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
-            //     {
-            //        fetchPage(likedPage);
-            //     }
-            //   }
-            //}
+            if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxNotAccessible)
+            {
+                listBoxLikedPages.Items.Clear();
+                foreach (Page likedPage in m_LoggedInUser.LikedPages)
+                {
+                    if (likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
+                    {
+                        fetchPage(likedPage);
+                    }
+                }
+            }
         }
         private void textBoxSearchByCategory_Enter(object sender, EventArgs e)
         {
             TextBox box = sender as TextBox;
+            box.Text = box.Text.TrimStart();
             if (!m_TextBoxHasBeenChecked)
             { 
                 box.Text = string.Empty;
@@ -148,27 +148,12 @@ namespace BasicFacebookFeatures
         private void textBoxSearchByCategory_Leave(object sender, EventArgs e)
         {
             TextBox box = sender as TextBox;
+            box.Text = box.Text.TrimStart();
             if (textBoxSearchByCategory.Text == string.Empty)
             {
                 box.Text = k_TextBoxDefaultText;
                 m_TextBoxHasBeenChecked = false;
             }
-        }
-        private bool checkIfStringHasText(string i_Text)
-        {
-            bool result = false;
-            if (!string.IsNullOrEmpty(i_Text))
-            {
-                foreach (string ch in i_Text.Split())
-                {
-                    if (ch != "\n" && ch != " " && ch != "\t")
-                    {
-                        result = true;
-                        break;
-                    }
-                }
-            }
-            return result;
         }
     }
 }

@@ -240,9 +240,9 @@
             // textBoxSearchByCategory
             // 
             this.textBoxSearchByCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearchByCategory.Location = new System.Drawing.Point(903, 143);
+            this.textBoxSearchByCategory.Location = new System.Drawing.Point(853, 140);
             this.textBoxSearchByCategory.Name = "textBoxSearchByCategory";
-            this.textBoxSearchByCategory.Size = new System.Drawing.Size(264, 30);
+            this.textBoxSearchByCategory.Size = new System.Drawing.Size(388, 30);
             this.textBoxSearchByCategory.TabIndex = 26;
             this.textBoxSearchByCategory.Text = "Search Here";
             this.textBoxSearchByCategory.TextChanged += new System.EventHandler(this.textBoxSearchByCategory_TextChanged);
