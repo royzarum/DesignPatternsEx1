@@ -208,7 +208,7 @@
             // UserBirthdayLabel
             // 
             this.UserBirthdayLabel.AutoSize = true;
-            this.UserBirthdayLabel.Location = new System.Drawing.Point(98, 72);
+            this.UserBirthdayLabel.Location = new System.Drawing.Point(93, 72);
             this.UserBirthdayLabel.Name = "UserBirthdayLabel";
             this.UserBirthdayLabel.Size = new System.Drawing.Size(64, 18);
             this.UserBirthdayLabel.TabIndex = 60;
