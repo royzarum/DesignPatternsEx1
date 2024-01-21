@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LikedPagesForm));
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelLikes = new System.Windows.Forms.Label();
@@ -40,9 +41,9 @@
             this.labelInformationTitle = new System.Windows.Forms.Label();
             this.labelHeadline = new System.Windows.Forms.Label();
             this.labelNumberOfPages = new System.Windows.Forms.Label();
+            this.labelNumberOfPagesValue = new System.Windows.Forms.Label();
             this.pictureBoxLikedPageLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.labelNumberOfPagesValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPageLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
@@ -172,12 +173,22 @@
             // labelNumberOfPages
             // 
             this.labelNumberOfPages.AutoSize = true;
-            this.labelNumberOfPages.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfPages.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelNumberOfPages.Location = new System.Drawing.Point(263, 62);
             this.labelNumberOfPages.Name = "labelNumberOfPages";
-            this.labelNumberOfPages.Size = new System.Drawing.Size(111, 16);
+            this.labelNumberOfPages.Size = new System.Drawing.Size(120, 16);
             this.labelNumberOfPages.TabIndex = 23;
             this.labelNumberOfPages.Text = "Number of Pages:";
+            // 
+            // labelNumberOfPagesValue
+            // 
+            this.labelNumberOfPagesValue.AutoSize = true;
+            this.labelNumberOfPagesValue.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelNumberOfPagesValue.Location = new System.Drawing.Point(382, 62);
+            this.labelNumberOfPagesValue.Name = "labelNumberOfPagesValue";
+            this.labelNumberOfPagesValue.Size = new System.Drawing.Size(14, 16);
+            this.labelNumberOfPagesValue.TabIndex = 24;
+            this.labelNumberOfPagesValue.Text = "0";
             // 
             // pictureBoxLikedPageLogo
             // 
@@ -200,16 +211,6 @@
             this.pictureBoxLogo.TabIndex = 9;
             this.pictureBoxLogo.TabStop = false;
             // 
-            // labelNumberOfPagesValue
-            // 
-            this.labelNumberOfPagesValue.AutoSize = true;
-            this.labelNumberOfPagesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelNumberOfPagesValue.Location = new System.Drawing.Point(382, 62);
-            this.labelNumberOfPagesValue.Name = "labelNumberOfPagesValue";
-            this.labelNumberOfPagesValue.Size = new System.Drawing.Size(16, 17);
-            this.labelNumberOfPagesValue.TabIndex = 24;
-            this.labelNumberOfPagesValue.Text = "0";
-            // 
             // LikedPagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,12 +232,12 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxLikedPages);
             this.Controls.Add(this.pictureBoxLogo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1038, 498);
-            this.MinimumSize = new System.Drawing.Size(1038, 498);
             this.Name = "LikedPagesForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "LikedPagesForm";
+            this.Text = "Liked Pages";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPageLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);

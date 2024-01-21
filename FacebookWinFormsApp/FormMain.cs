@@ -18,7 +18,13 @@ namespace BasicFacebookFeatures
         public FormMain()
         {
             InitializeComponent();
-            FacebookWrapper.FacebookService.s_CollectionLimit = 25;
+            FacebookWrapper.FacebookService.s_CollectionLimit = 25;           
+        }
+
+        private void menuButton_MouseEnter(object sender, EventArgs e)
+        {
+            Button menuButton = sender as Button;
+            menuButton.BackColor = Color.White;
         }
 
         FacebookWrapper.LoginResult m_LoginResult;
@@ -83,6 +89,7 @@ namespace BasicFacebookFeatures
             buttonPages.Visible = !buttonPages.Visible;
             buttonPosts.Visible = !buttonPosts.Visible;
             checkBoxRememberMe.Visible = !checkBoxRememberMe.Visible;
+            buttonLogout.Visible = !buttonLogout.Visible;
         }
         private void checkIfRememberMe()
         {
@@ -109,7 +116,7 @@ namespace BasicFacebookFeatures
         {
             FacebookService.LogoutWithUI();
             buttonLogin.Text = "Login";
-            buttonLogin.BackColor = buttonLogout.BackColor;
+            buttonLogin.BackColor = System.Drawing.SystemColors.ButtonFace;
             m_LoginResult = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;

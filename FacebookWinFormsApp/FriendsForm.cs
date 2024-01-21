@@ -27,17 +27,29 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LoggedInUser = i_LoginResulr.LoggedInUser;
+            InitializeFormAppearance();
         }
+
+        private void InitializeFormAppearance()
+        {
+            labelHeadline.Location = new System.Drawing.Point(ClientSize.Width / 2 - labelHeadline.Size.Width / 2 + 1, 100);
+            labelNumberOfFriends.Top = labelHeadline.Bottom + 10;
+            listBoxFriends.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxFriends.Size.Width / 2 + 1, labelNumberOfFriends.Bottom + 1);
+            labelNumberOfFriends.Left = listBoxFriends.Left;
+            labelActualNumber.Left = labelNumberOfFriends.Right;
+            labelActualNumber.Top = labelNumberOfFriends.Top;
+        }
+
         private void initialzeData()
         {
-            headLine.Text = k_FormName;
+            labelHeadline.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
             {
                 labelActualNumber.Text = m_LoggedInUser.FriendLists.Count.ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 m_Accessible = false;
                 MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s friends");
@@ -47,7 +59,7 @@ namespace BasicFacebookFeatures
         {
             base.OnShown(e);
             initialzeData();
-            if( m_Accessible )
+            if (m_Accessible)
             {
                 fetchFriendsListBox();
             }

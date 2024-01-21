@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures
         }
         private void initialzeData()
         {
-            headLine.Text = k_FormName;
+            labelHeadline.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try

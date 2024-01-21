@@ -27,10 +27,11 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
+            this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
         }
         private void initialzeData()
         {
-            headLine.Text = k_FormName;
+            labelHeadline.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
@@ -148,6 +149,7 @@ namespace BasicFacebookFeatures
                 addPostToListBox(post);
                 m_PostsCreatedTimeAndText.Add(post);
                 labelActualNumber.Text = (int.Parse(labelActualNumber.Text) + 1).ToString();
+                textBoxPost.Clear();
             }
         }
 

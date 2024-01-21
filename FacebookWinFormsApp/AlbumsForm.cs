@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
     {
         private User m_LoggedInUser;
         private PictureBox[] m_CurrentAlbumDisplay;
-        private const string k_FormName = "  Albums";
+        private const string k_FormName = "Albums";
         private const int k_PictureBoxSize = 300;
         private const int k_SpaceSize = 10;
         private bool m_Accessible = true;
@@ -32,10 +32,20 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             m_LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
-            this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, listBoxAlbums.Bottom + 2 * k_SpaceSize);
-            this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, listBoxAlbums.Bottom + k_PictureBoxSize + 4 * k_SpaceSize);
-            richTextBoxHeadLine.Location = new System.Drawing.Point(ClientSize.Width / 2 - richTextBoxHeadLine.Size.Width / 2 + 1, 10 * k_SpaceSize);
-            listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, richTextBoxHeadLine.Bottom + k_SpaceSize);
+            initializeFormAppearance();
+            
+        }
+
+        private void initializeFormAppearance()
+        {
+            this.Size = new System.Drawing.Size(2 * labelName.Left + 2 * k_PictureBoxSize + 10 * k_SpaceSize, labelNumberOfAlbums.Bottom + k_PictureBoxSize + 4 * k_SpaceSize);
+            labelHeadline.Location = new System.Drawing.Point(ClientSize.Width / 2 - labelHeadline.Size.Width / 2 + 1, 10 * k_SpaceSize);
+            listBoxAlbums.Location = new System.Drawing.Point(ClientSize.Width / 2 - listBoxAlbums.Size.Width / 2 + 1, labelHeadline.Bottom + k_SpaceSize);
+            labelNumberOfAlbums.Top = listBoxAlbums.Bottom;
+            labelNumberOfAlbums.Left = listBoxAlbums.Left;
+            labelNumberOfAlbumsValue.Top = labelNumberOfAlbums.Top;
+            labelNumberOfAlbumsValue.Left = labelNumberOfAlbums.Right;
+            this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, labelNumberOfAlbums.Bottom + 2 * k_SpaceSize);
 
         }
 
@@ -47,7 +57,7 @@ namespace BasicFacebookFeatures
 
         private void initialzeData()
         {
-            richTextBoxHeadLine.Text = k_FormName;
+            labelHeadline.Text = k_FormName;
             labelName.Text = m_LoggedInUser.Name;
             pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
             try
@@ -111,6 +121,7 @@ namespace BasicFacebookFeatures
                 foreach (Photo photo in selectedAlbum.Photos)
                 {
                     PictureBox pictureBox = new PictureBox();
+                    pictureBox.Visible = false;
                     m_CurrentAlbumDisplay[index] = pictureBox;
                     pictureBox.Image = photo.ImageNormal;
                     initializePictureBoxProperties(pictureBox);
@@ -159,15 +170,16 @@ namespace BasicFacebookFeatures
                 int row = i / picturesInRow;
                 int col = i % picturesInRow;
                 int positionFromLeftOnClientScreen = labelName.Left + 3 * spacing + col * (pictureBoxWidth + spacing);
-                int positionFromTopOnClientScreen = listBoxAlbums.Bottom + spacing + row * (pictureBoxHeight + spacing);
+                int positionFromTopOnClientScreen = labelNumberOfAlbums.Bottom + spacing + row * (pictureBoxHeight + spacing);
                 m_CurrentAlbumDisplay[i].Location = new Point(positionFromLeftOnClientScreen, positionFromTopOnClientScreen);
+                m_CurrentAlbumDisplay[i].Visible = true;
             }
 
         }
 
         private void pictureBox_OnClick(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
