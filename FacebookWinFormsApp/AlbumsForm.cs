@@ -15,13 +15,12 @@ namespace BasicFacebookFeatures
 {
     public partial class AlbumsForm : Form
     {
-        private User m_LoggedInUser;
         private PictureBox[] m_CurrentAlbumDisplay;
         private const string k_FormName = "Albums";
         private const int k_PictureBoxSize = 300;
         private const int k_SpaceSize = 10;
         private bool m_Accessible = true;
-
+        public User LoggedInUser { get; }
 
         public AlbumsForm()
         {
@@ -30,7 +29,7 @@ namespace BasicFacebookFeatures
         public AlbumsForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
-            m_LoggedInUser = i_LoginResult.LoggedInUser;
+            LoggedInUser = i_LoginResult.LoggedInUser;
             initialzeData();
             initializeFormAppearance();
             
@@ -58,16 +57,16 @@ namespace BasicFacebookFeatures
         private void initialzeData()
         {
             labelHeadline.Text = k_FormName;
-            labelName.Text = m_LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
+            labelName.Text = LoggedInUser.Name;
+            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
             try
             {
-                labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
+                labelNumberOfAlbumsValue.Text = LoggedInUser.Albums.Count.ToString();
             }
             catch(Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s Albums");
+                MessageBox.Show($"There is no access to {LoggedInUser.Name}'s Albums");
             }
         }
 
@@ -86,12 +85,12 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbumsToListBox()
         {
-            if (m_LoggedInUser.Albums != null)
+            if (LoggedInUser.Albums != null)
             {
-                labelNumberOfAlbumsValue.Text = m_LoggedInUser.Albums.Count.ToString();
+                labelNumberOfAlbumsValue.Text = LoggedInUser.Albums.Count.ToString();
                 listBoxAlbums.Items.Clear();
                 listBoxAlbums.DisplayMember = "Name";
-                foreach (Album album in m_LoggedInUser.Albums)
+                foreach (Album album in LoggedInUser.Albums)
                 {
                     listBoxAlbums.Items.Add(album);
                 }

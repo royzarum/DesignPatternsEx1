@@ -15,9 +15,9 @@ namespace BasicFacebookFeatures
 {
     public partial class GroupsForm : Form
     {
-        private User m_LoggedInUser;
         private const string k_FormName = "Groups";
         private bool m_Accessible = true;
+        public User LoggedInUser { get; }
         public GroupsForm()
         {
             InitializeComponent();
@@ -25,21 +25,21 @@ namespace BasicFacebookFeatures
         public GroupsForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
-            m_LoggedInUser = i_LoginResult.LoggedInUser;
+            LoggedInUser = i_LoginResult.LoggedInUser;
         }
         private void initialzeData()
         {
             labelHeadline.Text = k_FormName;
-            labelName.Text = m_LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
+            labelName.Text = LoggedInUser.Name;
+            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
             try
             {
-                labelActualNumber.Text = m_LoggedInUser.Groups.Count.ToString();
+                labelActualNumber.Text = LoggedInUser.Groups.Count.ToString();
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s groups");
+                MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
             }
         }
         protected override void OnShown(EventArgs e)
@@ -58,13 +58,13 @@ namespace BasicFacebookFeatures
         private void fetchGroupsListBox()
         {
             listBoxGroups.Items.Clear();
-            foreach(Group group in m_LoggedInUser.Groups)
+            foreach(Group group in LoggedInUser.Groups)
             {
                 listBoxGroups.Items.Add(group);
             }
             if(listBoxGroups.Items.Count == 0)
             {
-                MessageBox.Show($"No groups for {m_LoggedInUser.Name}");
+                MessageBox.Show($"No groups for {LoggedInUser.Name}");
             }
         }
     }

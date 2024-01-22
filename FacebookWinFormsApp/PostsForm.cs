@@ -15,7 +15,6 @@ namespace BasicFacebookFeatures
 {
     public partial class PostsForm : Form
     {
-        private User m_LoggedInUser;
         private List<Tuple<DateTime, String>> m_PostsCreatedTimeAndText;
         private const string k_FormName = "Posts";
         private const string k_Zero = "0";
@@ -23,6 +22,7 @@ namespace BasicFacebookFeatures
         private const string k_NoPostInMonth = "No posts in this year and month";
         private const string k_NoPostInYear = "No posts in this year";
         private bool m_Accessible = true;
+        public User LoggedInUser { get; }
         public PostsForm()
         {
             InitializeComponent();
@@ -30,23 +30,23 @@ namespace BasicFacebookFeatures
         public PostsForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
-            m_LoggedInUser = i_LoginResult.LoggedInUser;
+            LoggedInUser = i_LoginResult.LoggedInUser;
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
         }
         private void initialzeData()
         {
             labelHeadline.Text = k_FormName;
-            labelName.Text = m_LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = m_LoggedInUser.PictureNormalURL;
+            labelName.Text = LoggedInUser.Name;
+            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
             try
             {
-                labelActualNumber.Text = m_LoggedInUser.Posts.Count.ToString();
+                labelActualNumber.Text = LoggedInUser.Posts.Count.ToString();
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {m_LoggedInUser.Name}'s groups");
+                MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
             }
         }
         protected override void OnShown(EventArgs e)
@@ -65,7 +65,7 @@ namespace BasicFacebookFeatures
         private void fetchPostsListBox()
         {
             listBoxPosts.Items.Clear();
-            foreach (Post post in m_LoggedInUser.Posts)
+            foreach (Post post in LoggedInUser.Posts)
             {
                 Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
                 m_PostsCreatedTimeAndText.Add(tuplePost);
@@ -73,7 +73,7 @@ namespace BasicFacebookFeatures
             }
             if (listBoxPosts.Items.Count == 0)
             {
-                MessageBox.Show($"No posts for {m_LoggedInUser.Name}");
+                MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
         private void fetchPostsByDate() //first feature we add

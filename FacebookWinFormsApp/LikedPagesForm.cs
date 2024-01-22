@@ -15,29 +15,25 @@ namespace BasicFacebookFeatures
 {
     public partial class LikedPagesForm : Form
     {
-        private LoginResult m_LogginResult;
-        private User m_LoggedInUser;
         private const string k_HeadLineComplition = "'s Liked Pages";
         private const string k_UnknownValueString = "Unknown";
         private const string k_TextBoxDefaultText = "Search Here";
         private const string k_TextBoxNotAccessible = "No access to pages categories";
         private bool m_Accesible = true;
         private bool m_TextBoxHasBeenChecked = false;
-
-
+        public User LoggedInUser { get; }
         public LikedPagesForm(LoginResult i_LoginResult)
         {
             InitializeComponent();
-            m_LogginResult = i_LoginResult;
-            m_LoggedInUser = i_LoginResult.LoggedInUser;
+            LoggedInUser = i_LoginResult.LoggedInUser;
             try
             {
-                labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
+                labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accesible = false;
-                MessageBox.Show($"There is no access to {m_LoggedInUser.Name}'s liked pages");
+                MessageBox.Show($"There is no access to {LoggedInUser.Name}'s liked pages");
             }
 
             initializeFormAppearance();
@@ -46,7 +42,7 @@ namespace BasicFacebookFeatures
         private void initializeFormAppearance()
         {
 
-            labelHeadline.Text = m_LoggedInUser.FirstName + k_HeadLineComplition;
+            labelHeadline.Text = LoggedInUser.FirstName + k_HeadLineComplition;
             labelNumberOfPages.Location = new System.Drawing.Point(
                 labelHeadline.Right + 20,
                 labelHeadline.Bottom - labelNumberOfPages.Height
@@ -83,10 +79,10 @@ namespace BasicFacebookFeatures
         private void fetchLikedPages()
         {
             listBoxLikedPages.Items.Clear();
-            if (m_LoggedInUser != null)
+            if (LoggedInUser != null)
             {
-                labelNumberOfPagesValue.Text = m_LoggedInUser.LikedPages.Count.ToString();
-                foreach (Page likedPage in m_LoggedInUser.LikedPages)
+                labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
+                foreach (Page likedPage in LoggedInUser.LikedPages)
                 {
                     fetchPage(likedPage);
                 }
@@ -117,7 +113,7 @@ namespace BasicFacebookFeatures
             if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxDefaultText)
             {
                 listBoxLikedPages.Items.Clear();
-                foreach (Page likedPage in m_LoggedInUser.LikedPages)
+                foreach (Page likedPage in LoggedInUser.LikedPages)
                 {
                     if (!string.IsNullOrEmpty(likedPage.Category) && likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
                     {
@@ -127,7 +123,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                if (listBoxLikedPages.Items.Count != m_LoggedInUser.LikedPages.Count)
+                if (listBoxLikedPages.Items.Count != LoggedInUser.LikedPages.Count)
                 {
                     fetchLikedPages();
                 }
