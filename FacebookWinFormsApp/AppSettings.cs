@@ -10,17 +10,14 @@ namespace BasicFacebookFeatures
 {
     public class AppSettings
     {
-        private bool m_RememberMe;
-        private string m_LastAccessToken;
-        
-        private AppSettings()
-        {
-            m_RememberMe = false;
-            m_LastAccessToken = null;
-        }
-
         public bool RememberMe { get; set; }
         public string LastAccessToken { get; set; }
+        private AppSettings()
+        {
+            RememberMe = false;
+            LastAccessToken = null;
+        }
+
         public void SaveToFile()
         {
             using (Stream stream = new FileStream(createPath(), FileMode.Truncate))
