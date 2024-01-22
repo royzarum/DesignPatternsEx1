@@ -48,7 +48,7 @@ namespace BasicFacebookFeatures
             }
             return obj;
         }
-        private static string createPath()
+        private string createPath()
         {
             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "App Settings.xml";
