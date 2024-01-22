@@ -18,7 +18,6 @@ namespace BasicFacebookFeatures
         private const string k_HeadLineComplition = "'s Liked Pages";
         private const string k_UnknownValueString = "Unknown";
         private const string k_TextBoxDefaultText = "Search Here";
-        private const string k_TextBoxNotAccessible = "No access to pages categories";
         private bool m_Accesible = true;
         private bool m_TextBoxHasBeenChecked = false;
         public User LoggedInUser { get; }
