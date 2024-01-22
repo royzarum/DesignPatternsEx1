@@ -21,12 +21,6 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;           
         }
 
-        private void menuButton_MouseEnter(object sender, EventArgs e)
-        {
-            Button menuButton = sender as Button;
-            menuButton.BackColor = Color.White;
-        }
-
         FacebookWrapper.LoginResult m_LoginResult;
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -129,11 +123,6 @@ namespace BasicFacebookFeatures
         {
             base.OnClosing(e);
             m_AppSettings.SaveToFile();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonPosts_Click(object sender, EventArgs e)
