@@ -121,6 +121,7 @@
     <Compile Include="LikedPagesForm.Designer.cs">
       <DependentUpon>LikedPagesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostsDatesSaved.cs" />
     <Compile Include="PostsForm.cs">
       <SubType>Form</SubType>
     </Compile>

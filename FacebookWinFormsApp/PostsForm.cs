@@ -15,6 +15,7 @@ namespace BasicFacebookFeatures
 {
     public partial class PostsForm : Form
     {
+        private PostsDatesSaved m_DatesSavedInFile = PostsDatesSaved.LoadToFile();
         private List<Tuple<DateTime, string>> m_PostsCreatedTimeAndText;
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
@@ -24,6 +25,7 @@ namespace BasicFacebookFeatures
         private const string k_NoPostInYear = "No posts in this year";
         private const string k_ComboBoxDefaultText = "Select Date";
         private bool m_Accessible = true;
+        private bool m_Load = true;
         public User LoggedInUser { get; }
         public PostsForm()
         {
@@ -36,6 +38,7 @@ namespace BasicFacebookFeatures
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
+            loadDateInformation();
         }
         private void initialzeData()
         {
@@ -65,6 +68,63 @@ namespace BasicFacebookFeatures
                 this.Close();
             }
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            saveDateInformation();
+            m_DatesSavedInFile.SaveToFile();
+        }
+        private void saveDateInformation()
+        {
+            m_DatesSavedInFile.LastDay = numericUpDownDay.Value;
+            m_DatesSavedInFile.LastMonth = numericUpDownMonth.Value;
+            m_DatesSavedInFile.LastYear = numericUpDownYear.Value;
+            m_DatesSavedInFile.NamesSaved.Clear();
+            m_DatesSavedInFile.DatesSaved.Clear();
+            foreach (Tuple<string, DateTime> dateSaved in m_DatesSaved)
+            {
+                m_DatesSavedInFile.NamesSaved.Add(dateSaved.Item1);
+                m_DatesSavedInFile.DatesSaved.Add(dateSaved.Item2);
+            }
+        }
+        private void loadDateInformation()
+        {
+            if(m_DatesSavedInFile.LastDay >= numericUpDownDay.Minimum && m_DatesSavedInFile.LastDay <= numericUpDownDay.Maximum)
+            {
+                numericUpDownDay.Value = m_DatesSavedInFile.LastDay;
+            }
+            else
+            {
+                numericUpDownDay.Value -= numericUpDownDay.Minimum;
+            }
+            if (m_DatesSavedInFile.LastMonth >= numericUpDownMonth.Minimum && m_DatesSavedInFile.LastMonth <= numericUpDownMonth.Maximum)
+            {
+                numericUpDownMonth.Value = m_DatesSavedInFile.LastMonth;
+            }
+            else
+            {
+                numericUpDownMonth.Value -= numericUpDownMonth.Minimum;
+            }
+            if (m_DatesSavedInFile.LastYear >= numericUpDownYear.Minimum && m_DatesSavedInFile.LastYear <= numericUpDownYear.Maximum)
+            {
+                numericUpDownYear.Value = m_DatesSavedInFile.LastYear;
+            }
+            else
+            {
+                numericUpDownYear.Value = numericUpDownYear.Minimum;
+            }
+            if (m_DatesSavedInFile.DatesSaved != null && m_DatesSavedInFile.NamesSaved != null)
+            {
+                comboBoxSavedDates.Items.Clear();
+                for (int i = 0; i < m_DatesSavedInFile.NamesSaved.Count; i++)
+                {
+                    Tuple<string, DateTime> dateSaved = Tuple.Create(m_DatesSavedInFile.NamesSaved[i], m_DatesSavedInFile.DatesSaved[i]);
+                    comboBoxSavedDates.Items.Add(dateSaved.Item1);
+                    m_DatesSaved.Add(dateSaved);
+                }
+            }
+            m_Load = false;
+        }
         private void fetchPostsListBox()
         {
             listBoxPosts.Items.Clear();
@@ -79,7 +139,7 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
-        private void fetchPostsByDate(int i_Year, int i_Month, int i_Day) //first feature we add
+        private void fetchPostsByDate(int i_Year, int i_Month, int i_Day) ///first feature we add
         {
             listBoxPosts.Items.Clear();
             if (i_Month == 0)
@@ -160,7 +220,7 @@ namespace BasicFacebookFeatures
                 listBoxPosts.TopIndex = m_PostsCreatedTimeAndText.Count - 1;
             }
         }
-        private void buttonFilterByDate_Click(object sender, EventArgs e) //first feature we add
+        private void buttonFilterByDate_Click(object sender, EventArgs e)
         {
             int year = int.Parse(numericUpDownYear.Value.ToString());
             int month = int.Parse(numericUpDownMonth.Value.ToString());
@@ -169,11 +229,17 @@ namespace BasicFacebookFeatures
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
         {
-            ifMonthIsZeroDayIsZero();
+            if(!m_Load)
+            {
+                ifMonthIsZeroDayIsZero();
+            }
         }
         private void numericUpDownDay_ValueChanged(object sender, EventArgs e)
         {
-            ifMonthIsZeroDayIsZero();
+            if(!m_Load)
+            {
+                ifMonthIsZeroDayIsZero();
+            }
         }
         private void ifMonthIsZeroDayIsZero()
         {
