@@ -103,6 +103,8 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FriendsClosenessResult.cs" />
+    <Compile Include="FriendsCompetition.cs" />
     <Compile Include="FriendsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,7 +159,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="FacebookDesktopClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
