@@ -45,7 +45,6 @@ namespace BasicFacebookFeatures
             labelNumberOfAlbumsValue.Top = labelNumberOfAlbums.Top;
             labelNumberOfAlbumsValue.Left = labelNumberOfAlbums.Right;
             this.MinimumSize = new System.Drawing.Size(2 * labelName.Left + k_PictureBoxSize + 9 * k_SpaceSize, labelNumberOfAlbums.Bottom + 2 * k_SpaceSize);
-
         }
 
         protected override void OnResize(EventArgs e)
