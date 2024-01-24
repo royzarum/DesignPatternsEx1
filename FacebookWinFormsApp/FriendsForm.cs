@@ -21,18 +21,6 @@ namespace BasicFacebookFeatures
         private const string k_FormName = "Friends";
         private const int k_FriendsMaxChoice = 2;
 
-        //private void generateDummyFriends()
-        //{
-        //    User friend1 = new User();
-        //    friend1.Birthday = "27/03/1997";
-        //    friend1.FirstName = "Eli";
-        //    friend1.LastName = "Kopter";
-        //    friend1.Name = "Eli Kopter";
-        //    friend1.LikedPages = new FacebookObjectCollection<Page> { LoggedInUser.LikedPages[0], LoggedInUser.LikedPages[1] };
-        //    LoggedInUser.Friends.Add(friend1);
-        //}
-
-
         public FriendsForm()
         {
             InitializeComponent();
@@ -59,6 +47,7 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"There is no access for {LoggedInUser.Name}'s friends");
             }
         }
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -72,23 +61,19 @@ namespace BasicFacebookFeatures
                 this.Close();
             }
         }
+
         private void fetchFriendsListBox()
         {
             listBoxFriends.Items.Clear();
             foreach (User friend in LoggedInUser.Friends)
             {
                 listBoxFriends.Items.Add(friend);
-                listBoxFriends.Items.Add("moshe");
-                listBoxFriends.Items.Add("David");
-                listBoxFriends.Items.Add("Haim");
-
-
             }
+
             if (listBoxFriends.Items.Count == 0)
             {
                 MessageBox.Show($"No friends for {LoggedInUser.Name}");
             }
-
 
         }
 
@@ -110,7 +95,6 @@ namespace BasicFacebookFeatures
             }
 
             groupBoxStartCompetition.Visible = false;
-
             FriendsCompetition competition = new FriendsCompetition(
                 LoggedInUser,
                 listBoxFriends.SelectedItems[0] as User,
