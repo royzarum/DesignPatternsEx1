@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="BasicFacebookFeatures.AlbumsForm">
+    <Position X="3.75" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAiABAAAGwAGAIAACAAIAhAwAAAAAQAfFAAA=</HashCode>
+      <FileName>AlbumsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.AppSettings">
+    <Position X="0.5" Y="14.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAgEAA=</HashCode>
+      <FileName>AppSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.FormMain">
+    <Position X="0.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gCAIABAjICABAACBQEDBiggSAAYAQggAAAAAAIAB1AA=</HashCode>
+      <FileName>FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.FriendsClosenessResult">
+    <Position X="24.5" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAABABAASAAAAAAAAAAAAAAAAAAAAAAAAAAECBAI=</HashCode>
+      <FileName>FriendsClosenessResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.FriendsCompetition">
+    <Position X="24" Y="4.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABSAgAAAAGAAAAAAAEABABAAAADAAAAAAg=</HashCode>
+      <FileName>FriendsCompetition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.FriendsForm">
+    <Position X="19" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gAAgABEEBCABgLBEAQGEAFACAEIBACwRAggAAAEFAgA=</HashCode>
+      <FileName>FriendsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.GroupsForm">
+    <Position X="11.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACABAAAEAAGAACACAAIAAAwAAAACAAEBAAA=</HashCode>
+      <FileName>GroupsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.LikedPagesForm">
+    <Position X="7.5" Y="3" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAhFAwAAALABAAFUAAOEAQACgAAAANoAEBACACMAIAA=</HashCode>
+      <FileName>LikedPagesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.PostsDatesSaved">
+    <Position X="21" Y="16.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAgAAAAAAEAAAAAAEAAABAAAAAAAgCAAAAAAAA=</HashCode>
+      <FileName>PostsDatesSaved.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.PostsForm">
+    <Position X="14.25" Y="3" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>gBAQABDE4KAZFwkUhAGkmQBSIAKkACwEARAACQVRAAA=</HashCode>
+      <FileName>PostsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.User">
+    <Position X="30" Y="5.25" Width="4" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eGender" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eRelationshipStatus" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eOnlineStatus" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Group">
+    <Position X="20.25" Y="22.75" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.Group.ePrivacy" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Page">
+    <Position X="15.75" Y="22.75" Width="3.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Post">
+    <Position X="24.75" Y="22.75" Width="3.5" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.Post.eType" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Album">
+    <Position X="29.25" Y="22.75" Width="3.75" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.Album.eType" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.LoginResult">
+    <Position X="30.5" Y="1" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
