@@ -138,8 +138,7 @@ namespace BasicFacebookFeatures
             {
                 Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
                 m_PostsCreatedTimeAndText.Add(tuplePost);
-                listBoxPosts.Invoke(new Action(() 
-                    => listBoxPosts.Items.Add($"{tuplePost.Item1.ToString()}\t{tuplePost.Item2}")));
+                listBoxPosts.Invoke(new Action(() => addPostToListBox(tuplePost)));
             }
             if (listBoxPosts.Items.Count == 0)
             {
