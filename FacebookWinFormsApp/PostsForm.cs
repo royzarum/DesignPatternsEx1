@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
 {
     public partial class PostsForm : Form
     {
-        private PostsDatesSaved m_DatesSavedInFile = PostsDatesSaved.LoadToFile();
+        private PostsDatesSaved m_DatesSavedInFile;
         private List<Tuple<DateTime, string>> m_PostsCreatedTimeAndText;
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
@@ -35,6 +35,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
+            m_DatesSavedInFile = PostsDatesSaved.LoadToFile(LoggedInUser.Id);
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
@@ -79,6 +80,7 @@ namespace BasicFacebookFeatures
             m_DatesSavedInFile.LastDay = numericUpDownDay.Value;
             m_DatesSavedInFile.LastMonth = numericUpDownMonth.Value;
             m_DatesSavedInFile.LastYear = numericUpDownYear.Value;
+            m_DatesSavedInFile.UserId = LoggedInUser.Id;
             m_DatesSavedInFile.NamesSaved.Clear();
             m_DatesSavedInFile.DatesSaved.Clear();
             foreach (Tuple<string, DateTime> dateSaved in m_DatesSaved)

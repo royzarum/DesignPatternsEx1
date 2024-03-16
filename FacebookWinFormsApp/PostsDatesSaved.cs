@@ -13,6 +13,7 @@ namespace BasicFacebookFeatures
     public class PostsDatesSaved
     {
         public List<string> NamesSaved { get; set; }
+        public string UserId { get; set; }
         public List<DateTime> DatesSaved { get; set; }
         public decimal LastDay { get; set; }
         public decimal LastMonth { get; set; }
@@ -24,16 +25,16 @@ namespace BasicFacebookFeatures
         }
         public void SaveToFile()
         {
-            using (Stream stream = new FileStream(createPath(), FileMode.Truncate))
+            using (Stream stream = new FileStream(createPath(UserId), FileMode.Truncate))
             {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize(stream, this);
             }
         }
-        public static PostsDatesSaved LoadToFile()
+        public static PostsDatesSaved LoadToFile(string i_UserId)
         {
             PostsDatesSaved obj = new PostsDatesSaved();
-            string path = createPath();
+            string path = createPath(i_UserId);
             if (!File.Exists(path))
             {
                 File.Create(path);
@@ -52,10 +53,10 @@ namespace BasicFacebookFeatures
             }
             return obj;
         }
-        private static string createPath()
+        private static string createPath(string i_UserId)
         {
             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string fileName = "Posts Dates Saved.xml";
+            string fileName = $"{i_UserId}.xml";
             return Path.Combine(projectDirectory, fileName);
         }
     }
