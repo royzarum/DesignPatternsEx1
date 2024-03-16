@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp.DevTools.SystemInfo;
@@ -69,10 +70,14 @@ namespace BasicFacebookFeatures
             }
         }
 
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
-            if(m_Accessible)
+            base.OnLoad(e);
+            new Thread(fetchData).Start();
+        }
+        private void fetchData()
+        {
+            if (m_Accessible)
             {
                 fetchAlbumsToListBox();
             }
@@ -91,7 +96,7 @@ namespace BasicFacebookFeatures
                 listBoxAlbums.DisplayMember = "Name";
                 foreach (Album album in LoggedInUser.Albums)
                 {
-                    listBoxAlbums.Items.Add(album);
+                    listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
                 }
 
                 if (listBoxAlbums.Items.Count == 0)
@@ -105,10 +110,9 @@ namespace BasicFacebookFeatures
         {
             displaySelectedAlbum();
         }
-
+        
         private void displaySelectedAlbum()
         {
-
             Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
             if (selectedAlbum != null && selectedAlbum.Photos.Count > 0)

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
@@ -62,9 +63,13 @@ namespace BasicFacebookFeatures
             labelPhoneValue.Left = labelPhoneNumber.Right;
         }
 
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
+            base.OnLoad(e);
+            new Thread(fetchdata).Start();
+        }
+        private void fetchdata() 
+        {
             if (m_Accesible)
             {
                 fetchLikedPages();
@@ -74,7 +79,6 @@ namespace BasicFacebookFeatures
                 this.Close();
             }
         }
-
         private void fetchLikedPages()
         {
             listBoxLikedPages.Items.Clear();
@@ -83,7 +87,7 @@ namespace BasicFacebookFeatures
                 labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
                 foreach (Page likedPage in LoggedInUser.LikedPages)
                 {
-                    fetchPage(likedPage);
+                    listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
                 }
             }
         }
@@ -116,7 +120,7 @@ namespace BasicFacebookFeatures
                 {
                     if (!string.IsNullOrEmpty(likedPage.Category) && likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
                     {
-                        fetchPage(likedPage);
+                        listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
                     }
                 }
             }

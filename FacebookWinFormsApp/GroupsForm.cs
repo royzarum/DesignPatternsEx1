@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace BasicFacebookFeatures
 {
@@ -42,11 +43,15 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
             }
         }
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
+            base.OnLoad(e);
+            new Thread(fetchData).Start();
+        }
+        private void fetchData()
+        {
             initialzeData();
-            if(m_Accessible)
+            if (m_Accessible)
             {
                 fetchGroupsListBox();
             }
@@ -60,7 +65,7 @@ namespace BasicFacebookFeatures
             listBoxGroups.Items.Clear();
             foreach(Group group in LoggedInUser.Groups)
             {
-                listBoxGroups.Items.Add(group);
+                listBoxGroups.Invoke(new Action(() => listBoxGroups.Items.Add(group)));
             }
             if(listBoxGroups.Items.Count == 0)
             {

@@ -56,9 +56,13 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
             }
         }
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
+            base.OnLoad(e);
+            new Thread(fetchData).Start();
+        }
+        private void fetchData()
+        {
             initialzeData();
             if (m_Accessible)
             {
@@ -134,7 +138,8 @@ namespace BasicFacebookFeatures
             {
                 Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
                 m_PostsCreatedTimeAndText.Add(tuplePost);
-                addPostToListBox(tuplePost);
+                listBoxPosts.Invoke(new Action(() 
+                    => listBoxPosts.Items.Add($"{tuplePost.Item1.ToString()}\t{tuplePost.Item2}")));
             }
             if (listBoxPosts.Items.Count == 0)
             {

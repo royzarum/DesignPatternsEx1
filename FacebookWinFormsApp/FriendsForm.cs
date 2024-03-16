@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 
 namespace BasicFacebookFeatures
@@ -48,9 +49,13 @@ namespace BasicFacebookFeatures
             }
         }
 
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
+            base.OnLoad(e);
+            new Thread(fetchData).Start();
+        }
+        private void fetchData()
+        {
             initialzeData();
             if (m_Accessible)
             {
@@ -67,7 +72,7 @@ namespace BasicFacebookFeatures
             listBoxFriends.Items.Clear();
             foreach (User friend in LoggedInUser.Friends)
             {
-                listBoxFriends.Items.Add(friend);
+                listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(friend)));
             }
 
             if (listBoxFriends.Items.Count == 0)
