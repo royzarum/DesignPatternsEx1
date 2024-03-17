@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using SingletonT;
 
 namespace BasicFacebookFeatures
 {
@@ -27,6 +29,7 @@ namespace BasicFacebookFeatures
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
+        private DatesFilterStrategy DatesFilterStrategy { get; set; }
         public PostsForm()
         {
             InitializeComponent();
@@ -35,7 +38,8 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
-            m_DatesSavedInFile = PostsDatesSaved.LoadToFile(LoggedInUser.Id);
+            DatesFilterStrategy = new DatesFilterStrategy();
+            m_DatesSavedInFile = PostsDatesSaved.LoadFromFile(LoggedInUser.Id);
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
@@ -59,11 +63,11 @@ namespace BasicFacebookFeatures
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            initialzeData();
             new Thread(fetchData).Start();
         }
         private void fetchData()
         {
-            initialzeData();
             if (m_Accessible)
             {
                 fetchPostsListBox();
@@ -133,7 +137,7 @@ namespace BasicFacebookFeatures
         }
         private void fetchPostsListBox()
         {
-            listBoxPosts.Items.Clear();
+            listBoxPosts.Invoke(new Action(listBoxPosts.Items.Clear));
             foreach (Post post in LoggedInUser.Posts)
             {
                 Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
@@ -148,49 +152,15 @@ namespace BasicFacebookFeatures
         private void fetchPostsByDate(int i_Year, int i_Month, int i_Day) ///first feature we add
         {
             listBoxPosts.Items.Clear();
-            if (i_Month == 0)
+            var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
+                                      where DatesFilterStrategy.DateSelection
+                                      (i_Day, i_Month, i_Year, post.Item1)
+                                      select post;
+            foreach (var post in filteredPostsByDate)
             {
-                fetchPostsIfMonthIsZero(i_Year);
+                addPostToListBox(post);
             }
-            else if (i_Day == 0)
-            {
-                fetchPostsIfDayIsZero(i_Year, i_Month);
-            }
-            else
-            {
-                foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-                {
-                    if (post.Item1.Day == i_Day && post.Item1.Month == i_Month
-                        && post.Item1.Year == i_Year)
-                    {
-                        addPostToListBox(post);
-                    }
-                }
-                updateListBoxPosts(k_NoPostInDate);
-            }
-        }
-        private void fetchPostsIfDayIsZero(int i_Year, int i_Month)
-        {
-
-            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-            {
-                if (post.Item1.Month == i_Month && post.Item1.Year == i_Year)
-                {
-                    addPostToListBox(post);
-                }
-            }
-            updateListBoxPosts(k_NoPostInMonth);
-        }
-        private void fetchPostsIfMonthIsZero(int i_Year)
-        {
-            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-            {
-                if (post.Item1.Year == i_Year)
-                {
-                    addPostToListBox(post);
-                }
-            }
-            updateListBoxPosts(k_NoPostInYear);
+            updateListBoxPosts(k_NoPostInDate);
         }
         private void updateListBoxPosts(string i_Message)
         {
@@ -208,10 +178,6 @@ namespace BasicFacebookFeatures
         {
 
             listBoxPosts.Items.Add($"{i_Post.Item1.ToString()}\t{i_Post.Item2}");
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
         private void buttonPost_Click(object sender, EventArgs e)
         {
