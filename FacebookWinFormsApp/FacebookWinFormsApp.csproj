@@ -100,7 +100,7 @@
       <DependentUpon>AlbumsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="DatesFilterStrategy.cs" />
+    <Compile Include="DatesStrategy.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,7 +121,6 @@
     <Compile Include="GroupsForm.Designer.cs">
       <DependentUpon>GroupsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDateFilterStrategy.cs" />
     <Compile Include="LikedPagesForm.cs">
       <SubType>Form</SubType>
     </Compile>

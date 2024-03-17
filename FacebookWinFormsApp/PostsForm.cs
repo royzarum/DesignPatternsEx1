@@ -22,14 +22,12 @@ namespace BasicFacebookFeatures
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
         private const string k_Zero = "0";
-        private const string k_NoPostInDate = "No posts in this date";
-        private const string k_NoPostInMonth = "No posts in this year and month";
-        private const string k_NoPostInYear = "No posts in this year";
+        private const string k_NoPostInAvailable = "No posts Available";
         private const string k_ComboBoxDefaultText = "Select Date";
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
-        private DatesFilterStrategy DatesFilterStrategy { get; set; }
+        public DatesStrategy DatesStrategy { get; set; }
         public PostsForm()
         {
             InitializeComponent();
@@ -38,7 +36,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
-            DatesFilterStrategy = new DatesFilterStrategy();
+            DatesStrategy = new DatesStrategy(null);
             m_DatesSavedInFile = PostsDatesSaved.LoadFromFile(LoggedInUser.Id);
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
@@ -47,12 +45,12 @@ namespace BasicFacebookFeatures
         }
         private void initialzeData()
         {
-            labelHeadline.Text = k_FormName;
-            labelName.Text = LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
+            labelHeadline.Invoke(new Action(() =>labelHeadline.Text = k_FormName));
+            labelName.Invoke(new Action(() => labelName.Text = LoggedInUser.Name));
+            pictureBoxProfile.Invoke(new Action(() =>pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL));
             try
             {
-                labelActualNumber.Text = LoggedInUser.Posts.Count.ToString();
+                labelActualNumber.Invoke(new Action(() => labelActualNumber.Text = LoggedInUser.Posts.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
@@ -63,11 +61,11 @@ namespace BasicFacebookFeatures
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            initialzeData();
             new Thread(fetchData).Start();
         }
         private void fetchData()
         {
+            initialzeData();
             if (m_Accessible)
             {
                 fetchPostsListBox();
@@ -149,18 +147,15 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
-        private void fetchPostsByDate(int i_Year, int i_Month, int i_Day) ///first feature we add
+        private void SelectDates(int i_Year, int i_Month, int i_Day)
         {
             listBoxPosts.Items.Clear();
-            var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
-                                      where DatesFilterStrategy.DateSelection
-                                      (i_Day, i_Month, i_Year, post.Item1)
-                                      select post;
-            foreach (var post in filteredPostsByDate)
+            List<Tuple<DateTime, string>> filteredPostsByDate = DatesStrategy.Selector(i_Year,i_Month, i_Day, m_PostsCreatedTimeAndText);
+            foreach (Tuple<DateTime, string> post in filteredPostsByDate)
             {
                 addPostToListBox(post);
             }
-            updateListBoxPosts(k_NoPostInDate);
+            updateListBoxPosts(k_NoPostInAvailable);
         }
         private void updateListBoxPosts(string i_Message)
         {
@@ -197,7 +192,8 @@ namespace BasicFacebookFeatures
             int year = int.Parse(numericUpDownYear.Value.ToString());
             int month = int.Parse(numericUpDownMonth.Value.ToString());
             int day = int.Parse(numericUpDownDay.Value.ToString());
-            fetchPostsByDate(year, month, day);
+            DatesStrategy.DateFilter = isDateSelected;
+            SelectDates(year, month, day);
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
         {
@@ -299,7 +295,7 @@ namespace BasicFacebookFeatures
                     numericUpDownDay.Value = day;
                     numericUpDownMonth.Value = month;
                     numericUpDownYear.Value = year;
-                    fetchPostsByDate(year, month, day);
+                    SelectDates(year, month, day);
                 }
             }
         }
@@ -325,6 +321,56 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show($"{nameToRemove} is not saved");
             }
+        }
+
+        private void buttonOlderPosts_Click(object sender, EventArgs e)
+        {
+            int year = int.Parse(numericUpDownYear.Value.ToString());
+            int month = int.Parse(numericUpDownMonth.Value.ToString());
+            int day = int.Parse(numericUpDownDay.Value.ToString());
+            DatesStrategy.DateFilter = isDateOlder;
+            SelectDates(year, month, day);
+        }
+        private bool isDateSelected(int i_Year, int i_Month, int i_Day, DateTime i_Date)
+        {
+            bool result = (i_Year == i_Date.Year);
+            if (i_Month != 0)
+            {
+                result = (result && i_Month == i_Date.Month);
+                if (i_Day != 0)
+                {
+                    result = (result && i_Month == i_Date.Month && i_Day == i_Date.Day);
+                }
+            }
+            return result;
+        }
+        private bool isDateOlder(int i_Year, int i_Month, int i_Day, DateTime i_Date)
+        {
+            bool result;
+            if(i_Year < i_Date.Year)
+            {
+                result = false;
+            }
+            else if(i_Year == i_Date.Year)
+            {
+                if(i_Month < i_Date.Month)
+                {
+                    result = false;
+                }
+                else if( i_Month == i_Date.Month)
+                {
+                    result = i_Day > i_Date.Day;
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+            else
+            {
+                result= true;
+            }
+            return result;
         }
     }
 }
