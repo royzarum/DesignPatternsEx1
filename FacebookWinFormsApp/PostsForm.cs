@@ -15,7 +15,7 @@ using SingletonT;
 
 namespace BasicFacebookFeatures
 {
-    public delegate R DateSelector<T1, T2, T3, T4, R>(T1 i_Param1, T2 i_Param2, T3 i_Param3, T4 i_Param4);
+    public delegate R PostSelector<T1, T2, T3, T4, R>(T1 i_Param1, T2 i_Param2, T3 i_Param3, T4 i_Param4);
     public partial class PostsForm : Form
     {
         private PostsDatesSaved m_DatesSavedInFile;
@@ -28,8 +28,8 @@ namespace BasicFacebookFeatures
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
-        public IDatesStrategy DatesStrategy { get; set; }
-        public DateSelector<int, int, int, DateTime, bool> DateSelector { get; set; }
+        public IPostsStrategy DatesStrategy { get; set; }
+        public PostSelector<int, int, int, DateTime, bool> SelectorStrategy { get; set; }
         public PostsForm()
         {
             InitializeComponent();
@@ -152,7 +152,7 @@ namespace BasicFacebookFeatures
         {
             listBoxPosts.Items.Clear();
             var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
-                                      where DateSelector(i_Year, i_Month, i_Day, post.Item1)
+                                      where SelectorStrategy(i_Year, i_Month, i_Day, post.Item1)
                                       select post;
             foreach (var post in filteredPostsByDate)
             {
@@ -192,12 +192,12 @@ namespace BasicFacebookFeatures
         }
         private void buttonFilterByDate_Click(object sender, EventArgs e)
         {
-            DatesStrategy = new IsDateSelected();
+            DatesStrategy = new IsPostInRange();
             activateSelector();
         }
         private void buttonOlderPosts_Click(object sender, EventArgs e)
         {
-            DatesStrategy = new IsDateOlder();
+            DatesStrategy = new IsPostOlder();
             activateSelector();
         }
         private void activateSelector()
@@ -205,7 +205,7 @@ namespace BasicFacebookFeatures
             int year = int.Parse(numericUpDownYear.Value.ToString());
             int month = int.Parse(numericUpDownMonth.Value.ToString());
             int day = int.Parse(numericUpDownDay.Value.ToString());
-            DateSelector = DatesStrategy.Selector;
+            SelectorStrategy = DatesStrategy.Selector;
             selectDates(year, month, day);
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
@@ -302,7 +302,7 @@ namespace BasicFacebookFeatures
             {
                 if(savedDate.Item1 == name)
                 {
-                    DatesStrategy = new IsDateSelected();
+                    DatesStrategy = new IsPostInRange();
                     int day = savedDate.Item2.Day;
                     int month = savedDate.Item2.Month;
                     int year = savedDate.Item2.Year;

@@ -100,7 +100,7 @@
       <DependentUpon>AlbumsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="IsDateSelected.cs" />
+    <Compile Include="IsPostInRange.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,8 +121,8 @@
     <Compile Include="GroupsForm.Designer.cs">
       <DependentUpon>GroupsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDatesStrategy.cs" />
-    <Compile Include="IsDateOlder.cs" />
+    <Compile Include="IPostsStrategy.cs" />
+    <Compile Include="IsPostOlder.cs" />
     <Compile Include="LikedPagesForm.cs">
       <SubType>Form</SubType>
     </Compile>

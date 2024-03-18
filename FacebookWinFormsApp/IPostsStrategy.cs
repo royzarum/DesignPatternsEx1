@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicFacebookFeatures
 {
-    public interface IDatesStrategy
+    public interface IPostsStrategy
     {
         bool Selector(int i_Year, int i_Month, int i_Day, DateTime i_Date);
     }
