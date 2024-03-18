@@ -9,7 +9,7 @@ using SingletonT;
 
 namespace BasicFacebookFeatures
 {
-    internal sealed class PostsDatesSaved
+    public sealed class PostsDatesSaved
     {
         public List<string> NamesSaved { get; set; }
         public string UserId { get; set; }
