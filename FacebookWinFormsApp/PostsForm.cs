@@ -15,6 +15,7 @@ using SingletonT;
 
 namespace BasicFacebookFeatures
 {
+    public delegate R DateSelector<T1, T2, T3, T4, R>(T1 i_Param1, T2 i_Param2, T3 i_Param3, T4 i_Param4);
     public partial class PostsForm : Form
     {
         private PostsDatesSaved m_DatesSavedInFile;
@@ -27,7 +28,8 @@ namespace BasicFacebookFeatures
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
-        public DatesStrategy DatesStrategy { get; set; }
+        public IDatesStrategy DatesStrategy { get; set; }
+        public DateSelector<int, int, int, DateTime, bool> DateSelector { get; set; }
         public PostsForm()
         {
             InitializeComponent();
@@ -36,7 +38,6 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
-            DatesStrategy = new DatesStrategy(null);
             m_DatesSavedInFile = PostsDatesSaved.LoadFromFile(LoggedInUser.Id);
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
@@ -147,11 +148,13 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
-        private void SelectDates(int i_Year, int i_Month, int i_Day)
+        private void selectDates(int i_Year, int i_Month, int i_Day)
         {
             listBoxPosts.Items.Clear();
-            List<Tuple<DateTime, string>> filteredPostsByDate = DatesStrategy.Selector(i_Year,i_Month, i_Day, m_PostsCreatedTimeAndText);
-            foreach (Tuple<DateTime, string> post in filteredPostsByDate)
+            var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
+                                      where DateSelector(i_Year, i_Month, i_Day, post.Item1)
+                                      select post;
+            foreach (var post in filteredPostsByDate)
             {
                 addPostToListBox(post);
             }
@@ -189,11 +192,21 @@ namespace BasicFacebookFeatures
         }
         private void buttonFilterByDate_Click(object sender, EventArgs e)
         {
+            DatesStrategy = new IsDateSelected();
+            activateSelector();
+        }
+        private void buttonOlderPosts_Click(object sender, EventArgs e)
+        {
+            DatesStrategy = new IsDateOlder();
+            activateSelector();
+        }
+        private void activateSelector()
+        {
             int year = int.Parse(numericUpDownYear.Value.ToString());
             int month = int.Parse(numericUpDownMonth.Value.ToString());
             int day = int.Parse(numericUpDownDay.Value.ToString());
-            DatesStrategy.DateFilter = isDateSelected;
-            SelectDates(year, month, day);
+            DateSelector = DatesStrategy.Selector;
+            selectDates(year, month, day);
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
         {
@@ -289,13 +302,14 @@ namespace BasicFacebookFeatures
             {
                 if(savedDate.Item1 == name)
                 {
+                    DatesStrategy = new IsDateSelected();
                     int day = savedDate.Item2.Day;
                     int month = savedDate.Item2.Month;
                     int year = savedDate.Item2.Year;
                     numericUpDownDay.Value = day;
                     numericUpDownMonth.Value = month;
                     numericUpDownYear.Value = year;
-                    SelectDates(year, month, day);
+                    selectDates(year, month, day);
                 }
             }
         }
@@ -322,55 +336,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"{nameToRemove} is not saved");
             }
         }
-
-        private void buttonOlderPosts_Click(object sender, EventArgs e)
-        {
-            int year = int.Parse(numericUpDownYear.Value.ToString());
-            int month = int.Parse(numericUpDownMonth.Value.ToString());
-            int day = int.Parse(numericUpDownDay.Value.ToString());
-            DatesStrategy.DateFilter = isDateOlder;
-            SelectDates(year, month, day);
-        }
-        private bool isDateSelected(int i_Year, int i_Month, int i_Day, DateTime i_Date)
-        {
-            bool result = (i_Year == i_Date.Year);
-            if (i_Month != 0)
-            {
-                result = (result && i_Month == i_Date.Month);
-                if (i_Day != 0)
-                {
-                    result = (result && i_Month == i_Date.Month && i_Day == i_Date.Day);
-                }
-            }
-            return result;
-        }
-        private bool isDateOlder(int i_Year, int i_Month, int i_Day, DateTime i_Date)
-        {
-            bool result;
-            if(i_Year < i_Date.Year)
-            {
-                result = false;
-            }
-            else if(i_Year == i_Date.Year)
-            {
-                if(i_Month < i_Date.Month)
-                {
-                    result = false;
-                }
-                else if( i_Month == i_Date.Month)
-                {
-                    result = i_Day > i_Date.Day;
-                }
-                else
-                {
-                    result = true;
-                }
-            }
-            else
-            {
-                result= true;
-            }
-            return result;
-        }
+      
     }
 }
