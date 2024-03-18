@@ -1,16 +1,15 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml.Serialization;
+using SingletonT;
 
 namespace BasicFacebookFeatures
 {
-    public class PostsDatesSaved
+    internal sealed class PostsDatesSaved
     {
         public List<string> NamesSaved { get; set; }
         public string UserId { get; set; }
@@ -18,6 +17,7 @@ namespace BasicFacebookFeatures
         public decimal LastDay { get; set; }
         public decimal LastMonth { get; set; }
         public decimal LastYear { get; set; }
+        public static PostsDatesSaved Instance { get { return Singleton<PostsDatesSaved>.Instance; } }
         private PostsDatesSaved()
         {
             NamesSaved = new List<string>();
@@ -31,9 +31,9 @@ namespace BasicFacebookFeatures
                 serializer.Serialize(stream, this);
             }
         }
-        public static PostsDatesSaved LoadToFile(string i_UserId)
+        public static PostsDatesSaved LoadFromFile(string i_UserId)
         {
-            PostsDatesSaved obj = new PostsDatesSaved();
+            PostsDatesSaved obj = PostsDatesSaved.Instance;
             string path = createPath(i_UserId);
             if (!File.Exists(path))
             {

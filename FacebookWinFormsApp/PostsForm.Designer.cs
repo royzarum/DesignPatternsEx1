@@ -54,6 +54,7 @@
             this.comboBoxSavedDates = new System.Windows.Forms.ComboBox();
             this.buttonDeleteDate = new System.Windows.Forms.Button();
             this.labelSavedDates = new System.Windows.Forms.Label();
+            this.buttonOlderPosts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
@@ -235,7 +236,7 @@
             // 
             this.labelMonthIsZero.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelMonthIsZero.AutoSize = true;
-            this.labelMonthIsZero.Location = new System.Drawing.Point(206, 626);
+            this.labelMonthIsZero.Location = new System.Drawing.Point(124, 628);
             this.labelMonthIsZero.Name = "labelMonthIsZero";
             this.labelMonthIsZero.Size = new System.Drawing.Size(290, 20);
             this.labelMonthIsZero.TabIndex = 25;
@@ -245,7 +246,7 @@
             // 
             this.labelDayIsZero.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDayIsZero.AutoSize = true;
-            this.labelDayIsZero.Location = new System.Drawing.Point(206, 646);
+            this.labelDayIsZero.Location = new System.Drawing.Point(124, 648);
             this.labelDayIsZero.Name = "labelDayIsZero";
             this.labelDayIsZero.Size = new System.Drawing.Size(268, 20);
             this.labelDayIsZero.TabIndex = 26;
@@ -369,12 +370,27 @@
             this.labelSavedDates.TabIndex = 34;
             this.labelSavedDates.Text = "Saved Dates";
             // 
+            // buttonOlderPosts
+            // 
+            this.buttonOlderPosts.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonOlderPosts.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonOlderPosts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonOlderPosts.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonOlderPosts.Location = new System.Drawing.Point(420, 628);
+            this.buttonOlderPosts.Name = "buttonOlderPosts";
+            this.buttonOlderPosts.Size = new System.Drawing.Size(200, 55);
+            this.buttonOlderPosts.TabIndex = 35;
+            this.buttonOlderPosts.Text = "Show Older Posts";
+            this.buttonOlderPosts.UseVisualStyleBackColor = false;
+            this.buttonOlderPosts.Click += new System.EventHandler(this.buttonOlderPosts_Click);
+            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1516, 703);
+            this.Controls.Add(this.buttonOlderPosts);
             this.Controls.Add(this.labelSavedDates);
             this.Controls.Add(this.buttonDeleteDate);
             this.Controls.Add(this.comboBoxSavedDates);
@@ -441,5 +457,6 @@
         private System.Windows.Forms.ComboBox comboBoxSavedDates;
         private System.Windows.Forms.Button buttonDeleteDate;
         private System.Windows.Forms.Label labelSavedDates;
+        private System.Windows.Forms.Button buttonOlderPosts;
     }
 }

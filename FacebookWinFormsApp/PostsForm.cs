@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -10,9 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using SingletonT;
 
 namespace BasicFacebookFeatures
 {
+    public delegate R PostSelector<T1, T2, T3, T4, R>(T1 i_Param1, T2 i_Param2, T3 i_Param3, T4 i_Param4);
     public partial class PostsForm : Form
     {
         private PostsDatesSaved m_DatesSavedInFile;
@@ -20,13 +23,13 @@ namespace BasicFacebookFeatures
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
         private const string k_Zero = "0";
-        private const string k_NoPostInDate = "No posts in this date";
-        private const string k_NoPostInMonth = "No posts in this year and month";
-        private const string k_NoPostInYear = "No posts in this year";
+        private const string k_NoPostInAvailable = "No posts Available";
         private const string k_ComboBoxDefaultText = "Select Date";
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
+        public IPostsStrategy DatesStrategy { get; set; }
+        public PostSelector<int, int, int, DateTime, bool> SelectorStrategy { get; set; }
         public PostsForm()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
-            m_DatesSavedInFile = PostsDatesSaved.LoadToFile(LoggedInUser.Id);
+            m_DatesSavedInFile = PostsDatesSaved.LoadFromFile(LoggedInUser.Id);
             m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
@@ -43,12 +46,12 @@ namespace BasicFacebookFeatures
         }
         private void initialzeData()
         {
-            labelHeadline.Text = k_FormName;
-            labelName.Text = LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
+            labelHeadline.Invoke(new Action(() =>labelHeadline.Text = k_FormName));
+            labelName.Invoke(new Action(() => labelName.Text = LoggedInUser.Name));
+            pictureBoxProfile.Invoke(new Action(() =>pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL));
             try
             {
-                labelActualNumber.Text = LoggedInUser.Posts.Count.ToString();
+                labelActualNumber.Invoke(new Action(() => labelActualNumber.Text = LoggedInUser.Posts.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
@@ -133,7 +136,7 @@ namespace BasicFacebookFeatures
         }
         private void fetchPostsListBox()
         {
-            listBoxPosts.Items.Clear();
+            listBoxPosts.Invoke(new Action(listBoxPosts.Items.Clear));
             foreach (Post post in LoggedInUser.Posts)
             {
                 Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
@@ -145,52 +148,17 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
-        private void fetchPostsByDate(int i_Year, int i_Month, int i_Day) ///first feature we add
+        private void selectDates(int i_Year, int i_Month, int i_Day)
         {
             listBoxPosts.Items.Clear();
-            if (i_Month == 0)
+            var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
+                                      where SelectorStrategy(i_Year, i_Month, i_Day, post.Item1)
+                                      select post;
+            foreach (var post in filteredPostsByDate)
             {
-                fetchPostsIfMonthIsZero(i_Year);
+                addPostToListBox(post);
             }
-            else if (i_Day == 0)
-            {
-                fetchPostsIfDayIsZero(i_Year, i_Month);
-            }
-            else
-            {
-                foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-                {
-                    if (post.Item1.Day == i_Day && post.Item1.Month == i_Month
-                        && post.Item1.Year == i_Year)
-                    {
-                        addPostToListBox(post);
-                    }
-                }
-                updateListBoxPosts(k_NoPostInDate);
-            }
-        }
-        private void fetchPostsIfDayIsZero(int i_Year, int i_Month)
-        {
-
-            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-            {
-                if (post.Item1.Month == i_Month && post.Item1.Year == i_Year)
-                {
-                    addPostToListBox(post);
-                }
-            }
-            updateListBoxPosts(k_NoPostInMonth);
-        }
-        private void fetchPostsIfMonthIsZero(int i_Year)
-        {
-            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
-            {
-                if (post.Item1.Year == i_Year)
-                {
-                    addPostToListBox(post);
-                }
-            }
-            updateListBoxPosts(k_NoPostInYear);
+            updateListBoxPosts(k_NoPostInAvailable);
         }
         private void updateListBoxPosts(string i_Message)
         {
@@ -209,10 +177,6 @@ namespace BasicFacebookFeatures
 
             listBoxPosts.Items.Add($"{i_Post.Item1.ToString()}\t{i_Post.Item2}");
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void buttonPost_Click(object sender, EventArgs e)
         {
             if(textBoxPost.Text != "")
@@ -228,10 +192,21 @@ namespace BasicFacebookFeatures
         }
         private void buttonFilterByDate_Click(object sender, EventArgs e)
         {
+            DatesStrategy = new IsPostInRange();
+            activateSelector();
+        }
+        private void buttonOlderPosts_Click(object sender, EventArgs e)
+        {
+            DatesStrategy = new IsPostOlder();
+            activateSelector();
+        }
+        private void activateSelector()
+        {
             int year = int.Parse(numericUpDownYear.Value.ToString());
             int month = int.Parse(numericUpDownMonth.Value.ToString());
             int day = int.Parse(numericUpDownDay.Value.ToString());
-            fetchPostsByDate(year, month, day);
+            SelectorStrategy = DatesStrategy.Selector;
+            selectDates(year, month, day);
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
         {
@@ -327,13 +302,14 @@ namespace BasicFacebookFeatures
             {
                 if(savedDate.Item1 == name)
                 {
+                    DatesStrategy = new IsPostInRange();
                     int day = savedDate.Item2.Day;
                     int month = savedDate.Item2.Month;
                     int year = savedDate.Item2.Year;
                     numericUpDownDay.Value = day;
                     numericUpDownMonth.Value = month;
                     numericUpDownYear.Value = year;
-                    fetchPostsByDate(year, month, day);
+                    selectDates(year, month, day);
                 }
             }
         }
@@ -360,5 +336,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"{nameToRemove} is not saved");
             }
         }
+      
     }
 }
