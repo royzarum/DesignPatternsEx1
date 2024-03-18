@@ -52,44 +52,56 @@ namespace BasicFacebookFeatures
                 labelNumberOfPages.Bottom - labelNumberOfPages.Height
                 );
             listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right;
-            labelInformationTitle.Left =
-                 labelName.Left =
-                 labelLikes.Left =
-                 labelCategory.Left =
-                 labelPhoneNumber.Left = listBoxLikedPages.Right + 15;
-            labelLikedPageName.Left = labelName.Right;
-            labelLikesCount.Left = labelLikes.Right;
-            labelPageCategoryValue.Left = labelCategory.Right;
-            labelPhoneValue.Left = labelPhoneNumber.Right;
+            //labelInformationTitle.Left =
+            //     labelName.Left =
+            //     labelLikes.Left =
+            //     labelCategory.Left =
+            //     labelPhoneNumber.Left = listBoxLikedPages.Right + 15;
+            //labelLikedPageName.Left = labelName.Right;
+            //labelLikesCount.Left = labelLikes.Right;
+            //labelPageCategoryValue.Left = labelCategory.Right;
+            //labelPhoneValue.Left = labelPhoneNumber.Right;
+            panelLikedPageDetails.Left = listBoxLikedPages.Right + 15;
+
+                
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            new Thread(fetchdata).Start();
+            new Thread(fetchData).Start();
         }
-        private void fetchdata() 
+        private void fetchData() 
         {
             if (m_Accesible)
             {
-                fetchLikedPages();
+                // fetchLikedPages();
+                pageBindingNavigator.Invoke(new Action(
+                 () => pageBindingSource.DataSource = LoggedInUser.LikedPages)
+                 );
+
             }
             else
             {
-                this.Close();
+                this.Invoke(new Action(Close));
             }
         }
         private void fetchLikedPages()
         {
-            listBoxLikedPages.Items.Clear();
-            if (LoggedInUser != null)
-            {
-                labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
-                foreach (Page likedPage in LoggedInUser.LikedPages)
-                {
-                    listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
-                }
-            }
+            //listBoxLikedPages.Invoke(new Action(listBoxLikedPages.Items.Clear));
+            //if (LoggedInUser != null)
+            //{
+            //    labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
+            //    foreach (Page likedPage in LoggedInUser.LikedPages)
+            //    {
+            //        listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
+            //    }
+            //}
+
+            //pageBindingNavigator.Invoke(new Action(
+            //    () => pageBindingSource.DataSource = LoggedInUser.LikedPages)
+            //    );
+
         }
         private void fetchPage(Page i_Page)
         {
@@ -97,41 +109,41 @@ namespace BasicFacebookFeatures
             listBoxLikedPages.DisplayMember = "Name";
         }
 
-        private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Page selectedLikedPage = listBoxLikedPages.SelectedItem as Page;
-            if (selectedLikedPage != null)
-            {
-                labelLikedPageName.Text = selectedLikedPage.Name;
-                labelLikesCount.Text = selectedLikedPage.LikesCount != null ? selectedLikedPage.LikesCount.ToString() : k_UnknownValueString;
-                labelPageCategoryValue.Text = selectedLikedPage.Category != null ? selectedLikedPage.Category : k_UnknownValueString;
-                labelPhoneValue.Text = selectedLikedPage.Phone != null ? selectedLikedPage.Phone : k_UnknownValueString;
-                pictureBoxLikedPageLogo.Image = selectedLikedPage.ImageNormal;
-            }
+        //private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //Page selectedLikedPage = listBoxLikedPages.SelectedItem as Page;
+        //    //if (selectedLikedPage != null)
+        //    //{
+        //    //    labelLikedPageName.Text = selectedLikedPage.Name;
+        //    //    labelLikesCount.Text = selectedLikedPage.LikesCount != null ? selectedLikedPage.LikesCount.ToString() : k_UnknownValueString;
+        //    //    labelPageCategoryValue.Text = selectedLikedPage.Category != null ? selectedLikedPage.Category : k_UnknownValueString;
+        //    //    labelPhoneValue.Text = selectedLikedPage.Phone != null ? selectedLikedPage.Phone : k_UnknownValueString;
+        //    //    pictureBoxLikedPageLogo.Image = selectedLikedPage.ImageNormal;
+        //    //}
 
-        }
+        //}
 
         private void textBoxSearchByCategory_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxDefaultText)
-            {
-                listBoxLikedPages.Items.Clear();
-                foreach (Page likedPage in LoggedInUser.LikedPages)
-                {
-                    if (!string.IsNullOrEmpty(likedPage.Category) && likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
-                    {
-                        listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
-                    }
-                }
-            }
-            else
-            {
-                if (listBoxLikedPages.Items.Count != LoggedInUser.LikedPages.Count)
-                {
-                    fetchLikedPages();
-                }
-            }
-            labelNumberOfPagesValue.Text = listBoxLikedPages.Items.Count.ToString();
+            //if (textBoxSearchByCategory.Text != string.Empty && textBoxSearchByCategory.Text != k_TextBoxDefaultText)
+            //{
+            //    listBoxLikedPages.Invoke(new Action(listBoxLikedPages.Items.Clear));
+            //    foreach (Page likedPage in LoggedInUser.LikedPages)
+            //    {
+            //        if (!string.IsNullOrEmpty(likedPage.Category) && likedPage.Category.TrimStart().ToLower().Contains(textBoxSearchByCategory.Text.ToLower()))
+            //        {
+            //            listBoxLikedPages.Invoke(new Action(() => fetchPage(likedPage)));
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    if (listBoxLikedPages.Items.Count != LoggedInUser.LikedPages.Count)
+            //    {
+            //        fetchLikedPages();
+            //    }
+            //}
+            //labelNumberOfPagesValue.Text = listBoxLikedPages.Items.Count.ToString();
         }
         private void textBoxSearchByCategory_Enter(object sender, EventArgs e)
         {

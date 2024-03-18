@@ -92,7 +92,7 @@ namespace BasicFacebookFeatures
             if (LoggedInUser.Albums != null)
             {
                 labelNumberOfAlbumsValue.Text = LoggedInUser.Albums.Count.ToString();
-                listBoxAlbums.Items.Clear();
+                listBoxAlbums.Invoke(new Action (listBoxAlbums.Items.Clear));
                 listBoxAlbums.DisplayMember = "Name";
                 foreach (Album album in LoggedInUser.Albums)
                 {
