@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace BasicFacebookFeatures
 {
-    internal sealed class AppSettings
+    public sealed class AppSettings
     {
         public bool RememberMe { get; set; }
         public string LastAccessToken { get; set; }
