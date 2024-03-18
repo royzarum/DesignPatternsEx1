@@ -130,6 +130,7 @@
       <DependentUpon>LikedPagesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PostDatesSaved.cs" />
+    <Compile Include="PostProxy.cs" />
     <Compile Include="PostsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,8 +170,8 @@
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Event.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Page.datasource" />
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Post.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

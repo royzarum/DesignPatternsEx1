@@ -18,11 +18,11 @@ namespace BasicFacebookFeatures
     public partial class PostsForm : Form
     {
         private PostsDatesSaved m_DatesSavedInFile;
-        private List<Tuple<DateTime, string>> m_PostsCreatedTimeAndText;
+        private List<PostProxy> m_PostsCreatedTimeAndText;
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
         private const string k_Zero = "0";
-        private const string k_NoPostInAvailable = "No posts Available";
+        private const string k_NoPostInAvailable = "No posts available";
         private const string k_ComboBoxDefaultText = "Select Date";
         private bool m_Accessible = true;
         private bool m_Load = true;
@@ -38,7 +38,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
             m_DatesSavedInFile = PostsDatesSaved.LoadFromFile(LoggedInUser.Id);
-            m_PostsCreatedTimeAndText = new List<Tuple<DateTime, String>>();
+            m_PostsCreatedTimeAndText = new List<PostProxy>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
             loadDateInformation();
@@ -55,7 +55,7 @@ namespace BasicFacebookFeatures
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accessible = false;
-                MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
+                MessageBox.Show($"There is no access for {LoggedInUser.Name}'s posts");
             }
         }
         protected override void OnLoad(EventArgs e)
@@ -138,9 +138,9 @@ namespace BasicFacebookFeatures
             listBoxPosts.Invoke(new Action(listBoxPosts.Items.Clear));
             foreach (Post post in LoggedInUser.Posts)
             {
-                Tuple<DateTime, String> tuplePost = Tuple.Create(post.CreatedTime.Value, post.Message);
-                m_PostsCreatedTimeAndText.Add(tuplePost);
-                listBoxPosts.Invoke(new Action(() => addPostToListBox(tuplePost)));
+                PostProxy postProxy = new PostProxy(post, post.Message, (DateTime)post.CreatedTime);
+                m_PostsCreatedTimeAndText.Add(postProxy);
+                listBoxPosts.Invoke(new Action(() => addPostToListBox(postProxy)));
             }
             if (listBoxPosts.Items.Count == 0)
             {
@@ -151,7 +151,7 @@ namespace BasicFacebookFeatures
         {
             listBoxPosts.Items.Clear();
             var filteredPostsByDate = from post in m_PostsCreatedTimeAndText
-                                      where SelectorStrategy(i_Year, i_Month, i_Day, post.Item1)
+                                      where SelectorStrategy(i_Year, i_Month, i_Day, post.CreatedIn)
                                       select post;
             foreach (var post in filteredPostsByDate)
             {
@@ -171,16 +171,16 @@ namespace BasicFacebookFeatures
                 labelActualNumber.Text = listBoxPosts.Items.Count.ToString();
             }
         }
-        private void addPostToListBox(Tuple<DateTime, String> i_Post)
+        private void addPostToListBox(PostProxy i_Post)
         {
 
-            listBoxPosts.Items.Add($"{i_Post.Item1.ToString()}\t{i_Post.Item2}");
+            listBoxPosts.Items.Add($"{i_Post.CreatedIn.ToString()}\t{i_Post.Text}");
         }
         private void buttonPost_Click(object sender, EventArgs e)
         {
             if(textBoxPost.Text != "")
             {
-                Tuple<DateTime, String> post = Tuple.Create(DateTime.Now, textBoxPost.Text);
+                PostProxy post = new PostProxy(new Post(),textBoxPost.Text, DateTime.Now);
                 addPostToListBox(post);
                 m_PostsCreatedTimeAndText.Add(post);
                 labelActualNumber.Text = (int.Parse(labelActualNumber.Text) + 1).ToString();
@@ -236,7 +236,7 @@ namespace BasicFacebookFeatures
         private void cancelFilter()
         {
             listBoxPosts.Items.Clear();
-            foreach (Tuple<DateTime, String> post in m_PostsCreatedTimeAndText)
+            foreach (PostProxy post in m_PostsCreatedTimeAndText)
             {
                 addPostToListBox(post);
             }

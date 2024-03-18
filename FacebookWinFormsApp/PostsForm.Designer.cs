@@ -118,6 +118,7 @@
             this.listBoxPosts.Name = "listBoxPosts";
             this.listBoxPosts.Size = new System.Drawing.Size(865, 184);
             this.listBoxPosts.TabIndex = 16;
+            this.listBoxPosts.ValueMember = "Caption";
             this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
             // 
             // numericUpDownMonth
