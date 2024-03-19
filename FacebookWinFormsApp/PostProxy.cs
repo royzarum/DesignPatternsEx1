@@ -18,6 +18,9 @@ namespace BasicFacebookFeatures
             Text = i_Text;
             CreatedIn = i_CreatedIn;
         }
-
+        public override string ToString()
+        {
+            return $"{CreatedIn.ToString()}\t{Text}";
+        }
     }
 }

@@ -35,7 +35,6 @@ namespace BasicFacebookFeatures
                 m_Accesible = false;
                 MessageBox.Show($"There is no access to {LoggedInUser.Name}'s liked pages");
             }
-
             initializeFormAppearance();
         }
 

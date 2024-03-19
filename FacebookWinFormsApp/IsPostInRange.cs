@@ -9,15 +9,15 @@ namespace BasicFacebookFeatures
 {
     public class IsPostInRange: IPostsStrategy
     {
-        public bool Selector(int i_Year, int i_Month, int i_Day, DateTime i_Date)
+        public bool Selector(DateTime i_DateSelected, DateTime i_DateToCheck)
         {
-            bool result = (i_Year == i_Date.Year);
-            if (i_Month != 0)
+            bool result = (i_DateSelected.Year == i_DateToCheck.Year);
+            if (i_DateSelected.Month != 0)
             {
-                result = (result && i_Month == i_Date.Month);
-                if (i_Day != 0)
+                result = (result && i_DateSelected.Month == i_DateToCheck.Month);
+                if (i_DateSelected.Day != 0)
                 {
-                    result = (result && i_Month == i_Date.Month && i_Day == i_Date.Day);
+                    result = (result && i_DateSelected.Month == i_DateToCheck.Month && i_DateSelected.Day == i_DateToCheck.Day);
                 }
             }
             return result;

@@ -8,6 +8,6 @@ namespace BasicFacebookFeatures
 {
     public interface IPostsStrategy
     {
-        bool Selector(int i_Year, int i_Month, int i_Day, DateTime i_Date);
+        bool Selector(DateTime i_DateSelected, DateTime i_DateToCheck);
     }
 }
