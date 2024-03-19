@@ -30,12 +30,12 @@ namespace BasicFacebookFeatures
         }
         private void initialzeData()
         {
-            labelHeadline.Text = k_FormName;
-            labelName.Text = LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
+            labelHeadline.Invoke(new Action(() => labelHeadline.Text = k_FormName));
+            labelName.Invoke(new Action (() => labelName.Text = LoggedInUser.Name));
+            pictureBoxProfile.Invoke(new Action(() =>pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL));
             try
             {
-                labelActualNumber.Text = LoggedInUser.Groups.Count.ToString();
+                labelActualNumber.Invoke(new Action(() => labelActualNumber.Text = LoggedInUser.Groups.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
@@ -62,7 +62,7 @@ namespace BasicFacebookFeatures
         }
         private void fetchGroupsListBox()
         {
-            listBoxGroups.Items.Clear();
+            listBoxGroups.Invoke(new Action(listBoxGroups.Items.Clear));
             foreach(Group group in LoggedInUser.Groups)
             {
                 listBoxGroups.Invoke(new Action(() => listBoxGroups.Items.Add(group)));

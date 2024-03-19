@@ -12,6 +12,7 @@ namespace BasicFacebookFeatures
     {
         public bool RememberMe { get; set; }
         public string LastAccessToken { get; set; }
+        public static AppSettings Instance { get { return Singleton<AppSettings>.Instance; } }
         private AppSettings()
         {
             RememberMe = false;
@@ -28,7 +29,7 @@ namespace BasicFacebookFeatures
         }
         public static AppSettings LoadFromFile() 
         {
-            AppSettings obj = new AppSettings();
+            AppSettings obj = AppSettings.Instance;
             string path = createPath();
             if(!File.Exists(path))
             {
