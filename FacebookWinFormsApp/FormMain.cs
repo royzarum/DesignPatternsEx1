@@ -19,7 +19,22 @@ namespace BasicFacebookFeatures
         public FormMain()
         {
             InitializeComponent();
+            initializeFormsButtons();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;           
+        }
+
+        private void initializeFormsButtons()
+        {
+            foreach (Button button in formsButtonsPanel.Controls)
+            {  
+                button.Click += formButton_Click;
+            }
+        }
+
+        private void formButton_Click(object sender, EventArgs e)
+        {
+            Form form = FormsFactory.CreateForm(sender as Button, m_LoginResult);
+            form.Show();
         }
 
         FacebookWrapper.LoginResult m_LoginResult;
@@ -125,32 +140,5 @@ namespace BasicFacebookFeatures
             m_AppSettings.SaveToFile();
         }
 
-        private void buttonPosts_Click(object sender, EventArgs e)
-        {
-            PostsForm postsForm = new PostsForm(m_LoginResult);
-            postsForm.Show();
-        }
-
-        private void buttonAlbums_Click(object sender, EventArgs e)
-        {
-            AlbumsForm albumsForm = new AlbumsForm(m_LoginResult);
-            albumsForm.Show();
-        }
-
-        private void buttonGroups_Click(object sender, EventArgs e)
-        {
-            GroupsForm groupsForm = new GroupsForm(m_LoginResult);
-            groupsForm.Show();
-        }
-        private void buttonFriends_Click(object sender, EventArgs e)
-        {
-            FriendsForm friendsForm = new FriendsForm(m_LoginResult);
-            friendsForm.Show();
-        }
-        private void buttonPages_Click(object sender, EventArgs e)
-        {
-            LikedPagesForm pagesForm = new LikedPagesForm(m_LoginResult);
-            pagesForm.Show();
-        }
     }
 }
