@@ -78,7 +78,7 @@ namespace BasicFacebookFeatures
         {
             base.OnClosing(e);
             saveDateInformation();
-            m_DatesSavedInFile.SaveToFile();
+            new Thread(m_DatesSavedInFile.SaveToFile).Start();
         }
         private void saveDateInformation()
         {

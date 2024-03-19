@@ -23,7 +23,6 @@ namespace BasicFacebookFeatures
         }
 
         FacebookWrapper.LoginResult m_LoginResult;
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("royzarum");
@@ -97,7 +96,7 @@ namespace BasicFacebookFeatures
             {
                 m_AppSettings.LastAccessToken = null;
             }
-            m_AppSettings.SaveToFile();
+            new Thread(m_AppSettings.SaveToFile).Start();
         }
         protected override void OnLoad(EventArgs e)
         {
