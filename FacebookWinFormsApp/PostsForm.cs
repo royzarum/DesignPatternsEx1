@@ -26,7 +26,7 @@ namespace BasicFacebookFeatures
         private bool m_Accessible = true;
         private bool m_Load = true;
         public User LoggedInUser { get; }
-        private IPostsStrategy m_DatesStrategy;
+        private IPostsStrategy m_DatesStrategy = new IsPostInRange();
         private Func<DateTime, DateTime, bool> m_SelectorStrategy;
         public PostsForm()
         {
@@ -292,6 +292,7 @@ namespace BasicFacebookFeatures
         private void comboBoxSavedDates_SelectedIndexChanged(object sender, EventArgs e)
         {
             string name = comboBoxSavedDates.SelectedItem.ToString();
+            m_SelectorStrategy = m_DatesStrategy.Selector;
             foreach(Tuple<string, DateTime> savedDate in m_DatesSaved)
             {
                 if(savedDate.Item1 == name)

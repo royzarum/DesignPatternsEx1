@@ -33,13 +33,13 @@ namespace BasicFacebookFeatures
 
         private void initialzeData()
         {
-            labelHeadline.Text = k_FormName;
-            labelName.Text = LoggedInUser.Name;
-            pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL;
-            groupBoxCompetitionResult.Location = groupBoxStartCompetition.Location;
+            labelHeadline.Invoke(new Action(() => labelHeadline.Text = k_FormName));
+            labelName.Invoke(new Action(() => labelName.Text = LoggedInUser.Name));
+            pictureBoxProfile.Invoke(new Action(()=> pictureBoxProfile.ImageLocation = LoggedInUser.PictureNormalURL));
+            groupBoxCompetitionResult.Invoke(new Action(() => groupBoxCompetitionResult.Location = groupBoxStartCompetition.Location));
             try
             {
-                labelActualNumber.Text = LoggedInUser.Friends.Count.ToString();
+                labelActualNumber.Invoke(new Action(() => labelActualNumber.Text = LoggedInUser.Friends.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
@@ -62,13 +62,13 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                this.Close();
+                Invoke(new Action(() => this.Close()));
             }
         }
 
         private void fetchFriendsListBox()
         {
-            listBoxFriends.Items.Clear();
+            listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Clear()));
             foreach (User friend in LoggedInUser.Friends)
             {
                 listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(friend)));
