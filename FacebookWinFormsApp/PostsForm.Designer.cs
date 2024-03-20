@@ -55,6 +55,7 @@
             this.buttonDeleteDate = new System.Windows.Forms.Button();
             this.labelSavedDates = new System.Windows.Forms.Label();
             this.buttonOlderPosts = new System.Windows.Forms.Button();
+            this.labelLoading = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
@@ -112,6 +113,7 @@
             // 
             this.listBoxPosts.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxPosts.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBoxPosts.DisplayMember = "Caption";
             this.listBoxPosts.FormattingEnabled = true;
             this.listBoxPosts.ItemHeight = 20;
             this.listBoxPosts.Location = new System.Drawing.Point(322, 249);
@@ -385,12 +387,22 @@
             this.buttonOlderPosts.UseVisualStyleBackColor = false;
             this.buttonOlderPosts.Click += new System.EventHandler(this.buttonOlderPosts_Click);
             // 
+            // labelLoading
+            // 
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoading.Location = new System.Drawing.Point(644, 323);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(178, 44);
+            this.labelLoading.TabIndex = 36;
+            this.labelLoading.Text = "Loading...";
+            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1516, 703);
+            this.Controls.Add(this.labelLoading);
             this.Controls.Add(this.buttonOlderPosts);
             this.Controls.Add(this.labelSavedDates);
             this.Controls.Add(this.buttonDeleteDate);
@@ -459,5 +471,6 @@
         private System.Windows.Forms.Button buttonDeleteDate;
         private System.Windows.Forms.Label labelSavedDates;
         private System.Windows.Forms.Button buttonOlderPosts;
+        private System.Windows.Forms.Label labelLoading;
     }
 }
