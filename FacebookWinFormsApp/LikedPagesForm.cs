@@ -17,7 +17,6 @@ namespace BasicFacebookFeatures
     public partial class LikedPagesForm : Form
     {
         private const string k_HeadLineComplition = "'s Liked Pages";
-        private const string k_UnknownValueString = "Unknown";
         private const string k_TextBoxDefaultText = "Search Here";
         private bool m_Accesible = true;
         private bool m_TextBoxHasBeenChecked = false;
@@ -26,6 +25,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
+            initializeFormAppearance();
         }
 
         private void initalizeData()
@@ -39,22 +39,21 @@ namespace BasicFacebookFeatures
                 m_Accesible = false;
                 MessageBox.Show($"There is no access to {LoggedInUser.Name}'s liked pages");
             }
-            initializeFormAppearance();
         }
 
         private void initializeFormAppearance()
         {
 
-            labelHeadline.Invoke(new Action(() => labelHeadline.Text = LoggedInUser.FirstName + k_HeadLineComplition));
-            labelNumberOfPages.Invoke(new Action(() => labelNumberOfPages.Location = new System.Drawing.Point(
+            labelHeadline.Text = LoggedInUser.FirstName + k_HeadLineComplition;
+            labelNumberOfPages.Location = new System.Drawing.Point(
                 labelHeadline.Right + 20,
                 labelHeadline.Bottom - labelNumberOfPages.Height
-                )));
-            labelNumberOfPagesValue.Invoke(new Action(() =>labelNumberOfPagesValue.Location = new System.Drawing.Point(
+                );
+            labelNumberOfPagesValue.Location = new System.Drawing.Point(
                 labelNumberOfPages.Right,
                 labelNumberOfPages.Bottom - labelNumberOfPages.Height
-                )));
-            listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right));
+                );
+            listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right;
             //labelInformationTitle.Left =
             //     labelName.Left =
             //     labelLikes.Left =
@@ -64,7 +63,7 @@ namespace BasicFacebookFeatures
             //labelLikesCount.Left = labelLikes.Right;
             //labelPageCategoryValue.Left = labelCategory.Right;
             //labelPhoneValue.Left = labelPhoneNumber.Right;
-            panelLikedPageDetails.Invoke(new Action(() => panelLikedPageDetails.Left = listBoxLikedPages.Right + 15));
+            panelLikedPageDetails.Left = listBoxLikedPages.Right + 15;
 
                 
         }
