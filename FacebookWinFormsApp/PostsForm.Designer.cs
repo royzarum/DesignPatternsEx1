@@ -389,10 +389,11 @@
             // 
             // labelLoading
             // 
+            this.labelLoading.AutoSize = true;
             this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLoading.Location = new System.Drawing.Point(644, 323);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Size = new System.Drawing.Size(178, 44);
+            this.labelLoading.Size = new System.Drawing.Size(159, 37);
             this.labelLoading.TabIndex = 36;
             this.labelLoading.Text = "Loading...";
             // 

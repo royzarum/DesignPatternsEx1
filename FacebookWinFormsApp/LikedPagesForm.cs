@@ -26,9 +26,13 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
+        }
+
+        private void initalizeData()
+        {
             try
             {
-                labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
+                labelNumberOfPagesValue.Invoke(new Action(() =>labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
@@ -41,16 +45,16 @@ namespace BasicFacebookFeatures
         private void initializeFormAppearance()
         {
 
-            labelHeadline.Text = LoggedInUser.FirstName + k_HeadLineComplition;
-            labelNumberOfPages.Location = new System.Drawing.Point(
+            labelHeadline.Invoke(new Action(() => labelHeadline.Text = LoggedInUser.FirstName + k_HeadLineComplition));
+            labelNumberOfPages.Invoke(new Action(() => labelNumberOfPages.Location = new System.Drawing.Point(
                 labelHeadline.Right + 20,
                 labelHeadline.Bottom - labelNumberOfPages.Height
-                );
-            labelNumberOfPagesValue.Location = new System.Drawing.Point(
+                )));
+            labelNumberOfPagesValue.Invoke(new Action(() =>labelNumberOfPagesValue.Location = new System.Drawing.Point(
                 labelNumberOfPages.Right,
                 labelNumberOfPages.Bottom - labelNumberOfPages.Height
-                );
-            listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right;
+                )));
+            listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.Width = labelHeadline.Left + labelNumberOfPagesValue.Right));
             //labelInformationTitle.Left =
             //     labelName.Left =
             //     labelLikes.Left =
@@ -60,18 +64,19 @@ namespace BasicFacebookFeatures
             //labelLikesCount.Left = labelLikes.Right;
             //labelPageCategoryValue.Left = labelCategory.Right;
             //labelPhoneValue.Left = labelPhoneNumber.Right;
-            panelLikedPageDetails.Left = listBoxLikedPages.Right + 15;
+            panelLikedPageDetails.Invoke(new Action(() => panelLikedPageDetails.Left = listBoxLikedPages.Right + 15));
 
                 
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            base.OnLoad(e);
+            base.OnShown(e);
             new Thread(fetchData).Start();
         }
         private void fetchData() 
         {
+            initalizeData();
             if (m_Accesible)
             {
                 // fetchLikedPages();
