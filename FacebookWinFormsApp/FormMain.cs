@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
-        AppSettings m_AppSettings = AppSettings.LoadFromFile();
+        AppSettings m_AppSettings;
         public FormMain()
         {
             InitializeComponent();
@@ -38,7 +38,6 @@ namespace BasicFacebookFeatures
         }
 
         FacebookWrapper.LoginResult m_LoginResult;
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("royzarum");
@@ -76,31 +75,31 @@ namespace BasicFacebookFeatures
         }
         private void populateUIFromFacebookData()
         {
-            buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
-            buttonLogin.BackColor = Color.LightGreen;
-            pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
-            buttonLogin.Enabled = false;
-            buttonLogout.Enabled = true;
+            buttonLogin.Invoke(new Action(() => buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}"));
+            buttonLogin.Invoke(new Action(() =>buttonLogin.BackColor = Color.LightGreen));
+            pictureBoxProfile.Invoke(new Action(() => pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL));
+            buttonLogin.Invoke(new Action(() => buttonLogin.Enabled = false));
+            buttonLogout.Invoke(new Action(() => buttonLogout.Enabled = true));
             changeVisibility();
-            UserBirthdayLabel.Text = m_LoginResult.LoggedInUser.Birthday.ToString();
-            UserGenderLabel.Text = m_LoginResult.LoggedInUser?.Gender.ToString();
+            UserBirthdayLabel.Invoke(new Action(() => UserBirthdayLabel.Text = m_LoginResult.LoggedInUser.Birthday.ToString()));
+            UserGenderLabel.Invoke(new Action(() => UserGenderLabel.Text = m_LoginResult.LoggedInUser?.Gender.ToString()));
         }
 
         private void changeVisibility()
         {
-            BirthdayLabel.Visible = !BirthdayLabel.Visible;
-            GenderLabel.Visible = !GenderLabel.Visible;
-            UserBirthdayLabel.Visible = !UserBirthdayLabel.Visible;
-            UserGenderLabel.Visible = !UserGenderLabel.Visible;
-            pictureBoxProfile.Visible = !pictureBoxProfile.Visible;
-            pictureBoxLogo.Visible = !pictureBoxLogo.Visible;
-            buttonAlbums.Visible = !buttonAlbums.Visible;
-            buttonFriends.Visible = !buttonFriends.Visible;
-            buttonGroups.Visible = !buttonGroups.Visible;
-            buttonPages.Visible = !buttonPages.Visible;
-            buttonPosts.Visible = !buttonPosts.Visible;
-            checkBoxRememberMe.Visible = !checkBoxRememberMe.Visible;
-            buttonLogout.Visible = !buttonLogout.Visible;
+            BirthdayLabel.Invoke(new Action(() => BirthdayLabel.Visible = !BirthdayLabel.Visible));
+            GenderLabel.Invoke(new Action(() => GenderLabel.Visible = !GenderLabel.Visible));
+            UserBirthdayLabel.Invoke(new Action(() => UserBirthdayLabel.Visible = !UserBirthdayLabel.Visible));
+            UserGenderLabel.Invoke(new Action(() => UserGenderLabel.Visible = !UserGenderLabel.Visible));
+            pictureBoxProfile.Invoke(new Action(() => pictureBoxProfile.Visible = !pictureBoxProfile.Visible));
+            pictureBoxLogo.Invoke(new Action(() => pictureBoxLogo.Visible = !pictureBoxLogo.Visible));
+            buttonAlbums.Invoke(new Action(() => buttonAlbums.Visible = !buttonAlbums.Visible));
+            buttonFriends.Invoke(new Action(() => buttonFriends.Visible = !buttonFriends.Visible)); 
+            buttonGroups.Invoke(new Action(() => buttonGroups.Visible = !buttonGroups.Visible));
+            buttonPages.Invoke(new Action(() => buttonPages.Visible = !buttonPages.Visible));
+            buttonPosts.Invoke(new Action(() => buttonPosts.Visible = !buttonPosts.Visible));
+            checkBoxRememberMe.Invoke(new Action(() => checkBoxRememberMe.Visible = !checkBoxRememberMe.Visible));
+            buttonLogout.Invoke(new Action(() => buttonLogout.Visible = !buttonLogout.Visible));
         }
         private void checkIfRememberMe()
         {
@@ -112,16 +111,22 @@ namespace BasicFacebookFeatures
             {
                 m_AppSettings.LastAccessToken = null;
             }
-            m_AppSettings.SaveToFile();
+            new Thread(m_AppSettings.SaveToFile).Start();
         }
-        protected override void OnLoad(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            base.OnLoad(e);
+            base.OnShown(e);
+            new Thread(fetchData).Start();
+        }
+        private void fetchData()
+        {
+            m_AppSettings = AppSettings.LoadFromFile();
             if (m_AppSettings.RememberMe && !String.IsNullOrEmpty(m_AppSettings.LastAccessToken))
             {
                 m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
                 populateUIFromFacebookData();
             }
+            labelLoading.Invoke(new Action(() =>labelLoading.Visible = false));
         }
         private void buttonLogout_Click(object sender, EventArgs e)
         {

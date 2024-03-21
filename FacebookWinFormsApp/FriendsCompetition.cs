@@ -47,20 +47,19 @@ namespace BasicFacebookFeatures
 
             ClosenessOfUserAndA.Run();
             ClosenessOfUserAndB.Run();
-
             if (isCompeteByLikedPages)
             {
-                competeMutualLikedPages();
+                competeCategory(ClosenessOfUserAndA.MutualLikedPages, ClosenessOfUserAndB.MutualLikedPages);
             }
 
             if (isCompeteByGroups)
             {
-                competeMutualGroups();
+                competeCategory(ClosenessOfUserAndA.MutualGroups, ClosenessOfUserAndB.MutualGroups);
             }
 
             if (isCompeteByMutualFriends)
             {
-                competeMutualFriends();
+                competeCategory(ClosenessOfUserAndA.MutualFriends, ClosenessOfUserAndB.MutualFriends);
             }
 
             if (m_FriendAScore > m_FriendBScore)
@@ -75,37 +74,13 @@ namespace BasicFacebookFeatures
             return winner;
         }
 
-        private void competeMutualFriends()
+        private void competeCategory(int i_resultA, int i_resultB)
         {
-            if (ClosenessOfUserAndA.MutualFriends > ClosenessOfUserAndB.MutualFriends)
+            if (i_resultA > i_resultB)
             {
                 ++m_FriendAScore;
             }
-            else if (ClosenessOfUserAndA.MutualFriends < ClosenessOfUserAndB.MutualFriends)
-            {
-                ++m_FriendBScore;
-            }
-        }
-
-        private void competeMutualLikedPages()
-        {
-            if (ClosenessOfUserAndA.MutualLikedPages > ClosenessOfUserAndB.MutualLikedPages)
-            {
-                ++m_FriendAScore;
-            }
-            else if (ClosenessOfUserAndA.MutualLikedPages < ClosenessOfUserAndB.MutualLikedPages)
-            {
-                ++m_FriendBScore;
-            }
-        }
-
-        private void competeMutualGroups()
-        {
-            if (ClosenessOfUserAndA.MutualGroups > ClosenessOfUserAndB.MutualGroups)
-            {
-                ++m_FriendAScore;
-            }
-            else if (ClosenessOfUserAndA.MutualGroups < ClosenessOfUserAndB.MutualGroups)
+            else if (i_resultA < i_resultB)
             {
                 ++m_FriendBScore;
             }

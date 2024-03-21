@@ -36,24 +36,25 @@
             this.tabMainPage = new System.Windows.Forms.TabPage();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.buttonGroups = new System.Windows.Forms.Button();
-            this.buttonPosts = new System.Windows.Forms.Button();
-            this.buttonAlbums = new System.Windows.Forms.Button();
-            this.buttonFriends = new System.Windows.Forms.Button();
-            this.buttonPages = new System.Windows.Forms.Button();
             this.UserBirthdayLabel = new System.Windows.Forms.Label();
             this.UserGenderLabel = new System.Windows.Forms.Label();
             this.GenderLabel = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.formsButtonsPanel = new System.Windows.Forms.Panel();
+            this.buttonPosts = new System.Windows.Forms.Button();
+            this.buttonPages = new System.Windows.Forms.Button();
+            this.buttonGroups = new System.Windows.Forms.Button();
+            this.buttonFriends = new System.Windows.Forms.Button();
+            this.buttonAlbums = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.labelLoading = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabMainPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.formsButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -97,6 +98,7 @@
             // tabMainPage
             // 
             this.tabMainPage.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tabMainPage.Controls.Add(this.labelLoading);
             this.tabMainPage.Controls.Add(this.checkBoxRememberMe);
             this.tabMainPage.Controls.Add(this.pictureBoxLogo);
             this.tabMainPage.Controls.Add(this.UserBirthdayLabel);
@@ -109,10 +111,10 @@
             this.tabMainPage.Controls.Add(this.formsButtonsPanel);
             this.tabMainPage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabMainPage.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabMainPage.Location = new System.Drawing.Point(4, 31);
+            this.tabMainPage.Location = new System.Drawing.Point(4, 35);
             this.tabMainPage.Name = "tabMainPage";
             this.tabMainPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMainPage.Size = new System.Drawing.Size(686, 396);
+            this.tabMainPage.Size = new System.Drawing.Size(686, 392);
             this.tabMainPage.TabIndex = 0;
             this.tabMainPage.Text = "Main Page";
             // 
@@ -121,7 +123,7 @@
             this.checkBoxRememberMe.AutoSize = true;
             this.checkBoxRememberMe.Location = new System.Drawing.Point(79, 56);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(165, 26);
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(193, 31);
             this.checkBoxRememberMe.TabIndex = 67;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
@@ -137,73 +139,12 @@
             this.pictureBoxLogo.TabStop = false;
             this.pictureBoxLogo.Visible = false;
             // 
-            // buttonGroups
-            // 
-            this.buttonGroups.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonGroups.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonGroups.Location = new System.Drawing.Point(205, 76);
-            this.buttonGroups.Name = "buttonGroups";
-            this.buttonGroups.Size = new System.Drawing.Size(179, 52);
-            this.buttonGroups.TabIndex = 65;
-            this.buttonGroups.Text = "Groups";
-            this.buttonGroups.UseVisualStyleBackColor = false;
-            this.buttonGroups.Visible = false;
-            // 
-            // buttonPosts
-            // 
-            this.buttonPosts.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonPosts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonPosts.Location = new System.Drawing.Point(20, 20);
-            this.buttonPosts.Name = "buttonPosts";
-            this.buttonPosts.Size = new System.Drawing.Size(179, 48);
-            this.buttonPosts.TabIndex = 64;
-            this.buttonPosts.Text = "Posts";
-            this.buttonPosts.UseVisualStyleBackColor = false;
-            this.buttonPosts.Visible = false;
-            // 
-            // buttonAlbums
-            // 
-            this.buttonAlbums.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonAlbums.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAlbums.Location = new System.Drawing.Point(20, 74);
-            this.buttonAlbums.Name = "buttonAlbums";
-            this.buttonAlbums.Size = new System.Drawing.Size(179, 51);
-            this.buttonAlbums.TabIndex = 63;
-            this.buttonAlbums.Text = "Albums";
-            this.buttonAlbums.UseVisualStyleBackColor = false;
-            this.buttonAlbums.Visible = false;
-            // 
-            // buttonFriends
-            // 
-            this.buttonFriends.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonFriends.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFriends.Location = new System.Drawing.Point(111, 134);
-            this.buttonFriends.Name = "buttonFriends";
-            this.buttonFriends.Size = new System.Drawing.Size(179, 48);
-            this.buttonFriends.TabIndex = 62;
-            this.buttonFriends.Text = "Friends";
-            this.buttonFriends.UseVisualStyleBackColor = false;
-            this.buttonFriends.Visible = false;
-            // 
-            // buttonPages
-            // 
-            this.buttonPages.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonPages.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonPages.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPages.Location = new System.Drawing.Point(205, 20);
-            this.buttonPages.Name = "buttonPages";
-            this.buttonPages.Size = new System.Drawing.Size(179, 50);
-            this.buttonPages.TabIndex = 61;
-            this.buttonPages.Text = "Liked Pages";
-            this.buttonPages.UseVisualStyleBackColor = false;
-            this.buttonPages.Visible = false;
-            // 
             // UserBirthdayLabel
             // 
             this.UserBirthdayLabel.AutoSize = true;
             this.UserBirthdayLabel.Location = new System.Drawing.Point(93, 72);
             this.UserBirthdayLabel.Name = "UserBirthdayLabel";
-            this.UserBirthdayLabel.Size = new System.Drawing.Size(86, 22);
+            this.UserBirthdayLabel.Size = new System.Drawing.Size(102, 27);
             this.UserBirthdayLabel.TabIndex = 60;
             this.UserBirthdayLabel.Text = "1/1/2000";
             this.UserBirthdayLabel.Visible = false;
@@ -213,7 +154,7 @@
             this.UserGenderLabel.AutoSize = true;
             this.UserGenderLabel.Location = new System.Drawing.Point(93, 90);
             this.UserGenderLabel.Name = "UserGenderLabel";
-            this.UserGenderLabel.Size = new System.Drawing.Size(130, 22);
+            this.UserGenderLabel.Size = new System.Drawing.Size(156, 27);
             this.UserGenderLabel.TabIndex = 59;
             this.UserGenderLabel.Text = "GenderValue";
             this.UserGenderLabel.Visible = false;
@@ -223,7 +164,7 @@
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Location = new System.Drawing.Point(21, 90);
             this.GenderLabel.Name = "GenderLabel";
-            this.GenderLabel.Size = new System.Drawing.Size(86, 22);
+            this.GenderLabel.Size = new System.Drawing.Size(101, 27);
             this.GenderLabel.TabIndex = 58;
             this.GenderLabel.Text = "Gender:";
             this.GenderLabel.Visible = false;
@@ -233,7 +174,7 @@
             this.BirthdayLabel.AutoSize = true;
             this.BirthdayLabel.Location = new System.Drawing.Point(21, 72);
             this.BirthdayLabel.Name = "BirthdayLabel";
-            this.BirthdayLabel.Size = new System.Drawing.Size(96, 22);
+            this.BirthdayLabel.Size = new System.Drawing.Size(113, 27);
             this.BirthdayLabel.TabIndex = 57;
             this.BirthdayLabel.Text = "Birthday:";
             this.BirthdayLabel.Visible = false;
@@ -261,9 +202,80 @@
             this.formsButtonsPanel.Size = new System.Drawing.Size(398, 213);
             this.formsButtonsPanel.TabIndex = 68;
             // 
+            // buttonPosts
+            // 
+            this.buttonPosts.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonPosts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPosts.Location = new System.Drawing.Point(20, 20);
+            this.buttonPosts.Name = "buttonPosts";
+            this.buttonPosts.Size = new System.Drawing.Size(179, 48);
+            this.buttonPosts.TabIndex = 64;
+            this.buttonPosts.Text = "Posts";
+            this.buttonPosts.UseVisualStyleBackColor = false;
+            this.buttonPosts.Visible = false;
+            // 
+            // buttonPages
+            // 
+            this.buttonPages.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonPages.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPages.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPages.Location = new System.Drawing.Point(205, 20);
+            this.buttonPages.Name = "buttonPages";
+            this.buttonPages.Size = new System.Drawing.Size(179, 50);
+            this.buttonPages.TabIndex = 61;
+            this.buttonPages.Text = "Liked Pages";
+            this.buttonPages.UseVisualStyleBackColor = false;
+            this.buttonPages.Visible = false;
+            // 
+            // buttonGroups
+            // 
+            this.buttonGroups.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonGroups.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonGroups.Location = new System.Drawing.Point(205, 76);
+            this.buttonGroups.Name = "buttonGroups";
+            this.buttonGroups.Size = new System.Drawing.Size(179, 52);
+            this.buttonGroups.TabIndex = 65;
+            this.buttonGroups.Text = "Groups";
+            this.buttonGroups.UseVisualStyleBackColor = false;
+            this.buttonGroups.Visible = false;
+            // 
+            // buttonFriends
+            // 
+            this.buttonFriends.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonFriends.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFriends.Location = new System.Drawing.Point(111, 134);
+            this.buttonFriends.Name = "buttonFriends";
+            this.buttonFriends.Size = new System.Drawing.Size(179, 48);
+            this.buttonFriends.TabIndex = 62;
+            this.buttonFriends.Text = "Friends";
+            this.buttonFriends.UseVisualStyleBackColor = false;
+            this.buttonFriends.Visible = false;
+            // 
+            // buttonAlbums
+            // 
+            this.buttonAlbums.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAlbums.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAlbums.Location = new System.Drawing.Point(20, 74);
+            this.buttonAlbums.Name = "buttonAlbums";
+            this.buttonAlbums.Size = new System.Drawing.Size(179, 51);
+            this.buttonAlbums.TabIndex = 63;
+            this.buttonAlbums.Text = "Albums";
+            this.buttonAlbums.UseVisualStyleBackColor = false;
+            this.buttonAlbums.Visible = false;
+            // 
+            // labelLoading
+            // 
+            this.labelLoading.AutoSize = true;
+            this.labelLoading.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoading.Location = new System.Drawing.Point(286, 101);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(168, 37);
+            this.labelLoading.TabIndex = 66;
+            this.labelLoading.Text = "Loading...";
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 431);
             this.Controls.Add(this.tabControl1);
@@ -279,8 +291,8 @@
             this.tabMainPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.formsButtonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +317,6 @@
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.CheckBox checkBoxRememberMe;
         private System.Windows.Forms.Panel formsButtonsPanel;
+        private System.Windows.Forms.Label labelLoading;
     }
 }

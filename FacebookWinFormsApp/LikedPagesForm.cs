@@ -17,7 +17,6 @@ namespace BasicFacebookFeatures
     public partial class LikedPagesForm : Form
     {
         private const string k_HeadLineComplition = "'s Liked Pages";
-        private const string k_UnknownValueString = "Unknown";
         private const string k_TextBoxDefaultText = "Search Here";
         private bool m_Accesible = true;
         private bool m_TextBoxHasBeenChecked = false;
@@ -26,16 +25,20 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
+            initializeFormAppearance();
+        }
+
+        private void initalizeData()
+        {
             try
             {
-                labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString();
+                labelNumberOfPagesValue.Invoke(new Action(() =>labelNumberOfPagesValue.Text = LoggedInUser.LikedPages.Count.ToString()));
             }
             catch (Facebook.FacebookOAuthException oAuthExceotion)
             {
                 m_Accesible = false;
                 MessageBox.Show($"There is no access to {LoggedInUser.Name}'s liked pages");
             }
-            initializeFormAppearance();
         }
 
         private void initializeFormAppearance()
@@ -65,13 +68,14 @@ namespace BasicFacebookFeatures
                 
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            base.OnLoad(e);
+            base.OnShown(e);
             new Thread(fetchData).Start();
         }
         private void fetchData() 
         {
+            initalizeData();
             if (m_Accesible)
             {
                 // fetchLikedPages();

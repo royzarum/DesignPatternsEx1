@@ -73,9 +73,6 @@
     <Reference Include="FbGraphApiWrapper">
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
-    <Reference Include="SingletonT">
-      <HintPath>..\SingletonT\bin\Debug\net8.0\SingletonT.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -131,7 +128,7 @@
       <DependentUpon>LikedPagesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PostDatesSaved.cs" />
-    <Compile Include="PostProxy.cs" />
+    <Compile Include="AppPost.cs" />
     <Compile Include="PostsForm.cs">
       <SubType>Form</SubType>
     </Compile>

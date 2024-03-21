@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,6 @@ namespace BasicFacebookFeatures
             MutualGroups = countMutualGroups();
             MutualFriends = countMutualFriends();
         }
-
         private int countMutualFriends()
         {
             int counter = 0;
