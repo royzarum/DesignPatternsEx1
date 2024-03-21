@@ -16,7 +16,6 @@ namespace BasicFacebookFeatures
         public decimal LastDay { get; set; }
         public decimal LastMonth { get; set; }
         public decimal LastYear { get; set; }
-        public static PostsDatesSaved Instance { get { return Singleton<PostsDatesSaved>.Instance; } }
         private PostsDatesSaved()
         {
             NamesSaved = new List<string>();

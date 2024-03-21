@@ -10,12 +10,12 @@ namespace BasicFacebookFeatures
 {
     internal class FriendsCompetition
     {
-        public bool isCompeteByLikedPages { get; set; }
-        public bool isCompeteByGroups { get; set; }
-        public bool isCompeteByMutualFriends { get; set; }
-        public User LoggedInUser { get; set; }
-        public User FriendA { get; set; }
-        public User FriendB { get; set; }
+        public bool isCompeteByLikedPages { get; private set; }
+        public bool isCompeteByGroups { get; private set; }
+        public bool isCompeteByMutualFriends { get; private set; }
+        public User LoggedInUser { get; private set; }
+        public User FriendA { get; private set; }
+        public User FriendB { get; private set; }
         public FriendsClosenessResult ClosenessOfUserAndA { get; set; }
         public FriendsClosenessResult ClosenessOfUserAndB { get; set; }
         private int m_FriendAScore = 0;
@@ -38,7 +38,7 @@ namespace BasicFacebookFeatures
             isCompeteByGroups = i_isCompeteByGroups;
             isCompeteByMutualFriends = i_isCompeteByMutualFriends;
             ClosenessOfUserAndA = new FriendsClosenessResult(LoggedInUser, FriendA);
-            ClosenessOfUserAndA = new FriendsClosenessResult(LoggedInUser, FriendB);
+            ClosenessOfUserAndB = new FriendsClosenessResult(LoggedInUser, FriendB);
         }
 
         public User Compete()

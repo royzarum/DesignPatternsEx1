@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BasicFacebookFeatures.FormsFactory">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.FriendsForm">
+    <Position X="6.75" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gAAoABEEBCAAgLBEAQGEAFACAEIBACwRAggAAAEFAgA=</HashCode>
+      <FileName>FriendsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.GroupsForm">
+    <Position X="9.75" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIIAAAAACAAAAAEAAGAACACAAIAAAwAAAACAAEBAAA=</HashCode>
+      <FileName>GroupsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.LikedPagesForm">
+    <Position X="3.5" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EABdA4AAgLQABANAMAOEIYASgAAAANoAEBACAgMBIAA=</HashCode>
+      <FileName>LikedPagesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.PostsForm">
+    <Position X="12.25" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gBAYABiEwKAQFwkEhkGkmQBSACKEAAwAARAACQVVACI=</HashCode>
+      <FileName>PostsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFacebookFeatures.AlbumsForm">
+    <Position X="0.5" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAIAAAAAiAAAAAGwAGAIAACAAIABAwAAAAAQAfFAAA=</HashCode>
+      <FileName>AlbumsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form">
+    <Position X="6.5" Y="2.75" Width="2.75" />
+    <Members>
+      <Property Name="AcceptButton" Hidden="true" />
+      <Method Name="Activate" Hidden="true" />
+      <Event Name="Activated" Hidden="true" />
+      <Method Name="ActivateMdiChild" Hidden="true" />
+      <Property Name="ActiveForm" Hidden="true" />
+      <Property Name="ActiveMdiChild" Hidden="true" />
+      <Method Name="AddOwnedForm" Hidden="true" />
+      <Method Name="AdjustFormScrollbars" Hidden="true" />
+      <Property Name="AllowTransparency" Hidden="true" />
+      <Method Name="ApplyAutoScaling" Hidden="true" />
+      <Property Name="AutoScale" Hidden="true" />
+      <Property Name="AutoScaleBaseSize" Hidden="true" />
+      <Property Name="AutoScroll" Hidden="true" />
+      <Property Name="AutoSize" Hidden="true" />
+      <Event Name="AutoSizeChanged" Hidden="true" />
+      <Property Name="AutoSizeMode" Hidden="true" />
+      <Property Name="AutoValidate" Hidden="true" />
+      <Event Name="AutoValidateChanged" Hidden="true" />
+      <Property Name="BackColor" Hidden="true" />
+      <Property Name="CancelButton" Hidden="true" />
+      <Method Name="CenterToParent" Hidden="true" />
+      <Method Name="CenterToScreen" Hidden="true" />
+      <Property Name="ClientSize" Hidden="true" />
+      <Method Name="Close" Hidden="true" />
+      <Event Name="Closed" Hidden="true" />
+      <Event Name="Closing" Hidden="true" />
+      <Property Name="ControlBox" Hidden="true" />
+      <Method Name="CreateControlsInstance" Hidden="true" />
+      <Method Name="CreateHandle" Hidden="true" />
+      <Property Name="CreateParams" Hidden="true" />
+      <Event Name="Deactivate" Hidden="true" />
+      <Property Name="DefaultImeMode" Hidden="true" />
+      <Property Name="DefaultSize" Hidden="true" />
+      <Method Name="DefWndProc" Hidden="true" />
+      <Property Name="DesktopBounds" Hidden="true" />
+      <Property Name="DesktopLocation" Hidden="true" />
+      <Property Name="DialogResult" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Event Name="DpiChanged" Hidden="true" />
+      <Method Name="Form" Hidden="true" />
+      <Property Name="FormBorderStyle" Hidden="true" />
+      <Event Name="FormClosed" Hidden="true" />
+      <Event Name="FormClosing" Hidden="true" />
+      <Method Name="GetAutoScaleSize" Hidden="true" />
+      <Method Name="GetScaledBounds" Hidden="true" />
+      <Property Name="HelpButton" Hidden="true" />
+      <Event Name="HelpButtonClicked" Hidden="true" />
+      <Property Name="Icon" Hidden="true" />
+      <Event Name="InputLanguageChanged" Hidden="true" />
+      <Event Name="InputLanguageChanging" Hidden="true" />
+      <Property Name="IsMdiChild" Hidden="true" />
+      <Property Name="IsMdiContainer" Hidden="true" />
+      <Property Name="IsRestrictedWindow" Hidden="true" />
+      <Property Name="KeyPreview" Hidden="true" />
+      <Method Name="LayoutMdi" Hidden="true" />
+      <Event Name="Load" Hidden="true" />
+      <Property Name="Location" Hidden="true" />
+      <Property Name="MainMenuStrip" Hidden="true" />
+      <Property Name="Margin" Hidden="true" />
+      <Event Name="MarginChanged" Hidden="true" />
+      <Property Name="MaximizeBox" Hidden="true" />
+      <Property Name="MaximizedBounds" Hidden="true" />
+      <Event Name="MaximizedBoundsChanged" Hidden="true" />
+      <Property Name="MaximumSize" Hidden="true" />
+      <Event Name="MaximumSizeChanged" Hidden="true" />
+      <Event Name="MdiChildActivate" Hidden="true" />
+      <Property Name="MdiChildren" Hidden="true" />
+      <Property Name="MdiParent" Hidden="true" />
+      <Property Name="Menu" Hidden="true" />
+      <Event Name="MenuComplete" Hidden="true" />
+      <Event Name="MenuStart" Hidden="true" />
+      <Property Name="MergedMenu" Hidden="true" />
+      <Property Name="MinimizeBox" Hidden="true" />
+      <Property Name="MinimumSize" Hidden="true" />
+      <Event Name="MinimumSizeChanged" Hidden="true" />
+      <Property Name="Modal" Hidden="true" />
+      <Method Name="OnActivated" Hidden="true" />
+      <Method Name="OnBackgroundImageChanged" Hidden="true" />
+      <Method Name="OnBackgroundImageLayoutChanged" Hidden="true" />
+      <Method Name="OnClosed" Hidden="true" />
+      <Method Name="OnClosing" Hidden="true" />
+      <Method Name="OnCreateControl" Hidden="true" />
+      <Method Name="OnDeactivate" Hidden="true" />
+      <Method Name="OnDpiChanged" Hidden="true" />
+      <Method Name="OnEnabledChanged" Hidden="true" />
+      <Method Name="OnEnter" Hidden="true" />
+      <Method Name="OnFontChanged" Hidden="true" />
+      <Method Name="OnFormClosed" Hidden="true" />
+      <Method Name="OnFormClosing" Hidden="true" />
+      <Method Name="OnGetDpiScaledSize" Hidden="true" />
+      <Method Name="OnHandleCreated" Hidden="true" />
+      <Method Name="OnHandleDestroyed" Hidden="true" />
+      <Method Name="OnHelpButtonClicked" Hidden="true" />
+      <Method Name="OnInputLanguageChanged" Hidden="true" />
+      <Method Name="OnInputLanguageChanging" Hidden="true" />
+      <Method Name="OnLayout" Hidden="true" />
+      <Method Name="OnLoad" Hidden="true" />
+      <Method Name="OnMaximizedBoundsChanged" Hidden="true" />
+      <Method Name="OnMaximumSizeChanged" Hidden="true" />
+      <Method Name="OnMdiChildActivate" Hidden="true" />
+      <Method Name="OnMenuComplete" Hidden="true" />
+      <Method Name="OnMenuStart" Hidden="true" />
+      <Method Name="OnMinimumSizeChanged" Hidden="true" />
+      <Method Name="OnPaint" Hidden="true" />
+      <Method Name="OnResize" Hidden="true" />
+      <Method Name="OnResizeBegin" Hidden="true" />
+      <Method Name="OnResizeEnd" Hidden="true" />
+      <Method Name="OnRightToLeftLayoutChanged" Hidden="true" />
+      <Method Name="OnShown" Hidden="true" />
+      <Method Name="OnStyleChanged" Hidden="true" />
+      <Method Name="OnTextChanged" Hidden="true" />
+      <Method Name="OnVisibleChanged" Hidden="true" />
+      <Property Name="Opacity" Hidden="true" />
+      <Property Name="OwnedForms" Hidden="true" />
+      <Property Name="Owner" Hidden="true" />
+      <Method Name="ProcessCmdKey" Hidden="true" />
+      <Method Name="ProcessDialogChar" Hidden="true" />
+      <Method Name="ProcessDialogKey" Hidden="true" />
+      <Method Name="ProcessKeyPreview" Hidden="true" />
+      <Method Name="ProcessMnemonic" Hidden="true" />
+      <Method Name="ProcessTabKey" Hidden="true" />
+      <Method Name="RemoveOwnedForm" Hidden="true" />
+      <Event Name="ResizeBegin" Hidden="true" />
+      <Event Name="ResizeEnd" Hidden="true" />
+      <Property Name="RestoreBounds" Hidden="true" />
+      <Property Name="RightToLeftLayout" Hidden="true" />
+      <Event Name="RightToLeftLayoutChanged" Hidden="true" />
+      <Method Name="ScaleControl" Hidden="true" />
+      <Method Name="ScaleCore" Hidden="true" />
+      <Method Name="Select" Hidden="true" />
+      <Method Name="SetBoundsCore" Hidden="true" />
+      <Method Name="SetClientSizeCore" Hidden="true" />
+      <Method Name="SetDesktopBounds" Hidden="true" />
+      <Method Name="SetDesktopLocation" Hidden="true" />
+      <Method Name="SetVisibleCore" Hidden="true" />
+      <Method Name="Show" Hidden="true" />
+      <Method Name="ShowDialog" Hidden="true" />
+      <Property Name="ShowIcon" Hidden="true" />
+      <Property Name="ShowInTaskbar" Hidden="true" />
+      <Event Name="Shown" Hidden="true" />
+      <Property Name="ShowWithoutActivation" Hidden="true" />
+      <Property Name="Size" Hidden="true" />
+      <Property Name="SizeGripStyle" Hidden="true" />
+      <Property Name="StartPosition" Hidden="true" />
+      <Property Name="TabIndex" Hidden="true" />
+      <Event Name="TabIndexChanged" Hidden="true" />
+      <Property Name="TabStop" Hidden="true" />
+      <Event Name="TabStopChanged" Hidden="true" />
+      <Property Name="Text" Hidden="true" />
+      <Property Name="TopLevel" Hidden="true" />
+      <Property Name="TopMost" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+      <Property Name="TransparencyKey" Hidden="true" />
+      <Method Name="UpdateDefaultButton" Hidden="true" />
+      <Method Name="ValidateChildren" Hidden="true" />
+      <Property Name="WindowState" Hidden="true" />
+      <Method Name="WndProc" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="System.Windows.Forms.Form.ControlCollection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -127,7 +127,6 @@ namespace BasicFacebookFeatures
                     m_CurrentAlbumDisplay[index] = pictureBox;
                     pictureBox.Image = photo.ImageNormal;
                     initializePictureBoxProperties(pictureBox);
-                    pictureBox.Click += pictureBox_OnClick;
                     Controls.Add(pictureBox);
                     index++;
                 }
@@ -177,11 +176,6 @@ namespace BasicFacebookFeatures
                 m_CurrentAlbumDisplay[i].Visible = true;
             }
 
-        }
-
-        private void pictureBox_OnClick(object sender, EventArgs e)
-        {
-            
         }
     }
 }

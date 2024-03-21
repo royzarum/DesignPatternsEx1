@@ -170,6 +170,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="FacadeClassDiagram.cd" />
+    <None Include="FactoryMethodClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Page.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Post.datasource" />
@@ -182,6 +184,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SingletonClassDiagram.cd" />
+    <None Include="StrategyClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

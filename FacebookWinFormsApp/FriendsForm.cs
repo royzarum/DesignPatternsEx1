@@ -51,14 +51,14 @@ namespace BasicFacebookFeatures
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            new Thread(fetchData).Start();
+            fetchData();
         }
         private void fetchData()
         {
             initialzeData();
             if (m_Accessible)
             {
-                fetchFriendsListBox();
+                new Thread(fetchFriendsListBox).Start();
             }
             else
             {
@@ -68,7 +68,7 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsListBox()
         {
-            listBoxFriends.Items.Clear();
+            listBoxFriends.Invoke(new Action(listBoxFriends.Items.Clear));
             foreach (User friend in LoggedInUser.Friends)
             {
                 listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(friend)));
