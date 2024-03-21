@@ -8,9 +8,33 @@ namespace BasicFacebookFeatures
 {
     public class IsPostOlder : IPostsStrategy
     {
-        public bool Selector(DateTime i_DateSelected, DateTime i_DateToCheck)
+        public bool Selector(int i_Day, int i_Month, int i_Year, DateTime i_DateToCheck)
         {
-            return i_DateToCheck < i_DateSelected;
+            bool result = false;
+            if(i_Year < i_DateToCheck.Year)
+            {
+                result = false;
+            }
+            else if (i_Year > i_DateToCheck.Year)
+            {
+                result = true;
+            }
+            else
+            {
+                if(i_Month < i_DateToCheck.Month)
+                {
+                    result = false;
+                }
+                else if (i_Month > i_DateToCheck.Month)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = i_Day < i_DateToCheck.Day;
+                }
+            }
+            return result;
         }
     }
 }

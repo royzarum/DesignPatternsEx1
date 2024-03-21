@@ -16,6 +16,7 @@ namespace BasicFacebookFeatures
 {
     public partial class PostsForm : Form
     {
+        public delegate R DateSelector<T1, T2, T3, T4, R>(T1 i_Param1, T2 i_Param2, T3 i_Param3, T4 i_Param4);
         private PostsDatesSaved m_DatesSavedInFile;
         private List<AppPost> m_Posts;
         private List<Tuple<string, DateTime>> m_DatesSaved;
@@ -27,7 +28,7 @@ namespace BasicFacebookFeatures
         private bool m_Load = true;
         public User LoggedInUser { get; }
         private IPostsStrategy m_DatesStrategy = new IsPostInRange();
-        private Func<DateTime, DateTime, bool> m_SelectorStrategy;
+        private DateSelector<int, int, int, DateTime, bool> m_SelectorStrategy;
         public PostsForm()
         {
             InitializeComponent();
@@ -147,11 +148,11 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"No posts for {LoggedInUser.Name}");
             }
         }
-        private void selectDates(DateTime i_Date)
+        private void selectDates(int i_Day, int i_Month, int i_Year)
         {
             listBoxPosts.Items.Clear();
             var filteredPostsByDate = from post in m_Posts
-                                      where m_SelectorStrategy(i_Date, post.CreatedIn)
+                                      where m_SelectorStrategy(i_Day, i_Month, i_Year, post.CreatedIn)
                                       select post;
             foreach (var post in filteredPostsByDate)
             {
@@ -200,7 +201,7 @@ namespace BasicFacebookFeatures
             int month = int.Parse(numericUpDownMonth.Value.ToString());
             int day = int.Parse(numericUpDownDay.Value.ToString());
             m_SelectorStrategy = m_DatesStrategy.Selector;
-            selectDates(new DateTime(year, month, day));
+            selectDates(day, month, year);
         }
         private void numericUpDownMonth_ValueChanged(object sender, EventArgs e)
         {
@@ -304,7 +305,7 @@ namespace BasicFacebookFeatures
                     numericUpDownDay.Value = day;
                     numericUpDownMonth.Value = month;
                     numericUpDownYear.Value = year;
-                    selectDates(new DateTime(year, month, day));
+                    selectDates(day, month, year);
                 }
             }
         }
