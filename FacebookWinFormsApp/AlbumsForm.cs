@@ -71,9 +71,9 @@ namespace BasicFacebookFeatures
             }
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            base.OnLoad(e);
+            base.OnShown(e);
             new Thread(fetchData).Start();
         }
         private void fetchData()

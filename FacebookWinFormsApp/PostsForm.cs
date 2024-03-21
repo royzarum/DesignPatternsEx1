@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
     public partial class PostsForm : Form
     {
         private PostsDatesSaved m_DatesSavedInFile;
-        private List<PostProxy> m_Posts;
+        private List<AppPost> m_Posts;
         private List<Tuple<string, DateTime>> m_DatesSaved;
         private const string k_FormName = "Posts";
         private const string k_Zero = "0";
@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             LoggedInUser = i_LoginResult.LoggedInUser;
-            m_Posts = new List<PostProxy>();
+            m_Posts = new List<AppPost>();
             m_DatesSaved = new List<Tuple<string, DateTime>>();
             this.MinimumSize = new System.Drawing.Size(pictureBoxLogo.Right + 10, labelDayIsZero.Bottom + 50);
         }
@@ -138,7 +138,7 @@ namespace BasicFacebookFeatures
             listBoxPosts.Invoke(new Action(listBoxPosts.Items.Clear));
             foreach (Post post in LoggedInUser.Posts)
             {
-                PostProxy postProxy = new PostProxy(post, post.Message, (DateTime)post.CreatedTime);
+                AppPost postProxy = new AppPost(post.Message, (DateTime)post.CreatedTime);
                 m_Posts.Add(postProxy);
                 listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(postProxy)));
             }
@@ -175,7 +175,7 @@ namespace BasicFacebookFeatures
         {
             if(textBoxPost.Text != "")
             {
-                PostProxy post = new PostProxy(new Post(),textBoxPost.Text, DateTime.Now);
+                AppPost post = new AppPost(textBoxPost.Text, DateTime.Now);
                 listBoxPosts.Items.Add(post);
                 m_Posts.Add(post);
                 labelActualNumber.Text = (int.Parse(labelActualNumber.Text) + 1).ToString();
@@ -231,7 +231,7 @@ namespace BasicFacebookFeatures
         private void cancelFilter()
         {
             listBoxPosts.Items.Clear();
-            foreach (PostProxy post in m_Posts)
+            foreach (AppPost post in m_Posts)
             {
                 listBoxPosts.Items.Add(post);
             }

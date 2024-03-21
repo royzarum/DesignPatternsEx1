@@ -43,9 +43,9 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"There is no access for {LoggedInUser.Name}'s groups");
             }
         }
-        protected override void OnLoad(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            base.OnLoad(e);
+            base.OnShown(e);
             new Thread(fetchData).Start();
         }
         private void fetchData()

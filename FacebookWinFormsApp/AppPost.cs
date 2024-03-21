@@ -7,14 +7,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public class PostProxy
+    public class AppPost
     {
-        public Post post { get; }
         public string Text { get; }
         public DateTime CreatedIn { get; }
-        public PostProxy(Post i_Post, string i_Text, DateTime i_CreatedIn)
+        public AppPost(string i_Text, DateTime i_CreatedIn)
         {
-            post = i_Post;
             Text = i_Text;
             CreatedIn = i_CreatedIn;
         }
