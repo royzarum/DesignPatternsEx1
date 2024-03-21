@@ -46,8 +46,6 @@
             this.labelNumberOfPages = new System.Windows.Forms.Label();
             this.labelNumberOfPagesValue = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.labelSearchByCategory = new System.Windows.Forms.Label();
-            this.textBoxSearchByCategory = new System.Windows.Forms.TextBox();
             this.pageBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -88,7 +86,7 @@
             labelCategory.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             labelCategory.Location = new System.Drawing.Point(14, 127);
             labelCategory.Name = "labelCategory";
-            labelCategory.Size = new System.Drawing.Size(85, 19);
+            labelCategory.Size = new System.Drawing.Size(103, 24);
             labelCategory.TabIndex = 0;
             labelCategory.Text = "Category:";
             // 
@@ -99,7 +97,7 @@
             labelDescription.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             labelDescription.Location = new System.Drawing.Point(14, 159);
             labelDescription.Name = "labelDescription";
-            labelDescription.Size = new System.Drawing.Size(103, 19);
+            labelDescription.Size = new System.Drawing.Size(125, 24);
             labelDescription.TabIndex = 2;
             labelDescription.Text = "Description:";
             // 
@@ -110,7 +108,7 @@
             labelLikes.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             labelLikes.Location = new System.Drawing.Point(14, 70);
             labelLikes.Name = "labelLikes";
-            labelLikes.Size = new System.Drawing.Size(107, 19);
+            labelLikes.Size = new System.Drawing.Size(130, 24);
             labelLikes.TabIndex = 6;
             labelLikes.Text = "Likes Count:";
             // 
@@ -121,7 +119,7 @@
             labelName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             labelName.Location = new System.Drawing.Point(14, 42);
             labelName.Name = "labelName";
-            labelName.Size = new System.Drawing.Size(59, 19);
+            labelName.Size = new System.Drawing.Size(70, 24);
             labelName.TabIndex = 8;
             labelName.Text = "Name:";
             // 
@@ -132,7 +130,7 @@
             labelPhoneNumber.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             labelPhoneNumber.Location = new System.Drawing.Point(14, 99);
             labelPhoneNumber.Name = "labelPhoneNumber";
-            labelPhoneNumber.Size = new System.Drawing.Size(65, 19);
+            labelPhoneNumber.Size = new System.Drawing.Size(77, 24);
             labelPhoneNumber.TabIndex = 10;
             labelPhoneNumber.Text = "Phone:";
             // 
@@ -145,10 +143,10 @@
             this.listBoxLikedPages.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.HorizontalScrollbar = true;
-            this.listBoxLikedPages.ItemHeight = 25;
+            this.listBoxLikedPages.ItemHeight = 31;
             this.listBoxLikedPages.Location = new System.Drawing.Point(11, 85);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
-            this.listBoxLikedPages.Size = new System.Drawing.Size(467, 277);
+            this.listBoxLikedPages.Size = new System.Drawing.Size(467, 250);
             this.listBoxLikedPages.TabIndex = 10;
             // 
             // pageBindingSource
@@ -173,7 +171,7 @@
             this.labelLikesCount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelLikesCount.Location = new System.Drawing.Point(530, 295);
             this.labelLikesCount.Name = "labelLikesCount";
-            this.labelLikesCount.Size = new System.Drawing.Size(0, 20);
+            this.labelLikesCount.Size = new System.Drawing.Size(0, 25);
             this.labelLikesCount.TabIndex = 17;
             // 
             // labelPageCategoryValue
@@ -183,7 +181,7 @@
             this.labelPageCategoryValue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelPageCategoryValue.Location = new System.Drawing.Point(598, 315);
             this.labelPageCategoryValue.Name = "labelPageCategoryValue";
-            this.labelPageCategoryValue.Size = new System.Drawing.Size(0, 20);
+            this.labelPageCategoryValue.Size = new System.Drawing.Size(0, 25);
             this.labelPageCategoryValue.TabIndex = 18;
             // 
             // labelPhoneValue
@@ -192,7 +190,7 @@
             this.labelPhoneValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelPhoneValue.Location = new System.Drawing.Point(530, 376);
             this.labelPhoneValue.Name = "labelPhoneValue";
-            this.labelPhoneValue.Size = new System.Drawing.Size(0, 20);
+            this.labelPhoneValue.Size = new System.Drawing.Size(0, 25);
             this.labelPhoneValue.TabIndex = 19;
             this.labelPhoneValue.UseMnemonic = false;
             // 
@@ -203,7 +201,7 @@
             this.labelInformationTitle.ForeColor = System.Drawing.Color.SlateGray;
             this.labelInformationTitle.Location = new System.Drawing.Point(14, 13);
             this.labelInformationTitle.Name = "labelInformationTitle";
-            this.labelInformationTitle.Size = new System.Drawing.Size(87, 29);
+            this.labelInformationTitle.Size = new System.Drawing.Size(109, 36);
             this.labelInformationTitle.TabIndex = 21;
             this.labelInformationTitle.Text = "About:";
             // 
@@ -215,7 +213,7 @@
             this.labelHeadline.ForeColor = System.Drawing.Color.White;
             this.labelHeadline.Location = new System.Drawing.Point(12, 43);
             this.labelHeadline.Name = "labelHeadline";
-            this.labelHeadline.Size = new System.Drawing.Size(159, 41);
+            this.labelHeadline.Size = new System.Drawing.Size(204, 51);
             this.labelHeadline.TabIndex = 22;
             this.labelHeadline.Text = "Headline";
             // 
@@ -225,7 +223,7 @@
             this.labelNumberOfPages.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelNumberOfPages.Location = new System.Drawing.Point(263, 62);
             this.labelNumberOfPages.Name = "labelNumberOfPages";
-            this.labelNumberOfPages.Size = new System.Drawing.Size(120, 16);
+            this.labelNumberOfPages.Size = new System.Drawing.Size(150, 19);
             this.labelNumberOfPages.TabIndex = 23;
             this.labelNumberOfPages.Text = "Number of Pages:";
             // 
@@ -235,7 +233,7 @@
             this.labelNumberOfPagesValue.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelNumberOfPagesValue.Location = new System.Drawing.Point(382, 62);
             this.labelNumberOfPagesValue.Name = "labelNumberOfPagesValue";
-            this.labelNumberOfPagesValue.Size = new System.Drawing.Size(14, 16);
+            this.labelNumberOfPagesValue.Size = new System.Drawing.Size(18, 19);
             this.labelNumberOfPagesValue.TabIndex = 24;
             this.labelNumberOfPagesValue.Text = "0";
             // 
@@ -250,29 +248,6 @@
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 9;
             this.pictureBoxLogo.TabStop = false;
-            // 
-            // labelSearchByCategory
-            // 
-            this.labelSearchByCategory.AutoSize = true;
-            this.labelSearchByCategory.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelSearchByCategory.Location = new System.Drawing.Point(599, 62);
-            this.labelSearchByCategory.Name = "labelSearchByCategory";
-            this.labelSearchByCategory.Size = new System.Drawing.Size(186, 18);
-            this.labelSearchByCategory.TabIndex = 25;
-            this.labelSearchByCategory.Text = "Search page by category:";
-            // 
-            // textBoxSearchByCategory
-            // 
-            this.textBoxSearchByCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearchByCategory.Location = new System.Drawing.Point(569, 91);
-            this.textBoxSearchByCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxSearchByCategory.Name = "textBoxSearchByCategory";
-            this.textBoxSearchByCategory.Size = new System.Drawing.Size(260, 23);
-            this.textBoxSearchByCategory.TabIndex = 26;
-            this.textBoxSearchByCategory.Text = "Search Here";
-            this.textBoxSearchByCategory.TextChanged += new System.EventHandler(this.textBoxSearchByCategory_TextChanged);
-            this.textBoxSearchByCategory.Enter += new System.EventHandler(this.textBoxSearchByCategory_Enter);
-            this.textBoxSearchByCategory.Leave += new System.EventHandler(this.textBoxSearchByCategory_Leave);
             // 
             // pageBindingNavigator
             // 
@@ -301,7 +276,7 @@
             this.pageBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pageBindingNavigator.Name = "pageBindingNavigator";
             this.pageBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pageBindingNavigator.Size = new System.Drawing.Size(1023, 25);
+            this.pageBindingNavigator.Size = new System.Drawing.Size(1023, 27);
             this.pageBindingNavigator.TabIndex = 28;
             this.pageBindingNavigator.Text = "bindingNavigator1";
             this.pageBindingNavigator.Visible = false;
@@ -312,13 +287,13 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -328,7 +303,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
@@ -337,7 +312,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -346,7 +321,7 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
@@ -358,6 +333,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -374,7 +350,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -383,7 +359,7 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 22);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
@@ -397,7 +373,7 @@
             this.pageBindingNavigatorSaveItem.Enabled = false;
             this.pageBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("pageBindingNavigatorSaveItem.Image")));
             this.pageBindingNavigatorSaveItem.Name = "pageBindingNavigatorSaveItem";
-            this.pageBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 22);
+            this.pageBindingNavigatorSaveItem.Size = new System.Drawing.Size(29, 22);
             this.pageBindingNavigatorSaveItem.Text = "Save Data";
             // 
             // categoryLabelValue
@@ -407,7 +383,7 @@
             this.categoryLabelValue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.categoryLabelValue.Location = new System.Drawing.Point(139, 127);
             this.categoryLabelValue.Name = "categoryLabelValue";
-            this.categoryLabelValue.Size = new System.Drawing.Size(107, 19);
+            this.categoryLabelValue.Size = new System.Drawing.Size(134, 24);
             this.categoryLabelValue.TabIndex = 1;
             this.categoryLabelValue.Text = "[CATEGORY]";
             // 
@@ -418,6 +394,8 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(139, 159);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ReadOnly = true;
+            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.descriptionTextBox.Size = new System.Drawing.Size(186, 93);
             this.descriptionTextBox.TabIndex = 3;
             // 
@@ -439,7 +417,7 @@
             this.likesCountLabelValue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.likesCountLabelValue.Location = new System.Drawing.Point(139, 70);
             this.likesCountLabelValue.Name = "likesCountLabelValue";
-            this.likesCountLabelValue.Size = new System.Drawing.Size(105, 19);
+            this.likesCountLabelValue.Size = new System.Drawing.Size(129, 24);
             this.likesCountLabelValue.TabIndex = 7;
             this.likesCountLabelValue.Text = "[NOF LIKES]";
             // 
@@ -450,7 +428,7 @@
             this.phoneLabelValue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.phoneLabelValue.Location = new System.Drawing.Point(139, 99);
             this.phoneLabelValue.Name = "phoneLabelValue";
-            this.phoneLabelValue.Size = new System.Drawing.Size(153, 19);
+            this.phoneLabelValue.Size = new System.Drawing.Size(186, 24);
             this.phoneLabelValue.TabIndex = 11;
             this.phoneLabelValue.Text = "[PHONE NUMBER]";
             // 
@@ -461,7 +439,7 @@
             this.nameLabelValue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.nameLabelValue.Location = new System.Drawing.Point(80, 42);
             this.nameLabelValue.Name = "nameLabelValue";
-            this.nameLabelValue.Size = new System.Drawing.Size(66, 19);
+            this.nameLabelValue.Size = new System.Drawing.Size(81, 24);
             this.nameLabelValue.TabIndex = 14;
             this.nameLabelValue.Text = "[NAME]";
             // 
@@ -491,8 +469,6 @@
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1023, 426);
             this.Controls.Add(this.pageBindingNavigator);
-            this.Controls.Add(this.textBoxSearchByCategory);
-            this.Controls.Add(this.labelSearchByCategory);
             this.Controls.Add(this.labelNumberOfPagesValue);
             this.Controls.Add(this.labelNumberOfPages);
             this.Controls.Add(this.labelHeadline);
@@ -533,8 +509,6 @@
         private System.Windows.Forms.Label labelHeadline;
         private System.Windows.Forms.Label labelNumberOfPages;
         private System.Windows.Forms.Label labelNumberOfPagesValue;
-        private System.Windows.Forms.Label labelSearchByCategory;
-        private System.Windows.Forms.TextBox textBoxSearchByCategory;
         private System.Windows.Forms.BindingSource pageBindingSource;
         private System.Windows.Forms.Label categoryLabelValue;
         private System.Windows.Forms.TextBox descriptionTextBox;
