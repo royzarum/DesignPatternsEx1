@@ -292,7 +292,7 @@ namespace BasicFacebookFeatures
         private void comboBoxSavedDates_SelectedIndexChanged(object sender, EventArgs e)
         {
             string name = comboBoxSavedDates.SelectedItem.ToString();
-            m_SelectorStrategy = m_DatesStrategy.Selector;
+            m_SelectorStrategy = new IsPostInRange().Selector;
             foreach(Tuple<string, DateTime> savedDate in m_DatesSaved)
             {
                 if(savedDate.Item1 == name)
